@@ -50,6 +50,7 @@ group :development, :test do
 
   # make testing readable
   gem 'rspec-rails'
+  
   gem 'shoulda-matchers'
 end
 
