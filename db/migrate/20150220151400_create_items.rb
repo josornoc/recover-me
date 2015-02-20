@@ -2,13 +2,13 @@ class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
     	# date where found or lost
-    	t.datetime 			  :datetime
+    	t.datetime     	  :datetime
     	# name of the product
-    	t.string				  :name
+    	t.string		  :name
     	# lost, found, resolver, etc...
-    	t.string				  :state
+    	t.string          :state
     	# brief description of the product... if any
-    	t.text				    :description
+    	t.text            :description
     	# for GEO purposes
     	t.float           :latitude
     	# for GEO purposes
