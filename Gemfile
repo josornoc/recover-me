@@ -47,6 +47,10 @@ group :development, :test do
 
   # for building test items
   gem 'faker'
+
+  # make testing readable
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
   
 end
 
