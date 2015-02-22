@@ -10,6 +10,8 @@ default: &default
   timeout: 5000
   host: localhost
   port: 5432
+  user: josornoc
+  password: ianflemming007
 
 development:
   <<: *default
