@@ -36,7 +36,7 @@ RSpec.describe Item, type: :model do
     # Should be a date with the possibility of time as well.
 
     ##############
-    it "validates presence of datetime" do
+    it "validates presence of contact_email" do
       item = build(:item, contact_email: nil)
       expect(item.valid?).to be false
       expect(item.errors[:contact_email].present?).to be true
