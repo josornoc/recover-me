@@ -5,7 +5,7 @@ require 'faker'
 
 FactoryGirl.define do
   factory :item do
-    name          { Faker::Hacker.adjective } # Why using lamdba here?
+    name          { Faker::Hacker.adjective }
     datetime      { Faker::Date.birthday }
     contact_email { Faker::Internet.email }
   end
