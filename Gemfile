@@ -50,7 +50,12 @@ group :development, :test do
 
   # make testing readable
   gem 'rspec-rails'
-  
-  gem 'shoulda-matchers'
+
+  # gem 'shoulda-matchers'
+
+  # for spec/factories when testing with rspec
+  gem "factory_girl_rails"
+  # gem 'factory_girl'
+
 end
 
