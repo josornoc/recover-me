@@ -46,11 +46,33 @@ RSpec.describe Item, type: :model do
   # testing scopes directly not neccesary
   # http://stackoverflow.com/questions/6485379/testing-named-scopes-with-rspec
 
-  # describe "Scopes" do
-  #   it "lists items with rewards" do
-  #     item = build(:item, reward: 10)
-  #     binding.pry
-  #     expect(Item.hasReward).to include(item)
-  #   end
-  # end
+  describe "Scopes" do
+
+    it "Show list items with rewards when item.reward is present" do
+      item = create(:item, reward: 10)
+      expect(Item.hasReward).to include(item)
+    end
+
+    it "Don't show list items with rewards when item.reward is NIL" do
+      item = create(:item, reward: nil)
+      expect(Item.hasReward).not_to include(item)
+    end
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
