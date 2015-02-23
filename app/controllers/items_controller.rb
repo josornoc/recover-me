@@ -1,13 +1,14 @@
 class ItemsController < ApplicationController
 
 	def index
+
 	end
 
 	def new
-		@is_reporting_lost
-		if params["reporting"] == "lost"
+		session["reporting"] = get_reporting_status
+		if session["reporting"] == "lost"
 			@is_reporting_lost = true
-		elsif params["reporting"] == "found"
+		elsif session["reporting"] == "found"
 			@is_reporting_lost = false
 		end
 		@item = Item.new
@@ -15,10 +16,13 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		if @is_reporting_lost
+		
+		if session["reporting"] == "lost"
 			@item = Item.new item_lost_params
+			@item.state = "lost"
 		else
 			@item = Item.new item_found_params
+			@item.state = "found"
 		end
 
 		if @item.save
@@ -30,12 +34,17 @@ class ItemsController < ApplicationController
 	end
 
 	private
+
+	def get_reporting_status 
+		params["reporting"]
+	end
+
 	def item_lost_params
-    params.require(:item).permit(:name, :datetime, :contact_email, :description, :reward, :category, :state)
+    params.require(:item).permit(:name, :datetime, :contact_email, :description, :reward, :category)
   end
 
   def item_found_params
-    params.require(:item).permit(:name, :datetime, :contact_email, :description, :category, :state)
+    params.require(:item).permit(:name, :datetime, :contact_email, :description, :category)
   end
 
 end
