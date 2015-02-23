@@ -5,10 +5,12 @@ class RegistrationController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      #send email instantly
-      #got to send email here!!!!
-      #CatMailer.welcome_email(@cat).deliver
-      #redirection to index.html
+      # send email instantly
+      # got to send email here!!!!
+      # CatMailer.welcome_email(@cat).deliver
+      # redirection to index.html
+      # logged when registered, only to try...
+      session[:logged_in_user] = @user.id
       redirect_to root_path
     else
       render :new
