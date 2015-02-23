@@ -50,13 +50,14 @@ RSpec.describe Item, type: :model do
 
     it "Show list items with rewards when item.reward is present" do
       item = create(:item, reward: 10)
-      expect(Item.hasReward).to include(item)
+      expect(Item.has_reward).to include(item)
     end
 
     it "Don't show list items with rewards when item.reward is NIL" do
       item = create(:item, reward: nil)
-      expect(Item.hasReward).not_to include(item)
+      expect(Item.has_reward).not_to include(item)
     end
+    
   end
 end
 
