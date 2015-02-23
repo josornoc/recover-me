@@ -2,7 +2,7 @@ class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
     	# date where found or lost
-    	t.datetime     	  :datetime
+    	t.datetime    :datetime
     	# name of the product
     	t.string		  :name
     	# lost, found, resolver, etc...
