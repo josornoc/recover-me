@@ -10,4 +10,6 @@ class Item < ActiveRecord::Base
   scope :found,				-> { where(state: "found").order("datetime DESC") }
   scope :resolved, 		-> { where(state: "resolved").order("datetime DESC") }
 
+	belongs_to :user
+	
 end

@@ -1,9 +1,5 @@
 class ItemsController < ApplicationController
-
-	def index
-
-	end
-
+	
 	def new
 		session["reporting"] = get_reporting_status
 		if session["reporting"] == "lost"
@@ -16,7 +12,7 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		
+
 		if session["reporting"] == "lost"
 			@item = Item.new item_lost_params
 			@item.state = "lost"
