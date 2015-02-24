@@ -1,10 +1,8 @@
 <div class="col-md-12">
-	<div class="col-md-8 col-md-offset-2">
-		<% if @current_user %>
-		<p>Signed in as <%= @current_user.name %></p>
-		<%= link_to "Log out", logout_path, method: :delete %>
-		<% else %>
-		<%= render :partial => '/login/login' %>
-		<% end %>
+	<div class="col-md-6">
+		<h2>img</h2>
+	</div>
+	<div class="col-md-6">
+		<%= render :partial => '/registration/registration' %>
 	</div>
 </div>
