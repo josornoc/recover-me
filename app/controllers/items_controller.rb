@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-
 		if session["reporting"] == "lost"
 			@item = Item.new item_lost_params
 			@item.state = "lost"
@@ -34,6 +33,8 @@ class ItemsController < ApplicationController
 		end
 
 	end
+
+
 
 	private
 
