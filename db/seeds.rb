@@ -13,10 +13,10 @@ require 'faker'
 # end
 
 
-
 # testing items for user
 indi = User.where(id:3)[0]
 person = User.where(id:4)[0]
+
 
 indi.items.create(
 	name: "Holy Grial",
