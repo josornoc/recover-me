@@ -1,5 +1,11 @@
 class ItemsController < ApplicationController
 	
+	def index
+		# check if(!session[:logged_in_user])
+		@my_items = Item.where(user_id: session[:logged_in_user])
+		@other_items = Item.where("user_id != ?", session[:logged_in_user])
+	end
+	
 	def new
 		session["reporting"] = get_reporting_status
 		if session["reporting"] == "lost"
