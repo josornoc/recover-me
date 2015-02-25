@@ -9,19 +9,6 @@
   <% end %>
 
   <%= form_for( @item, url: items_path ) do |f| %>
-  
-    <h1>User Information</h1>
-
-    <div class="form-group">
-      <%= f.label :name, "User Name" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-  
-    <div class="form-group">
-      <%= f.label :name, "User Email" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-    
 
     <% if @is_reporting_lost %>
     <h1>Report Lost Item</h1>
@@ -33,7 +20,7 @@
       <%= f.label :name, "Product Name" %>
       <%= f.text_field :name, placeholder: "Ej. Passport", class: "form-control" %>
     </div>
-  
+
     <% if @is_reporting_lost %>
     <div class="form-group">
       <%= f.label :datetime, "Date when I lost the object" %>
@@ -74,7 +61,7 @@
       <%= f.text_area :description, class: "form-control" %>
     </div>
     <% end %>
-    
+
     <%= f.submit "Report!", class: "btn btn-default" %>
 
   <% end %>
