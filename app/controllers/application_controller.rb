@@ -5,8 +5,12 @@ class ApplicationController < ActionController::Base
   def current_user
 		if(session[:logged_in_user])
 			User.where(id: session[:logged_in_user])[0]
-		else 
+		else
 			nil
 		end
+  end
+
+  def get_reporting_type
+    @is_reporting_lost = params["reporting"]
   end
 end

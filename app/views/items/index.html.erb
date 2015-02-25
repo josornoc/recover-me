@@ -2,11 +2,23 @@
 	<div class="col-md-8 col-md-offset-2">
 		<div>
 		  <h2>Choose report</h2>
-		  <ul class="nav nav-tabs">
-				<li role="presentation" class="active"><a href="#">Report a lost object</a></li>
-				<li role="presentation"><a href="#">Report a found object</a></li>
-			</ul>
-			<%= render :partial => '/items/report?reporting=found' %>
+		  <div role="tabpanel">
+				<!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation"><a href="#lost" aria-controls="profile" role="tab" data-toggle="tab">Lost</a></li>
+			    <li role="presentation"><a href="#found" aria-controls="messages" role="tab" data-toggle="tab">Found</a></li>
+			  </ul>
+
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="lost">
+			    	<%= render :partial => '/items/report_lost' %>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="found">
+			    	<%= render :partial => '/items/report_found' %>
+			    </div>
+			  </div>
+			</div>
 		</div>
 		<hr>
 		<div>
