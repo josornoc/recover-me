@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+  	<!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="container col-md-offset-1">
+        <a class="navbar-brand" href=<%= root_path.to_s %>>Recover Me</a>
+        <%= 
+					link_to "Report Lost Object", new_item_path+"?reporting=lost", id: "report-lost-object", class: "btn btn-default navbar-btn" 
+				%>
+				<%= 
+					link_to "Report Found Object", new_item_path+"?reporting=found", id: "report-found-object", class: "btn btn-default navbar-btn" 
+				%>
+        <%= link_to "Register User", register_path, class: "btn btn-default navbar-btn" %>
+        <% if @user.empty? %>
+        <p class="navbar-text navbar-right">Not logged in</p>
+        <% else %>
+        <%= link_to "Log out", logout_path, method: :delete, class: "navbar-text navbar-right" %>
+        <p class="navbar-text navbar-right">Signed in as <%= @user[0].name %></p>
+        <% end %>
+      </div>
+    </div>
+    <!-- -->
+  </div>
+</nav>

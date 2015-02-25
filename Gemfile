@@ -59,5 +59,10 @@ group :development, :test do
   gem "factory_girl_rails"
   # gem 'factory_girl'
 
+  #see schema in all models
+  gem 'annotate'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  
 end
 

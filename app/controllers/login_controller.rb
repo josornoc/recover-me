@@ -3,7 +3,7 @@ class LoginController < ApplicationController
 		user = User.where(email:params[:email]).first		
 		if user && user.authenticate(params[:password])
 			session[:logged_in_user] = user.id
-			redirect_to user_path(user)
+			redirect_to items_path
 		else
 			flash[:error_logging_in] = "The User couldn't be logged in..."
 		end
