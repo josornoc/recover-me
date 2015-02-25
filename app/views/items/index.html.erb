@@ -2,7 +2,11 @@
 	<div class="col-md-8 col-md-offset-2">
 		<div>
 		  <h2>Choose report</h2>
-		  <p>Lost / Found</p>
+		  <ul class="nav nav-tabs">
+				<li role="presentation" class="active"><a href="#">Report a lost object</a></li>
+				<li role="presentation"><a href="#">Report a found object</a></li>
+			</ul>
+			<%= render :partial => '/items/report?reporting=found' %>
 		</div>
 		<hr>
 		<div>
@@ -26,13 +30,13 @@
 		</div>
 		<div class="list-group">
 			<% @other_items.each do |item| %>
-			  <a href=<% item_path(item.id) %>"item" class="list-group-item">
+			  <a href=<%= item_path(item) %> class="list-group-item">
 			    <h4 class="list-group-item-heading">Item: <b><span class="item-name"><%= item.name %></span></b></h4>
 			    <p class="list-group-item">Contact Email: <b><%= item.contact_email %></b></p>
 			    <p class="list-group-item">State: <b><%= item.state %></b></p>
 			    <p class="list-group-item">Reward: <b><%= item.reward %></b></p>
-			    <p class="list-group-item">Coordinates - Lat: 
-			    	<b><span class="item-latitude"><%=item.latitude%></span></b> / 
+			    <p class="list-group-item">Coordinates - Lat:
+			    	<b><span class="item-latitude"><%=item.latitude%></span></b> /
 			    	Lon: <b><span class="item-longitude"><%=item.longitude%></span></b>
 			    </p>
 			  </a>

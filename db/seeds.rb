@@ -14,14 +14,14 @@ require 'faker'
 
 
 # testing items for user
-indi = User.where(id:3)[0]
-person = User.where(id:4)[0]
+indi = User.where(id:2)[0]
+person = User.where(id:3)[0]
 
 
 indi.items.create(
 	name: "Holy Grial",
 	state: "lost",
-	datetime:Faker::Date.birthday, 
+	datetime:Faker::Date.birthday,
 	contact_email:Faker::Internet.email,
 	latitude: Faker::Address.latitude,
 	longitude: Faker::Address.longitude,
@@ -32,7 +32,7 @@ indi.items.create(
 indi.items.create(
 	name: "crystal skull",
 	state: "found",
-	datetime:Faker::Date.birthday, 
+	datetime:Faker::Date.birthday,
 	contact_email:Faker::Internet.email,
 	latitude: Faker::Address.latitude,
 	longitude: Faker::Address.longitude,
@@ -45,7 +45,7 @@ indi.items.create(
 person.items.create(
 	name: "fang gold tooth",
 	state: "lost",
-	datetime:Faker::Date.birthday, 
+	datetime:Faker::Date.birthday,
 	contact_email:Faker::Internet.email,
 	latitude: Faker::Address.latitude,
 	longitude: Faker::Address.longitude,
@@ -55,7 +55,7 @@ person.items.create(
 person.items.create(
 	name: "another gold tooth",
 	state: "lost",
-	datetime:Faker::Date.birthday, 
+	datetime:Faker::Date.birthday,
 	contact_email:Faker::Internet.email,
 	latitude: Faker::Address.latitude,
 	longitude: Faker::Address.longitude,
@@ -65,7 +65,7 @@ person.items.create(
 person.items.create(
 	name: "wooden leg",
 	state: "lost",
-	datetime:Faker::Date.birthday, 
+	datetime:Faker::Date.birthday,
 	contact_email:Faker::Internet.email,
 	latitude: Faker::Address.latitude,
 	longitude: Faker::Address.longitude,
