@@ -12,14 +12,16 @@
 			  <!-- Tab panes -->
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane active" id="lost">
-			    	<%= render :partial => '/items/report_lost' %>
+			    	...
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="found">
-			    	<%= render :partial => '/items/report_found' %>
+			    	...
 			    </div>
 			  </div>
-			</div>
+
 		</div>
+    <%= render :partial => '/items/report_lost', locals: {reporting: "lost"} %>
+    <%= render :partial => '/items/report_found', locals: {reporting: "found"} %>
 		<hr>
 		<div>
 		  <h2>List of my reports</h2>

@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
 
 	def new
 		@is_reporting_lost = get_reporting_status
-		binding.pry
 		@item = Item.new
 		render 'new'
 	end
@@ -22,9 +21,9 @@ class ItemsController < ApplicationController
 			@item = Item.new item_found_params
 			@item.state = "found"
 		end
-
+		@item.user_id = session[:logged_in_user]
 		if @item.save
-			redirect_to root_path
+			redirect_to items_path
 		else
 			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
 		end
