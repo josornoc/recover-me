@@ -12,5 +12,17 @@ class Item < ActiveRecord::Base
   scope :resolved, 		-> { where(state: "resolved").order("datetime DESC") }
 
 	belongs_to :user
+
+  def is_lost?
+    return true if (state == "lost")
+  end
+
+  def is_found?
+    return true if (state == "found")
+  end
+
+  def is_resolved?
+    return true if (state == "resolved")
+  end
 	
 end
