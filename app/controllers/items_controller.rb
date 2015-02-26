@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
-		
+		@item = Item.where(id: params[:id])[0]
 	end
 
 
