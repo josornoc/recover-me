@@ -1,5 +1,7 @@
-<%= form_for( [Relation.new(type:"Owner"), Item.new], url: items_path ) do |f| %>
+<%= form_for @item do |f| %>
+
 <h1>Report Lost Item</h1>
+
 <div class="form-group">
   <%= f.label :name, "Product Name" %>
   <%= f.text_field :name, placeholder: "Ej. Passport", class: "form-control" %>
@@ -24,5 +26,12 @@
   <%= f.label :description, "Brief description of how you lost your object (if any):" %>
   <%= f.text_area :description, class: "form-control" %>
 </div>
-<%= f.submit "Report!", class: "btn btn-default" %>
+
+<%= f.fields_for :relations do |relation_fields| %>
+    <%= relation_fields.hidden_field(:type, value: "Owner") %>
 <% end %>
+
+<%= f.submit "Report!", class: "btn btn-default" %>
+
+<% end %>
+

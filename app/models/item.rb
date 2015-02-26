@@ -3,7 +3,6 @@ class Item < ActiveRecord::Base
 	validates :name, presence: true, length: { in: 2..150 }
 	validates :datetime, presence: true
   validates :contact_email, presence: true
-  validates :user_id, presence: true
   validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   scope :has_reward,  -> { where("reward IS NOT NULL").order("datetime DESC") }
@@ -12,8 +11,11 @@ class Item < ActiveRecord::Base
   scope :resolved, 		-> { where(state: "resolved").order("datetime DESC") }
   
   has_many :relations
+  # has_many :users, through: :relations
   has_many :owners
   has_many :founders
+  
+  accepts_nested_attributes_for :relations
 
   def is_lost?
     return true if (state == "lost")

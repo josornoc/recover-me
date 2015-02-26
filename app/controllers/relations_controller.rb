@@ -1,9 +1,7 @@
 class RelationsController < ApplicationController
 
 	def create
-
 		@item = Item.where(id: params[:item_id])[0]
-
 		if(@item.is_lost?)
 			@relation = Founder.new(item_id: params[:item_id], user_id: params[:user_id])
 		end

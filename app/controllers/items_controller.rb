@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
 		# check if(!session[:logged_in_user])
 		@my_items = Item.where(user_id: session[:logged_in_user])
 		@other_items = Item.where("user_id != ?", session[:logged_in_user])
+		@item = Item.new
+		@relation = @item.relations.build
 	end
 	
 	def new
@@ -18,15 +20,18 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		if session["reporting"] == "lost"
-			@item = Item.new item_lost_params
-			@item.state = "lost"
-		else
-			@item = Item.new item_found_params
-			@item.state = "found"
-		end
+		
+		# if session["reporting"] == "lost"
+		# 	@item = Item.new item_lost_params
+		# 	@item.state = "lost"
+		# else
+		# 	@item = Item.new item_found_params
+		# 	@item.state = "found"
+		# end
 
+		@item = Item.new(item_lost_params)
 		if @item.save
+			@item.relations.last.update_attributes(user_id: current_user.id)
 			redirect_to items_path
 		else
 			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
@@ -52,7 +57,7 @@ class ItemsController < ApplicationController
 	end
 
 	def item_lost_params
-    params.require(:item).permit(:name, :datetime, :contact_email, :description, :reward, :category)
+    params.require(:item).permit(:name, :datetime, :contact_email, :description, :reward, :category, relations_attributes: [:id, :type])
   end
 
   def item_found_params
