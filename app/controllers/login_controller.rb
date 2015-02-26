@@ -6,6 +6,7 @@ class LoginController < ApplicationController
 			redirect_to items_path
 		else
 			flash[:error_logging_in] = "The User couldn't be logged in..."
+			redirect_to root_path
 		end
 	end
 	def destroy
