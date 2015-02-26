@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
 	
-	def index
-		# check if(!session[:logged_in_user])
-		@my_items = Item.where(user_id: session[:logged_in_user])
+	def index	
+		@my_relations = Relation.where(user_id: current_user.id)
 		@other_items = Item.where("user_id != ?", session[:logged_in_user])
 		@item = Item.new
 		@relation = @item.relations.build
@@ -20,15 +19,6 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		
-		# if session["reporting"] == "lost"
-		# 	@item = Item.new item_lost_params
-		# 	@item.state = "lost"
-		# else
-		# 	@item = Item.new item_found_params
-		# 	@item.state = "found"
-		# end
-
 		@item = Item.new(item_lost_params)
 		if @item.save
 			@item.relations.last.update_attributes(user_id: current_user.id)
@@ -57,11 +47,15 @@ class ItemsController < ApplicationController
 	end
 
 	def item_lost_params
-    params.require(:item).permit(:name, :datetime, :contact_email, :description, :reward, :category, relations_attributes: [:id, :type])
-  end
-
-  def item_found_params
-    params.require(:item).permit(:name, :datetime, :contact_email, :description, :category)
+    params.require(:item).permit(:state,
+    														 :name, 
+    														 :datetime, 
+    														 :contact_email, 
+    														 :description, 
+    														 :reward, 
+    														 :category, 
+    														 relations_attributes: [:id, :type]
+		)
   end
 
 end

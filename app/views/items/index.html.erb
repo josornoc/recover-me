@@ -3,7 +3,7 @@
 		<div>
 		  <h2>Choose report</h2>
 		  <p>Lost / Found / I no longer need this... / I am in the need of...</p>
-		  <%# = render :partial => '/items/report_lost' %>
+		  <%= render :partial => '/items/report_lost' %>
 		  <%= render :partial => '/items/report_found' %>
 		</div>
 		<hr>
@@ -12,11 +12,10 @@
 		  <p>All my items reported here lost & found</p>
 		  <p>Normally this should be a short list</p>
 		  <div class="list-group">
-		  <% @my_items.each do |my_item| %>
+		  <% @my_relations.each do |relation| %>
 				<a href="#" class="list-group-item">
-			    <h4 class="list-group-item-heading">Item: <b><%= my_item.name %></b></h4>
-			    <p class="list-group-item">State: <b><%= my_item.state %></b></p>
-			    <p class="list-group-item">Reward: <b><%= my_item.reward %></b></p>
+			    <h4 class="list-group-item-heading">Item: <b><%= relation.item.name %></b></h4>
+					<p class="list-group-item">State: <b><%= relation.item.state %></b></p>
 			  </a>
 		  <% end %>
 		  </div>
