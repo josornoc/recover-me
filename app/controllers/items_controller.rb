@@ -31,9 +31,11 @@ class ItemsController < ApplicationController
 		else
 			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
 		end
-
 	end
 
+	def show
+		
+	end
 
 
 	private
