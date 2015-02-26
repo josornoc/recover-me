@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 	
 	def index	
 		@my_relations = Relation.where(user_id: current_user.id)
-		@other_items = Item.where("user_id != ?", session[:logged_in_user])
+		@other_relations = Relation.where("user_id != ? ", current_user.id)
 		@item = Item.new
 		@relation = @item.relations.build
 	end

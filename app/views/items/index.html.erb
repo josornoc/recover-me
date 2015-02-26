@@ -26,24 +26,29 @@
 		  <p>All items reported lost / later the nearby should be placed here</p>
 		</div>
 		<div class="list-group">
-			<% @other_items.each do |item| %>
-			  <a href=<%= item_path(item) %> class="list-group-item">
-			    <h4 class="list-group-item-heading">Item: <b><span class="item-name"><%= item.name %></span></b></h4>
-			    <p class="list-group-item">Contact Email: <b><%= item.contact_email %></b></p>
-			    <p class="list-group-item">State: <b><%= item.state %></b></p>
-			    <p class="list-group-item">Reward: <b><%= item.reward %></b></p>
+			<% @other_relations.each do |relation| %>
+			  <a href=<%= item_path(relation.item) %> class="list-group-item">
+			    <h4 class="list-group-item-heading">Item: 
+			    	<b><span class="item-name"><%= relation.item.name %></span></b>
+			    </h4>
+			    <p class="list-group-item">Contact Email: <b><%= relation.item.contact_email %></b></p>
+			    <p class="list-group-item">State: <b><%= relation.item.state %></b></p>
+			    <p class="list-group-item">Reward: <b><%= relation.item.reward %></b></p>
 			    <p class="list-group-item">Coordinates - Lat: 
-			    	<b><span class="item-latitude"><%=item.latitude%></span></b> / 
-			    	Lon: <b><span class="item-longitude"><%=item.longitude%></span></b>
+			    	<b><span class="item-latitude"><%= relation.item.latitude %></span></b> / 
+			    	Lon: <b><span class="item-longitude"><%= relation.item.longitude %></span></b>
 			    </p>
 			  </a>
 			<% end %>
 		</div>
 		<div>
+
 		<!--
 			<div id="map-container"></div>
 		-->
+
 		</div>
 		<hr>
 	</div>
 </div>
+

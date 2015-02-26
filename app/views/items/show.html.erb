@@ -11,8 +11,8 @@
 	<p>Category: <%= @item.category %></p>
 	<p>Created At: <%= @item.created_at %></p>
 	<p>Updated At: <%= @item.updated_at %></p>
-
 	<hr>
+
 	<!-- -->
 	<% if @item.is_lost? %>
 	<% if @relation_ship_type != "founder" %>
@@ -36,6 +36,7 @@
 	<% end %>
   <% end %>
   <!-- -->
+  
 	<hr>
 	<%= link_to "Back to items...", items_path %>
 	<hr>

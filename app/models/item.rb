@@ -11,22 +11,22 @@ class Item < ActiveRecord::Base
   scope :resolved, 		-> { where(state: "resolved").order("datetime DESC") }
   
   has_many :relations
-  # has_many :users, through: :relations
   has_many :owners
   has_many :founders
+  has_many :questions
   
   accepts_nested_attributes_for :relations
 
   def is_lost?
-    return true if (state == "lost")
+    return true if (state == "Lost")
   end
 
   def is_found?
-    return true if (state == "found")
+    return true if (state == "Found")
   end
 
   def is_resolved?
-    return true if (state == "resolved")
+    return true if (state == "Resolved")
   end
 	
 end
