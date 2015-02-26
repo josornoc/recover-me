@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
 		end
 
 		if @item.save
-			redirect_to root_path
+			redirect_to items_path
 		else
 			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
 		end
