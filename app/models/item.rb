@@ -16,6 +16,7 @@ class Item < ActiveRecord::Base
   has_many :questions
   
   accepts_nested_attributes_for :relations
+  accepts_nested_attributes_for :questions
 
   def is_lost?
     return true if (state == "Lost")

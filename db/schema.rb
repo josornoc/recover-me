@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20150226163802) do
     t.text     "name"
     t.boolean  "is_validated", default: false
     t.string   "answer"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relations", force: :cascade do |t|
