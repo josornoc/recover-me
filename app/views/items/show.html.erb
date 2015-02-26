@@ -12,16 +12,32 @@
 	<p>Created At: <%= @item.created_at %></p>
 	<p>Updated At: <%= @item.updated_at %></p>
 
+	<hr>
+	<!-- -->
 	<% if @item.is_lost? %>
-		<%= form_tag item_relations_path(@item, @relation) do %>
-	  <%= submit_tag "I have found this item", class: "btn btn-default" %>
-		<% end %>
+	<% if @relation_ship_type != "founder" %>
+	<%= form_tag item_relations_path(@item, @relation) do %>
+	<%= hidden_field_tag :user_id, current_user.id %>
+  <%= submit_tag "I have found this item", class: "btn btn-default" %>
   <% end %>
-
+	<% else %>
+	<p>I have already report as FOUNDER of this item...</p>
+	<% end %>
+  <% end %>
+	<!-- -->
   <% if @item.is_found? %>
-		<%= form_tag item_relations_path(@item, @relation) do %>
-	  <%= submit_tag "I am the owner of this item", class: "btn btn-default" %>
-		<% end %>
+	<% if @relation_ship_type != "owner" %>
+	<%= form_tag item_relations_path(@item, @relation) do %>
+	<%= hidden_field_tag :user_id, current_user.id %>
+  <%= submit_tag "I am the owner of this item", class: "btn btn-default" %>
   <% end %>
-
+	<% else %>
+	<p>I have already report as OWNER of this item...</p>
+	<% end %>
+  <% end %>
+  <!-- -->
+	<hr>
+	<%= link_to "Back to items...", item_path(@item) %>
+	<hr>
+	
 </div>
