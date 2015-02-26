@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'login#destroy'
   get '/register' => 'registration#new'
   post '/register' => 'registration#create'
-  resources :items
+  resources :items do
+  	post '/relations' => 'relations#create'
+  end
 end

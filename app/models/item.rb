@@ -10,8 +10,10 @@ class Item < ActiveRecord::Base
   scope :lost, 		 		-> { where(state: "lost").order("datetime DESC") }
   scope :found,				-> { where(state: "found").order("datetime DESC") }
   scope :resolved, 		-> { where(state: "resolved").order("datetime DESC") }
-
-	belongs_to :user
+  
+  has_many :relations
+  has_many :owners
+  has_many :founders
 
   def is_lost?
     return true if (state == "lost")
