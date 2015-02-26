@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226163802) do
+ActiveRecord::Schema.define(version: 20150226195615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,16 +36,17 @@ ActiveRecord::Schema.define(version: 20150226163802) do
     t.text     "name"
     t.boolean  "is_validated", default: false
     t.string   "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "relations", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "user_id"
     t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.boolean  "has_validated_questions"
   end
 
   create_table "users", force: :cascade do |t|
