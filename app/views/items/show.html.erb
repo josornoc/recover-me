@@ -13,13 +13,13 @@
 	<p>Updated At: <%= @item.updated_at %></p>
 
 	<% if @item.is_lost? %>
-		<%= form_tag do %>
+		<%= form_tag item_relations_path(@item, @relation) do %>
 	  <%= submit_tag "I have found this item", class: "btn btn-default" %>
 		<% end %>
   <% end %>
 
   <% if @item.is_found? %>
-		<%= form_tag do %>
+		<%= form_tag item_relations_path(@item, @relation) do %>
 	  <%= submit_tag "I am the owner of this item", class: "btn btn-default" %>
 		<% end %>
   <% end %>
