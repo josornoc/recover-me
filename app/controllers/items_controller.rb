@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
 	def get_item_requests( items_ids )
 		r_ary = []
 		items_ids.each do |item_id|
-			r_ary << Relation.get_by_item_id_but_current_user(current_user.id, item_id)
+			r_ary << Relation.get_by_user_and_item(current_user.id, item_id)
 		end
 		r_ary
 	end

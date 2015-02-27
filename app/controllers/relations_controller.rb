@@ -1,5 +1,9 @@
 class RelationsController < ApplicationController
 
+	def authenticate
+		@relation = Relation.find(params[:id])
+	end
+
 	def create
 		@item = Item.where(id: params[:item_id])[0]
 		if(@item.is_lost?)

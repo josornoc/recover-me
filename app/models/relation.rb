@@ -21,7 +21,7 @@ class Relation < ActiveRecord::Base
 		where( item_id:item_id )
 	end
 
-	def self.get_by_item_id_but_current_user(user_id, item_id)
+	def self.get_by_user_and_item(user_id, item_id)
 		where(["user_id != ? and item_id = ?", user_id, item_id])
 	end
 end
