@@ -1,24 +1,54 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
 		<div>
+		  <h2>List of requests</h2>
+		  <p>All my items that I have reported and have been requested</p>
+		  <p>Only requests from other users</p>
+		  <div class="list-group">
+		  <% @item_requests.each do |ar_relation| %>
+		  	<% if ar_relation.any? %>
+			  	<% ar_relation.each do |relation| %>
+					<a href="" class="list-group-item">
+				    <h4 class="list-group-item-heading">
+				    	Item Request: <b><%= relation.item.name %></b>
+				    </h4>
+
+				    <% if relation.item.is_lost? %>
+				    <p>Item reported: <b><%= relation.item.state %></b></p>	
+				    <p>By: <b><%= relation.item.owners.first.user.name %></b></p>	
+						<hr>
+				    <p>Appears to have been found by:</p>		
+				    <p><b><%= relation.item.founders.first.user.name %></b></p>
+				    <p>Contact him in: 
+				    	<b><%= relation.item.founders.first.user.email %></b>
+				    </p>
+				  	<% end %>
+
+				  	<% if relation.item.is_found? %>
+				    <p>Item reported: <b><%= relation.item.state %></b></p>	
+				    <p>By: <b><%= relation.item.founders.first.user.name %></b></p>	
+						<hr>
+				    <p>Appears to have been lost by:</p>		
+				    <p><b><%= relation.item.owners.first.user.name %></b></p>
+				    <p>Contact him in: 
+				    	<b><%= relation.item.owners.first.user.email %></b>
+				    </p>
+				  	<% end %>
+
+				  </a>
+				  <% end %>
+			  <% end %>
+		  <% end %>
+		  </div>
+		</div>
+		<!--
+		<div>
 		  <h2>Choose report</h2>
 		  <p>Lost / Found / I no longer need this... / I am in the need of...</p>
 		  <%# = render :partial => '/items/report_lost' %>
 		  <%# = render :partial => '/items/report_found' %>
 		</div>
-		<hr>
-		<div>
-		  <h2>List of requests</h2>
-		  <p>All my items that I have reported and have been requested</p>
-		  <p>Only requests from other users</p>
-		  <div class="list-group">
-		  <% @my_relations.each do |rel| %>
-				<a href="#" class="list-group-item">
-			    <h4 class="list-group-item-heading">User Name: <b><%= rel.user.name %></b></h4>
-			  </a>
-		  <% end %>
-		  </div>
-		</div>
+		-->
 		<hr>
 		<div>
 		  <h2>List of my reports</h2>
@@ -40,17 +70,17 @@
 		  <p>All items reported lost / later the nearby should be placed here</p>
 		</div>
 		<div class="list-group">
-			<% @other_relations.each do |relation| %>
-			  <a href=<%= item_path(relation.item) %> class="list-group-item">
+			<% @lost_items.each do |item| %>
+			  <a href=<%= item_path(item) %> class="list-group-item">
 			    <h4 class="list-group-item-heading">Item: 
-			    	<b><span class="item-name"><%= relation.item.name %></span></b>
+			    	<b><span class="item-name"><%= item.name %></span></b>
 			    </h4>
-			    <p class="list-group-item">Contact Email: <b><%= relation.item.contact_email %></b></p>
-			    <p class="list-group-item">State: <b><%= relation.item.state %></b></p>
-			    <p class="list-group-item">Reward: <b><%= relation.item.reward %></b></p>
+			    <p class="list-group-item">Contact Email: <b><%= item.contact_email %></b></p>
+			    <p class="list-group-item">State: <b><%= item.state %></b></p>
+			    <p class="list-group-item">Reward: <b><%= item.reward %></b></p>
 			    <p class="list-group-item">Coordinates - Lat: 
-			    	<b><span class="item-latitude"><%= relation.item.latitude %></span></b> / 
-			    	Lon: <b><span class="item-longitude"><%= relation.item.longitude %></span></b>
+			    	<b><span class="item-latitude"><%= item.latitude %></span></b> / 
+			    	Lon: <b><span class="item-longitude"><%= item.longitude %></span></b>
 			    </p>
 			  </a>
 			<% end %>

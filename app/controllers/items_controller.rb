@@ -1,14 +1,11 @@
 class ItemsController < ApplicationController
 	
 	def index	
-		@my_relations = Relation.where(user_id: current_user.id)
+		@my_relations = Relation.get_by_user_id(current_user.id)
 		my_item_ids = @my_relations.map(&:item_id)
-
 		@item_requests = get_item_requests(my_item_ids)
-		binding.pry
-
 		@other_relations = Relation.where("user_id != ? ", current_user.id)
-
+		@lost_items = Item.all
 		# for new reportings and relations...
 		@item = Item.new
 		@relation = @item.relations.build

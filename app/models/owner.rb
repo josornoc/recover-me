@@ -1,4 +1,2 @@
 class Owner < Relation
-	
-	
 end
