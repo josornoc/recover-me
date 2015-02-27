@@ -1,0 +1,2 @@
+class Founder < Relation	
+end

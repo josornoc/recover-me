@@ -1,8 +1,4 @@
 <%= render :partial => '/shared/main_header' %>
-<% if @current_user %>
-<%= render :partial => '/shared/navbar' %>
-<% else %>
 <%= render :partial => '/shared/navbar_login' %>
-<% end %>
 <%= yield %>
 <%= render :partial => '/shared/main_footer' %>

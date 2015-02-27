@@ -1,9 +1,22 @@
 class ItemsController < ApplicationController
 	
-	def index
-		# check if(!session[:logged_in_user])
-		@my_items = Item.where(user_id: session[:logged_in_user])
-		@other_items = Item.where("user_id != ?", session[:logged_in_user])
+	def index	
+		@my_relations = Relation.get_by_user_id(current_user.id)
+		my_item_ids = @my_relations.map(&:item_id)
+		@item_requests = get_item_requests(my_item_ids)
+		@other_relations = Relation.where("user_id != ? ", current_user.id)
+		@lost_items = Item.all
+		# for new reportings and relations...
+		@item = Item.new
+		@relation = @item.relations.build
+	end
+
+	def get_item_requests( items_ids )
+		r_ary = []
+		items_ids.each do |item_id|
+			r_ary << Relation.get_by_user_and_item(current_user.id, item_id)
+		end
+		r_ary
 	end
 	
 	def new
@@ -18,23 +31,26 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		if session["reporting"] == "lost"
-			@item = Item.new item_lost_params
-			@item.state = "lost"
-		else
-			@item = Item.new item_found_params
-			@item.state = "found"
-		end
-
+		@item = Item.new(item_lost_params)
 		if @item.save
-			redirect_to root_path
+			@item.relations.last.update_attributes(user_id: current_user.id)
+			redirect_to items_path
 		else
 			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
 		end
-
 	end
 
-
+	def show
+		@user = current_user
+		@item = Item.where(id: params[:id])[0]
+		if @item.founders.where(user_id: @user.id).empty? == false
+			@relation_ship_type = "founder"
+		elsif @item.owners.where(user_id: @user.id).empty? == false
+			@relation_ship_type = "owner"
+		else
+			@relation_ship_type = nil
+		end
+	end
 
 	private
 
@@ -43,11 +59,15 @@ class ItemsController < ApplicationController
 	end
 
 	def item_lost_params
-    params.require(:item).permit(:name, :datetime, :contact_email, :description, :reward, :category)
-  end
-
-  def item_found_params
-    params.require(:item).permit(:name, :datetime, :contact_email, :description, :category)
+    params.require(:item).permit(:state,
+    														 :name, 
+    														 :datetime, 
+    														 :contact_email, 
+    														 :description, 
+    														 :reward, 
+    														 :category, 
+    														 relations_attributes: [:id, :type]
+		)
   end
 
 end

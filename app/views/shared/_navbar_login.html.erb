@@ -8,6 +8,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+
+      <% if session[:logged_in_user] %>
+      Logged in as: <%= current_user.name %>
+      <%= link_to "Log out", logout_path, method: :delete %>
+      <% else %>
+      <%= render :partial => '/login/login' %>
+      <% end %>
+
+      <!--
       <form class="form-inline">
         <div class="form-group">
           <label for="exampleInputName2">Name</label>
@@ -19,6 +28,8 @@
         </div>
         <button type="submit" class="btn btn-default">Log in</button>
       </form>
+      -->
+
       <!-- -->
     </div>
     <!-- -->
