@@ -29,5 +29,4 @@ class Item < ActiveRecord::Base
   def is_resolved?
     return true if (state == "Resolved")
   end
-	
 end
