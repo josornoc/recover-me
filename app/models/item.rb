@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
   has_many :relations
   has_many :owners
   has_many :founders
-  has_many :questions
+  has_many :questions 
   
   accepts_nested_attributes_for :relations
   accepts_nested_attributes_for :questions
