@@ -2,9 +2,24 @@ class ItemsController < ApplicationController
 	
 	def index	
 		@my_relations = Relation.where(user_id: current_user.id)
+		my_item_ids = @my_relations.map(&:item_id)
+
+		@item_requests = get_item_requests(my_item_ids)
+		binding.pry
+
 		@other_relations = Relation.where("user_id != ? ", current_user.id)
+
+		# for new reportings and relations...
 		@item = Item.new
 		@relation = @item.relations.build
+	end
+
+	def get_item_requests( items_ids )
+		r_ary = []
+		items_ids.each do |item_id|
+			r_ary << Relation.get_by_item_id_but_current_user(current_user.id, item_id)
+		end
+		r_ary
 	end
 	
 	def new

@@ -3,8 +3,21 @@
 		<div>
 		  <h2>Choose report</h2>
 		  <p>Lost / Found / I no longer need this... / I am in the need of...</p>
-		  <%= render :partial => '/items/report_lost' %>
-		  <%= render :partial => '/items/report_found' %>
+		  <%# = render :partial => '/items/report_lost' %>
+		  <%# = render :partial => '/items/report_found' %>
+		</div>
+		<hr>
+		<div>
+		  <h2>List of requests</h2>
+		  <p>All my items that I have reported and have been requested</p>
+		  <p>Only requests from other users</p>
+		  <div class="list-group">
+		  <% @my_relations.each do |rel| %>
+				<a href="#" class="list-group-item">
+			    <h4 class="list-group-item-heading">User Name: <b><%= rel.user.name %></b></h4>
+			  </a>
+		  <% end %>
+		  </div>
 		</div>
 		<hr>
 		<div>
@@ -16,6 +29,7 @@
 				<a href="#" class="list-group-item">
 			    <h4 class="list-group-item-heading">Item: <b><%= relation.item.name %></b></h4>
 					<p class="list-group-item">State: <b><%= relation.item.state %></b></p>
+					<p class="list-group-item">Match Numbers: <b><%= relation %></b></p>
 			  </a>
 		  <% end %>
 		  </div>
