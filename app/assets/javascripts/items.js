@@ -103,10 +103,18 @@ function loadScript() {
 }
 
 $( document ).ready(function() {
+
   if( $("#map-container")[0] != undefined ){
 		loadScript();
   }
+
+  $(".toggle-btn").click(function(){
+    console.log($(".toggle-btn"))
+    $("#myCollapsible").collapse('toggle');
+  });
+
 });
+
 
 
 
