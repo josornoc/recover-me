@@ -1,3 +1,9 @@
   // Hacer seeds simples - 2 usuarios 1 item para empezar
   // Modificar Relation model para buscar por user_id e item_id no desechar user_id
   // Realizar validacion de un usuario a otro
+
+  // UN mismo usuario que reporto item perdido puede cerrar la relation
+  // diciendo que ya encontro su objeto.  Lo cual ubica la relation como resolved.
+
+// Caso 1: Encontre un objeto que ya estaba en la lista - validar ownership
+// Caso 2: Reporte un objecto que no estaba en la lista - esperar por requests

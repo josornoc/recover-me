@@ -1,7 +1,8 @@
 class RelationsController < ApplicationController
 
 	def authenticate
-		@relation = Relation.find(params[:id])
+		@relation = Relation.find( params[:id] )
+		session[:current_relation_id] = @relation.id
 	end
 
 	def create
@@ -19,7 +20,7 @@ class RelationsController < ApplicationController
 		else
 			@relation.errors.add(:item, "The item couldn't be save correctly in the database...")
 		end
-		
+
 	end
 
 	private

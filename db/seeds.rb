@@ -12,8 +12,9 @@ require 'faker'
 #   Item.create(name:Faker::Hacker.adjective, datetime:Faker::Date.birthday, contact_email:Faker::Internet.email)
 # end
 
-u1 = User.create(name:Faker::Name.name, email:Faker::Internet.email, password:"1234", password_confirmation:"1234");
-u2 = User.create(name:Faker::Name.name, email:Faker::Internet.email, password:"1234", password_confirmation:"1234");
+u1 = User.create(name:"Annette Duccoli", email:"annete@hotmail.com", password:"1234", password_confirmation:"1234");
+u2 = User.create(name:"Jose Osorno", email:"jose@osorno.com", password:"1234", password_confirmation:"1234");
 
-i1 = Item.create(name:Faker::Hacker.adjective, datetime:Faker::Date.birthday, contact_email:Faker::Internet.email)
-r1 = Owner.create(item_id: i1.id, user_id: u1.id);
+i1 = Item.create(name:"Passport", datetime:Faker::Date.birthday, contact_email:u2.email, state:"Lost")
+
+r1 = Owner.create(item_id: i1.id, user_id: u2.id);

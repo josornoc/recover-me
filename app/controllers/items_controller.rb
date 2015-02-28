@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-	
-	def index	
+
+	def index
 		@my_relations = Relation.get_by_user_id(current_user.id)
 		my_item_ids = @my_relations.map(&:item_id)
 		@item_requests = get_item_requests(my_item_ids)
@@ -14,11 +14,11 @@ class ItemsController < ApplicationController
 	def get_item_requests( items_ids )
 		r_ary = []
 		items_ids.each do |item_id|
-			r_ary << Relation.get_by_user_and_item(current_user.id, item_id)
+			r_ary << Relation.get_by_item_without_user(current_user.id, item_id)
 		end
 		r_ary
 	end
-	
+
 	def new
 		session["reporting"] = get_reporting_status
 		if session["reporting"] == "lost"
@@ -54,18 +54,18 @@ class ItemsController < ApplicationController
 
 	private
 
-	def get_reporting_status 
+	def get_reporting_status
 		params["reporting"]
 	end
 
 	def item_lost_params
     params.require(:item).permit(:state,
-    														 :name, 
-    														 :datetime, 
-    														 :contact_email, 
-    														 :description, 
-    														 :reward, 
-    														 :category, 
+    														 :name,
+    														 :datetime,
+    														 :contact_email,
+    														 :description,
+    														 :reward,
+    														 :category,
     														 relations_attributes: [:id, :type]
 		)
   end

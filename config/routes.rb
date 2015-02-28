@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :items do
   	post '/relations' => 'relations#create'
+    post '/questions' => 'questions#create'
   	get '/relations/:id' => 'relations#authenticate', as: "relation"
   end
 
