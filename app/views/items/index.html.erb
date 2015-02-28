@@ -8,13 +8,46 @@
 		  <% @item_requests.each do |ar_relation| %>
 		  	<% if ar_relation.any? %>
 			  	<% ar_relation.each do |relation| %>
-					<a href="" class="list-group-item">
-
-
-
+					<div class="list-group-item">
 				    <% if relation.item.is_lost? %>
-				  	<%= relation.item.owners.first.user.name %>
+						<% if relation.item.owners.first.user.id == current_user.id %>
+						<h3>Tu has perdido un item</h3>
+						<p><b><%= relation.item.name %></b></p>
+				    	<% if relation.item.questions.any? %>
+				    	<p>There are questions for you to validate your owner ship...</p>
+								<% relation.item.questions.each_with_index do |question, i| %>
+
+
+
+
+									<div>
+										<p>Question ID <%= question.id %></p>
+										<p>Question number <%= i + 1 %>: <b><%= question.name %></b></p>
+										<p>Usuaro ya respondio pregunta?</p>
+										<%= question.id %>
+										<%= relation.id %>
+										<%= form_tag item_answer_path(relation.item, relation) do %>
+										<div class="form-group">
+							        <%= label :answer, "Answer..." %>
+							        <%= text_area_tag :answer, nil, class: "form-control" %>
+							      </div>
+							      <%= submit_tag "Answer question", class: "btn btn-default" %>
+							      <% end %>
+									</div>
+									<hr>
+
+
+
+									<%# = link_to question.name, "#"%>
+								<% end %>
+				    	<% else %>
+				    	<p>There are NO questions for you</p>
+				    	<p>Request them to the founder of your object...</p>
+				    	<% end %>
+						<% else %>
+						<%= relation.item.owners.first.user.name %>
 						<p>Ha perdido: <%= relation.item.name %></p>
+						<% end %>
 						<% if relation.item.founders.first.user.id == current_user.id %>
 				    <p>Tu lo has encontrado</p>
 				    <p>Make some questions about the item to validate if true ownership</p>
@@ -57,7 +90,7 @@
 								<p>You can't validate a item that is not found by you</p>
 						  <% end %>
 						<% end %>
-				  </a>
+				  </div>
 				  <% end %>
 			  <% end %>
 		  <% end %>

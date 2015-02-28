@@ -1,12 +1,11 @@
 class RelationsController < ApplicationController
 
 	def authenticate
-		@relation = Relation.find( params[:id] )
-		session[:current_relation_id] = @relation.id
+		get_current_relation
 	end
 
 	def create
-		@item = Item.where(id: params[:item_id])[0]
+		@item = get_current_item
 		if(@item.is_lost?)
 			@relation = Founder.new(item_id: params[:item_id], user_id: params[:user_id])
 		end
@@ -20,10 +19,34 @@ class RelationsController < ApplicationController
 		else
 			@relation.errors.add(:item, "The item couldn't be save correctly in the database...")
 		end
+	end
 
+	def answer
+		@answer = get_current_relation.answers.create(answer: params[:answer], relation_id: params[:id])
+		#@answer = get_current_relation.answers.create(answer_params)
+		if @answer.save
+			redirect_to items_path
+		else
+			@answer.errors.add(:answer, "The answer couldn't be save correctly in the database...")
+		end
 	end
 
 	private
+
+	def get_current_item
+		Item.where(id: params[:item_id])[0]
+	end
+
+	def get_current_relation
+		@relation = Relation.find( params[:id] )
+		session[:current_relation_id] = @relation.id
+		@relation
+	end
+
+	def answer_params
+		 params.require(:answer).permit(:answer, :id)
+	end
+
 	def owner_found_params
     params.require.permit(:item_id, :user_id)
   end

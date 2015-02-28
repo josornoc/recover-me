@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 		@item_requests = get_item_requests(my_item_ids)
 		@other_relations = Relation.where("user_id != ? ", current_user.id)
 		@lost_items = Item.all
+
 		# for new reportings and relations...
 		@item = Item.new
 		@relation = @item.relations.build
