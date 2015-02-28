@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
 
   has_many :relations
   has_many :items, through: :relations
-  has_many :answers, through: :relations
+  has_many :answers
 
 end

@@ -12,8 +12,9 @@
 				    <% if relation.item.is_lost? %>
 						<% if relation.item.owners.first.user.id == current_user.id %>
 						<h3>Tu has perdido un item: <b><%= relation.item.name %></b> </h3>
+						<h3>Apparently its been found by: <b><%= relation.item.founders.first.user.name %></b></h3>
 				    	<% if relation.item.questions.any? %>
-				    	<p>There are questions for you to validate your owner ship...</p>
+				    	<h3>There are questions for you to validate your ownership...</h3>
 								<% relation.item.questions.each_with_index do |question, i| %>
 
 
@@ -51,6 +52,19 @@
 						<%= relation.item.owners.first.user.name %>
 						<p>Ha perdido: <%= relation.item.name %></p>
 						<% end %>
+
+
+						<hr>
+						<% relation.item.owners.first.user.answers.each do |answer| %>
+							<p>La pregunta: <b><%= answer.question.name %></b></p>
+							<p>Respuesta: <b><%= answer.answer %></b></p>
+							<p>Respondido por: <b><%= answer.user.name %></b></p>
+							<p>Validar Respuesta: <b>VALIDA / INVALIDA</b></p>
+							<hr>
+						<% end %>
+
+
+
 						<% if relation.item.founders.first.user.id == current_user.id %>
 				    <p>Tu lo has encontrado</p>
 				    <p>Make some questions about the item to validate if true ownership</p>
