@@ -59,7 +59,21 @@
 							<p>La pregunta: <b><%= answer.question.name %></b></p>
 							<p>Respuesta: <b><%= answer.answer %></b></p>
 							<p>Respondido por: <b><%= answer.user.name %></b></p>
+							<p>is_validated: <b><%= answer.is_validated %></b></p>
 							<p>Validar Respuesta: <b>VALIDA / INVALIDA</b></p>
+
+							<%= form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do %>
+							<%= hidden_field_tag :answer_id, answer.id %>
+							<%= hidden_field_tag :is_validated, true %>
+				      <%= submit_tag "Valid Answer", class: "btn btn-default" %>
+				      <% end %>
+
+							<%= form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do %>
+							<%= hidden_field_tag :answer_id, answer.id %>
+				      <%= hidden_field_tag :is_validated, false %>
+				      <%= submit_tag "Invalid Answer", class: "btn btn-default" %>
+				      <% end %>
+
 							<hr>
 						<% end %>
 

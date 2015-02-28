@@ -22,19 +22,23 @@ class RelationsController < ApplicationController
 	end
 
 	def answer
+		#@answer = get_current_relation.answers.create(answer_params)
 		@answer = get_current_relation.answers.create(answer: params[:answer],
 																									relation_id: params[:id],
 																									user_id: current_user.id,
 																									question_id: params[:question_id])
-
-		#@answer = get_current_relation.answers.create(answer_params)
-
 		if @answer.save
 			redirect_to items_path
 		else
 			@answer.errors.add(:answer, "The answer couldn't be save correctly in the database...")
 		end
 	end
+
+
+	def validate_answer
+		binding.pry
+	end
+
 
 	private
 

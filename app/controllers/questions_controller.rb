@@ -9,6 +9,12 @@ class QuestionsController < ApplicationController
 		end
 	end
 
+	def validate_answer
+		@answer = Answer.find(params[:answer_id])
+		@answer.update_attribute(:is_validated, params[:is_validated])
+		redirect_to items_path
+	end
+
 	private
 	def question_params
     params.require.permit(:name, :answer)

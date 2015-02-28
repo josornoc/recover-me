@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     post '/questions' => 'questions#create'
   	get '/relations/:id' => 'relations#authenticate', as: "relation"
     post '/relations/:id' => 'relations#answer', as: "answer"
+    patch '/questions/:id' => 'questions#validate_answer', as: "question"
   end
 
 end
