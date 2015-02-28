@@ -11,8 +11,7 @@
 					<div class="list-group-item">
 				    <% if relation.item.is_lost? %>
 						<% if relation.item.owners.first.user.id == current_user.id %>
-						<h3>Tu has perdido un item</h3>
-						<p><b><%= relation.item.name %></b></p>
+						<h3>Tu has perdido un item: <b><%= relation.item.name %></b> </h3>
 				    	<% if relation.item.questions.any? %>
 				    	<p>There are questions for you to validate your owner ship...</p>
 								<% relation.item.questions.each_with_index do |question, i| %>
@@ -23,16 +22,20 @@
 									<div>
 										<p>Question ID <%= question.id %></p>
 										<p>Question number <%= i + 1 %>: <b><%= question.name %></b></p>
-										<p>Usuaro ya respondio pregunta?</p>
-										<%= question.id %>
-										<%= relation.id %>
+										<% if question.already_answerd?(current_user.id) %>
+										<p>You already have answered that question</p>
+										<p><b>Your answer was:</b></p>
+										<p><%= question.get_answer_by_user_id(current_user.id) %></p>
+										<% else %>
 										<%= form_tag item_answer_path(relation.item, relation) do %>
 										<div class="form-group">
 							        <%= label :answer, "Answer..." %>
 							        <%= text_area_tag :answer, nil, class: "form-control" %>
 							      </div>
+							      <%= hidden_field_tag :question_id, question.id %>
 							      <%= submit_tag "Answer question", class: "btn btn-default" %>
 							      <% end %>
+										<% end %>
 									</div>
 									<hr>
 
