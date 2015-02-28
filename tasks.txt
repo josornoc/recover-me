@@ -1,0 +1,3 @@
+  // Hacer seeds simples - 2 usuarios 1 item para empezar
+  // Modificar Relation model para buscar por user_id e item_id no desechar user_id
+  // Realizar validacion de un usuario a otro

@@ -12,64 +12,9 @@ require 'faker'
 #   Item.create(name:Faker::Hacker.adjective, datetime:Faker::Date.birthday, contact_email:Faker::Internet.email)
 # end
 
+u1 = User.create(name:Faker::Name.name, email:Faker::Internet.email);
+u2 = User.create(name:Faker::Name.name, email:Faker::Internet.email);
 
-# testing items for user
-indi = User.where(id:3)[0]
-person = User.where(id:4)[0]
+i1 =  Item.create(name:Faker::Hacker.adjective, datetime:Faker::Date.birthday, contact_email:Faker::Internet.email)
 
-
-indi.items.create(
-	name: "Holy Grial",
-	state: "lost",
-	datetime:Faker::Date.birthday, 
-	contact_email:Faker::Internet.email,
-	latitude: Faker::Address.latitude,
-	longitude: Faker::Address.longitude,
-	reward: Faker::Number.number(2),
-	category: "misc"
-)
-
-indi.items.create(
-	name: "crystal skull",
-	state: "found",
-	datetime:Faker::Date.birthday, 
-	contact_email:Faker::Internet.email,
-	latitude: Faker::Address.latitude,
-	longitude: Faker::Address.longitude,
-	category: "misc"
-)
-
-
-
-### to see all lost items
-person.items.create(
-	name: "fang gold tooth",
-	state: "lost",
-	datetime:Faker::Date.birthday, 
-	contact_email:Faker::Internet.email,
-	latitude: Faker::Address.latitude,
-	longitude: Faker::Address.longitude,
-	category: "misc"
-)
-
-person.items.create(
-	name: "another gold tooth",
-	state: "lost",
-	datetime:Faker::Date.birthday, 
-	contact_email:Faker::Internet.email,
-	latitude: Faker::Address.latitude,
-	longitude: Faker::Address.longitude,
-	category: "misc"
-)
-
-person.items.create(
-	name: "wooden leg",
-	state: "lost",
-	datetime:Faker::Date.birthday, 
-	contact_email:Faker::Internet.email,
-	latitude: Faker::Address.latitude,
-	longitude: Faker::Address.longitude,
-	category: "misc"
-)
-
-
+r1 = Owner.create(item_id: i1.id, user_id: u1.id);
