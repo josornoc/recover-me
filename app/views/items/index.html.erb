@@ -16,10 +16,6 @@
 				    	<% if relation.item.questions.any? %>
 				    	<h3>There are questions for you to validate your ownership...</h3>
 								<% relation.item.questions.each_with_index do |question, i| %>
-
-
-
-
 									<div>
 										<p>Question ID <%= question.id %></p>
 										<p>Question number <%= i + 1 %>: <b><%= question.name %></b></p>
@@ -27,6 +23,8 @@
 										<p>You already have answered that question</p>
 										<p><b>Your answer was:</b></p>
 										<p><%= question.get_answer_by_user_id(current_user.id) %></p>
+										<p><b>Answer validation by founder of item?</b></p>
+										<p><%= question.is_answer_validated?(current_user.id) %></p>
 										<% else %>
 										<%= form_tag item_answer_path(relation.item, relation) do %>
 										<div class="form-group">
@@ -54,6 +52,7 @@
 						<% end %>
 
 
+						<% if relation.item.founders.first.user.id == current_user.id %>
 						<hr>
 						<% relation.item.owners.first.user.answers.each do |answer| %>
 							<p>La pregunta: <b><%= answer.question.name %></b></p>
@@ -75,6 +74,7 @@
 				      <% end %>
 
 							<hr>
+						<% end %>
 						<% end %>
 
 

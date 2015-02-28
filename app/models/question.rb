@@ -15,4 +15,8 @@ class Question < ActiveRecord::Base
     answers.where(user_id: user_id)[0].answer
   end
 
+  def is_answer_validated?(user_id)
+    answers.where(user_id: user_id)[0].is_validated
+  end
+
 end
