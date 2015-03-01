@@ -27,11 +27,6 @@ class ItemsController < ApplicationController
 			@is_reporting_lost = false
 		end
 		@item = Item.new
-		render 'new'
-	end
-
-	def search
-		@items = Item.search(params[:search])
 	end
 
 	def create
