@@ -1,6 +1,4 @@
 <%= form_for @item do |f| %>
-
-<h1>Report Lost Item</h1>
 <%= f.hidden_field(:state, value: "Lost") %>
 <div class="form-group">
   <%= f.label :name, "Product Name" %>
@@ -26,12 +24,9 @@
   <%= f.label :description, "Brief description of how you lost your object (if any):" %>
   <%= f.text_area :description, class: "form-control" %>
 </div>
-
 <%= f.fields_for :relations do |relation_fields| %>
     <%= relation_fields.hidden_field(:type, value: "Owner") %>
 <% end %>
-
 <%= f.submit "Report!", class: "btn btn-default" %>
-
 <% end %>
 
