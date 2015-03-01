@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
 	def create
 
-		@item = Item.new item_lost_params
+		@item = Item.new item_params
 		type_param_relation = params["item"]["relations_attributes"]["0"]["type"]
 
 		if @item.save
@@ -41,6 +41,8 @@ class ItemsController < ApplicationController
 			redirect_to items_path
 		else
 			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
+			#flash["error_message"] = "The item couldn't be save correctly in the database..."
+			#redirect_to items_path
 		end
 	end
 
@@ -61,8 +63,8 @@ class ItemsController < ApplicationController
 		params["reporting"]
 	end
 
-	def item_lost_params
-		params.require(:item).permit(:name, :datetime, :contact_email, :state, :description, :reward, :category)
+	def item_params
+		params.require(:item).permit(:name, :avatar, :datetime, :contact_email, :state, :description, :reward, :category)
   end
 end
 

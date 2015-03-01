@@ -7,7 +7,10 @@
 		<hr>
 
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
 		  <div class="panel panel-default">
+
 		    <div class="panel-heading" role="tab" id="headingOne">
 		      <h4 class="panel-title">
 		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -35,6 +38,8 @@
 		      </div>
 		    </div>
 		  </div>
+
+
 		  <div class="panel panel-default">
 		    <div class="panel-heading" role="tab" id="headingThree">
 		      <h4 class="panel-title">
@@ -50,6 +55,58 @@
 		    </div>
 		  </div>
 		</div>
+
+
+		<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingFour">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							All Lost Items
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+		      <div class="panel-body">
+
+						<!-- build partial with this -->
+						<div class="list-group">
+
+							<% @lost_items.each do |item| %>
+
+
+								<a href=<%= item_path(item) %> class="list-group-item">
+								<h4 class="list-group-item-heading">
+									<b><span class="item-name"><%= item.name %></span></b>
+								</h4>
+
+									<div class="media">
+                    <div class="media-left">
+
+                      <img class="media-object" src=<%=item.avatar.url(:thumb)%> alt="...">
+
+                    </div>
+                    <div class="media-body">
+                      <h4 class="media-heading">Media heading</h4>
+                      <%= item.name %>
+                      <%= item.contact_email %>
+                      <%= item.state %>
+                      <%= item.reward %>
+                      <%= item.latitude %>
+                      <%= item.longitude %>
+                    </div>
+                  </div>
+
+								</a>
+
+
+							<% end %>
+
+
+						</div>
+		      </div>
+		    </div>
+		  </div>
+
 	</div>
 </div>
 

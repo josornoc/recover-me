@@ -9,7 +9,10 @@
   // dont leave features for next week
 
 
-  // agregar imagen a reporte de objeto perdido / encontrado
-  // lista de mis reportes - perdidos o encontrados
-  // lista de productos perdidos de todo el mundo - buscador
+  // agregar imagen a reporte de objeto perdido / encontrado   - ok!
+  // lista de mis reportes - perdidos o encontrados - ok!
+  // lista de productos perdidos de todo el mundo   - ok!
+  // buscador
   // BUSCADOR DE OBJETOS
+  // MENSAJES!!! Item guardado con {exito}
+

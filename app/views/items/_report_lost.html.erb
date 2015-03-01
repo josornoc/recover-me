@@ -1,18 +1,14 @@
 
-<% if @item.errors.any? %>
-  <ul>
-    <% @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
 
-<%= form_for(@item, url: items_path) do |f| %>
-
+<%= form_for @item, url: items_path, :html => { :multipart => true } do |f| %>
 <%= f.hidden_field(:state, value: "Lost") %>
 <div class="form-group">
   <%= f.label :name, "Product Name" %>
   <%= f.text_field :name, placeholder: "Ej. Passport", class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :avatar, "Image (if any)" %>
+  <%= f.file_field :avatar %>
 </div>
 <div class="form-group">
   <%= f.label :datetime, "Date when I lost the object" %>
