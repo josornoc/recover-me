@@ -1,9 +1,12 @@
-  // Hacer seeds simples - 2 usuarios 1 item para empezar
-  // Modificar Relation model para buscar por user_id e item_id no desechar user_id
-  // Realizar validacion de un usuario a otro
+  // Hacer seeds simples - 2 usuarios 1 item para empezar - ok!
+  // Modificar Relation model para buscar por user_id e item_id no desechar user_id -ok!
+  // Realizar validacion de un usuario a otro ok!
+  // Caso 1: Encontre un objeto que ya estaba en la lista - validar ownership - ok!
+  // Caso 2: Reporte un objecto que no estaba en la lista - esperar por requests - ok!
 
-  // UN mismo usuario que reporto item perdido puede cerrar la relation
+  // agregar imagen a reporte de objeto perdido
   // diciendo que ya encontro su objeto.  Lo cual ubica la relation como resolved.
-
-// Caso 1: Encontre un objeto que ya estaba en la lista - validar ownership
-// Caso 2: Reporte un objecto que no estaba en la lista - esperar por requests
+  // lista de mis reportes - perdidos o encontrados
+  // lista de productos perdidos de todo el mundo - buscador
+  // remember, mvp by tonight
+  // dont leave features for next week

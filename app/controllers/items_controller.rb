@@ -8,8 +8,9 @@ class ItemsController < ApplicationController
 		@lost_items = Item.all
 
 		# for new reportings and relations...
-		@item = Item.new
-		@relation = @item.relations.build
+		# @item = Item.new
+		# p@relation = @item.relations.build
+
 	end
 
 	def get_item_requests( items_ids )
@@ -32,13 +33,38 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		@item = Item.new(item_lost_params)
-		if @item.save
-			@item.relations.last.update_attributes(user_id: current_user.id)
-			redirect_to items_path
-		else
-			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
-		end
+
+		item = Item.create(state: params[:state],
+												name: params[:name],
+												datetime: params[:datetime],
+												contact_email: params[:contact_email],
+												description: params[:description],
+												reward: params[:reward],
+												category: params[:category])
+
+		binding.pry
+
+		redirect_to items_path
+
+
+
+		# @item = Item.create( state: params[:state],
+		# 										 name: params[:name],
+		# 										 datetime: params[:datetime],
+		# 										 contact_email: params[:contact_email],
+		# 										 description: params[:description],
+		# 										 reward: params[:reward],
+		# 										 category: params[:category] )
+
+		# @item = Item.new item_lost_params
+
+		# if item.save
+		# 	#item.relations.last.update_attributes(user_id: current_user.id)
+		# 	redirect_to items_path
+		# else
+		# 	item.errors.add(:item, "The item couldn't be save correctly in the database...")
+		# end
+
 	end
 
 	def show
@@ -60,6 +86,7 @@ class ItemsController < ApplicationController
 	end
 
 	def item_lost_params
+
     params.require(:item).permit(:state,
     														 :name,
     														 :datetime,
@@ -67,8 +94,7 @@ class ItemsController < ApplicationController
     														 :description,
     														 :reward,
     														 :category,
-    														 relations_attributes: [:id, :type]
-		)
+    														 relations_attributes: [:id, :type])
   end
 
 end

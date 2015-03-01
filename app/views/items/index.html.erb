@@ -1,185 +1,53 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
-		<div>
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Report Lost Item
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-				<%= render :partial => '/items/report_lost' %>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Report Found Item
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        <%= render :partial => '/items/report_found' %>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-					List of Requests
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-</div>
+		<h4>Search for a lost item in our database...</h4>
+		<hr>
+		<h4>List of lost objects</h4>
+		<hr>
 
-
-
-
-
-
-
-
-
-
-		  <h2>List of requests</h2>
-		  <p>All my items that I have reported and have been requested</p>
-		  <p>Only requests from other users</p>
-		  <div class="list-group">
-		  <% @item_requests.each do |ar_relation| %>
-		  	<% if ar_relation.any? %>
-			  	<% ar_relation.each do |relation| %>
-					<div class="list-group-item">
-				    <% if relation.item.is_lost? %>
-						<% if relation.item.owners.first.user.id == current_user.id %>
-						<h3>Tu has perdido un item: <b><%= relation.item.name %></b> </h3>
-						<h3>Apparently its been found by: <b><%= relation.item.founders.first.user.name %></b></h3>
-				    	<% if relation.item.questions.any? %>
-				    	<h3>There are questions for you to validate your ownership...</h3>
-								<% relation.item.questions.each_with_index do |question, i| %>
-									<div>
-										<p>Question ID <%= question.id %></p>
-										<p>Question number <%= i + 1 %>: <b><%= question.name %></b></p>
-										<% if question.already_answerd?(current_user.id) %>
-										<p>You already have answered that question</p>
-										<p><b>Your answer was:</b></p>
-										<p><%= question.get_answer_by_user_id(current_user.id) %></p>
-										<p><b>Answer validation by founder of item?</b></p>
-										<p><%= question.is_answer_validated?(current_user.id) %></p>
-										<% else %>
-										<%= form_tag item_answer_path(relation.item, relation) do %>
-										<div class="form-group">
-							        <%= label :answer, "Answer..." %>
-							        <%= text_area_tag :answer, nil, class: "form-control" %>
-							      </div>
-							      <%= hidden_field_tag :question_id, question.id %>
-							      <%= submit_tag "Answer question", class: "btn btn-default" %>
-							      <% end %>
-										<% end %>
-									</div>
-									<hr>
-
-
-
-									<%# = link_to question.name, "#"%>
-								<% end %>
-				    	<% else %>
-				    	<p>There are NO questions for you</p>
-				    	<p>Request them to the founder of your object...</p>
-				    	<% end %>
-						<% else %>
-						<%= relation.item.owners.first.user.name %>
-						<p>Ha perdido: <%= relation.item.name %></p>
-						<% end %>
-
-
-						<% if relation.item.founders.first.user.id == current_user.id %>
-						<hr>
-						<% relation.item.owners.first.user.answers.each do |answer| %>
-							<p>La pregunta: <b><%= answer.question.name %></b></p>
-							<p>Respuesta: <b><%= answer.answer %></b></p>
-							<p>Respondido por: <b><%= answer.user.name %></b></p>
-							<p>is_validated: <b><%= answer.is_validated %></b></p>
-							<p>Validar Respuesta: <b>VALIDA / INVALIDA</b></p>
-
-							<%= form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do %>
-							<%= hidden_field_tag :answer_id, answer.id %>
-							<%= hidden_field_tag :is_validated, true %>
-				      <%= submit_tag "Valid Answer", class: "btn btn-default" %>
-				      <% end %>
-
-							<%= form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do %>
-							<%= hidden_field_tag :answer_id, answer.id %>
-				      <%= hidden_field_tag :is_validated, false %>
-				      <%= submit_tag "Invalid Answer", class: "btn btn-default" %>
-				      <% end %>
-
-							<hr>
-						<% end %>
-						<% end %>
-
-
-
-						<% if relation.item.founders.first.user.id == current_user.id %>
-				    <p>Tu lo has encontrado</p>
-				    <p>Make some questions about the item to validate if true ownership</p>
-						<%= link_to "Validate Ownership", item_relation_path(relation.item.id,
-							Relation.get_by_userid_and_itemid(relation.item.owners.first.user.id, relation.item.id)[0])
-						%>
-				  	<% end %>
-				  	<% end %>
-
-
-
-
-
-				  	<% if relation.item.is_found? %>
-						<p>Relation ID: <b><%= relation.id %></b></p>
-				    <p>Item reported: <b><%= relation.item.state %></b></p>
-				    <p>By: <b><%= relation.item.founders.first.user.name %></b></p>
-						<hr>
-							<!-- if the founder of the item is me I have to authenticate -->
-					    <% if relation.item.founders.first.user.id == current_user.id  %>
-						    <% relation.item.owners.each do |owner| %>
-							    <p>Appears to have been lost by:</p>
-							    <p><b><%= owner.user.name %></b></p>
-							    <p>Contact him in:
-							    	<b><%= owner.user.email %></b>
-							    </p>
-							    <p><%= owner.user.id %></p>
-							    <p>Item name: <%= relation.item.id %></p>
-							    <p>Validate this relationship:</p>
-							    <p>
-								    <%=
-								    	Relation.get_by_user_and_item(owner.user.id, relation.item.id)[0].id
-								    %>
-							    </p>
-									<%= link_to "Validate Ownership", item_relation_path(relation.item.id,
-										Relation.get_by_user_and_item(owner.user.id, relation.item.id)[0])
-									%>
-							  <% end %>
-							<% else %>
-								<p>You can't validate a item that is not found by you</p>
-						  <% end %>
-						<% end %>
-				  </div>
-				  <% end %>
-			  <% end %>
-		  <% end %>
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          Report Lost Item
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="panel-body">
+						<%= render :partial => '/items/report_lost' %>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingTwo">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		          Report Found Item
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+		      <div class="panel-body">
+		        <%#= render :partial => '/items/report_found' %>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingThree">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							List of Requests
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+		      <div class="panel-body">
+		        <%= render :partial => '/items/requests' %>
+		      </div>
+		    </div>
 		  </div>
 		</div>
 	</div>
