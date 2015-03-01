@@ -4,9 +4,12 @@
   // Caso 1: Encontre un objeto que ya estaba en la lista - validar ownership - ok!
   // Caso 2: Reporte un objecto que no estaba en la lista - esperar por requests - ok!
 
-  // agregar imagen a reporte de objeto perdido
-  // diciendo que ya encontro su objeto.  Lo cual ubica la relation como resolved.
-  // lista de mis reportes - perdidos o encontrados
-  // lista de productos perdidos de todo el mundo - buscador
+
   // remember, mvp by tonight
   // dont leave features for next week
+
+
+  // agregar imagen a reporte de objeto perdido / encontrado
+  // lista de mis reportes - perdidos o encontrados
+  // lista de productos perdidos de todo el mundo - buscador
+  // BUSCADOR DE OBJETOS

@@ -1,4 +1,4 @@
-<%= form_for @item do |f| %>
+<%= form_for(@item, url: items_path) do |f| %>
 <%= f.hidden_field(:state, value: "Found") %>
 <div class="form-group">
   <%= f.label :name, "Product Name" %>
@@ -26,7 +26,7 @@
 </div>
 
 <%= f.fields_for :relations do |relation_fields| %>
-  <%= relation_fields.hidden_field(:type, value: "Founder") %>
+  <%= relation_fields.hidden_field(:type,{value:"Founder"}) %>
 <% end %>
 
 <%= f.submit "Report!", class: "btn btn-default" %>

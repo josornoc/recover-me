@@ -8,9 +8,8 @@ class ItemsController < ApplicationController
 		@lost_items = Item.all
 
 		# for new reportings and relations...
-		# @item = Item.new
-		# p@relation = @item.relations.build
-
+		@item = Item.new
+		@relation = @item.relations.build
 	end
 
 	def get_item_requests( items_ids )
@@ -34,37 +33,15 @@ class ItemsController < ApplicationController
 
 	def create
 
-		item = Item.create(state: params[:state],
-												name: params[:name],
-												datetime: params[:datetime],
-												contact_email: params[:contact_email],
-												description: params[:description],
-												reward: params[:reward],
-												category: params[:category])
+		@item = Item.new item_lost_params
+		type_param_relation = params["item"]["relations_attributes"]["0"]["type"]
 
-		binding.pry
-
-		redirect_to items_path
-
-
-
-		# @item = Item.create( state: params[:state],
-		# 										 name: params[:name],
-		# 										 datetime: params[:datetime],
-		# 										 contact_email: params[:contact_email],
-		# 										 description: params[:description],
-		# 										 reward: params[:reward],
-		# 										 category: params[:category] )
-
-		# @item = Item.new item_lost_params
-
-		# if item.save
-		# 	#item.relations.last.update_attributes(user_id: current_user.id)
-		# 	redirect_to items_path
-		# else
-		# 	item.errors.add(:item, "The item couldn't be save correctly in the database...")
-		# end
-
+		if @item.save
+			@item.relations.create(item_id:@item.id,user_id:current_user.id,type:type_param_relation,has_validated_questions:false)
+			redirect_to items_path
+		else
+			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
+		end
 	end
 
 	def show
@@ -80,23 +57,13 @@ class ItemsController < ApplicationController
 	end
 
 	private
-
 	def get_reporting_status
 		params["reporting"]
 	end
 
 	def item_lost_params
-
-    params.require(:item).permit(:state,
-    														 :name,
-    														 :datetime,
-    														 :contact_email,
-    														 :description,
-    														 :reward,
-    														 :category,
-    														 relations_attributes: [:id, :type])
+		params.require(:item).permit(:name, :datetime, :contact_email, :state, :description, :reward, :category)
   end
-
 end
 
 

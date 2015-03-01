@@ -34,12 +34,6 @@ class RelationsController < ApplicationController
 		end
 	end
 
-
-	def validate_answer
-		binding.pry
-	end
-
-
 	private
 
 	def get_current_item

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem "paperclip", "~> 4.2"
 #debugger purposes
 gem 'pry-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
