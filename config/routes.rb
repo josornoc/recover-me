@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'login#destroy'
   get '/register' => 'registration#new'
   post '/register' => 'registration#create'
+  get '/search' => 'site#search'
 
   resources :items do
   	post '/relations' => 'relations#create'
@@ -14,5 +15,7 @@ Rails.application.routes.draw do
     post '/relations/:id' => 'relations#answer', as: "answer"
     patch '/questions/:id' => 'questions#validate_answer', as: "question"
   end
+
+
 
 end

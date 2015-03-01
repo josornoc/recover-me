@@ -1,7 +1,5 @@
 class Item < ActiveRecord::Base
 
-
-
 	validates :name, presence: true, length: { in: 2..150 }
 	validates :datetime, presence: true
   validates :contact_email, presence: true
@@ -36,5 +34,9 @@ class Item < ActiveRecord::Base
 
   def is_resolved?
     return true if (state == "Resolved")
+  end
+
+  def self.search(search)
+
   end
 end

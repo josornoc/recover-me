@@ -11,7 +11,8 @@
 
   // agregar imagen a reporte de objeto perdido / encontrado   - ok!
   // lista de mis reportes - perdidos o encontrados - ok!
-  // lista de productos perdidos de todo el mundo
+  // lista de productos perdidos de todo el mundo - ok!
+
   // buscador
   // BUSCADOR DE OBJETOS
   // MENSAJES!!! Item guardado con {exito}

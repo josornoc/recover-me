@@ -9,6 +9,10 @@ class SiteController < ApplicationController
 			# redirect_to new_item_path(@current_user)
 		end
 	end
+
+	def search
+
+	end
 end
 
 #<%= link_to "Log out", logout_path, method: :delete, class: "navbar-text" %>
