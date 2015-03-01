@@ -1,9 +1,16 @@
 class Item < ActiveRecord::Base
 
+
+
 	validates :name, presence: true, length: { in: 2..150 }
 	validates :datetime, presence: true
   validates :contact_email, presence: true
   validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+
+  has_attached_file :avatar, :styles => { :big => "900x900>", :medium => "300x300>", :thumb => "100x100>" },
+                                          :default_url => "/images/:style/missing.png"
+
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   scope :has_reward,  -> { where("reward IS NOT NULL").order("datetime DESC") }
   scope :lost, 		 		-> { where(state: "lost").order("datetime DESC") }
