@@ -30,6 +30,9 @@ gem 'bootstrap-sass'
 
 gem 'sass-rails'
 
+# for building test items
+gem 'faker'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -44,9 +47,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  # for building test items
-  gem 'faker'
 
   # make testing readable
   gem 'rspec-rails'
