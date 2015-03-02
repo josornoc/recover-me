@@ -23,7 +23,8 @@
   // Item SCRUD by reporter (show, create, update, delete)                  - FALTAAAA
   // User SCRUD (show, create, update, delete)                             - FALTAAAA
   // Maps ?                                                                 - FALTAAAA
-
+  // Show in items/index: List of MY items LOST                           - FALTAAAA
+  // Show in items/index: Lost of MY items FOUND                           - FALTAAAA
 
 
 
