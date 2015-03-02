@@ -1,2 +1,44 @@
-<h2>Item Show</h2>
-<%= @item %>
+<div class="col-md-8 col-md-offset-2">
+
+	<p>Item Show</p>
+	<h2>Name: <%= @item.name %></h2>
+	<p>State: <%= @item.state %></p>
+	<p>Description: <%= @item.description %></p>
+	<p>Coords Lat: <%= @item.latitude %></p>
+	<p>Coords Lon: <%= @item.longitude %></p>
+	<p>Contact Email: <%= @item.contact_email %></p>
+	<p>Reward: <%= @item.reward %></p>
+	<p>Category: <%= @item.category %></p>
+	<p>Created At: <%= @item.created_at %></p>
+	<p>Updated At: <%= @item.updated_at %></p>
+	<hr>
+
+	<!-- -->
+	<% if @item.is_lost? %>
+	<% if @relation_ship_type != "founder" %>
+	<%= form_tag item_relations_path(@item, @relation) do %>
+	<%= hidden_field_tag :user_id, current_user.id %>
+  <%= submit_tag "I have found this item", class: "btn btn-default" %>
+  <% end %>
+	<% else %>
+	<p>I have already report as FOUNDER of this item...</p>
+	<% end %>
+  <% end %>
+	<!-- -->
+  <% if @item.is_found? %>
+	<% if @relation_ship_type != "owner" %>
+	<%= form_tag item_relations_path(@item, @relation) do %>
+	<%= hidden_field_tag :user_id, current_user.id %>
+  <%= submit_tag "I am the owner of this item", class: "btn btn-default" %>
+  <% end %>
+	<% else %>
+	<p>I have already report as OWNER of this item...</p>
+	<% end %>
+  <% end %>
+  <!-- -->
+  
+	<hr>
+	<%= link_to "Back to items...", items_path %>
+	<hr>
+	
+</div>

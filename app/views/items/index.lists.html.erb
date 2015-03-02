@@ -1,0 +1,104 @@
+<div class="col-md-12">
+	<div class="col-md-8 col-md-offset-2">
+		<div>
+		  <h2>List of requests</h2>
+		  <p>All my items that I have reported and have been requested</p>
+		  <p>Only requests from other users</p>
+		  <div class="list-group">
+		  <% @item_requests.each do |ar_relation| %>
+		  	<% if ar_relation.any? %>
+			  	<% ar_relation.each do |relation| %>
+					<a href="" class="list-group-item">
+
+				    <h4 class="list-group-item-heading">
+				    	Item Request: <b><%= relation.item.name %></b>
+				    </h4>
+
+				    <% if relation.item.is_lost? %>
+						<p>Relation ID: <b><%= relation.id %></b></p>
+				    <p>Item reported: <b><%= relation.item.state %></b></p>
+				    <p>By: <b><%= relation.item.owners.first.user.name %></b></p>
+						<hr>
+				    <p>Appears to have been found by:</p>
+				    <p><b><%= relation.item.founders.first.user.name %></b></p>
+				    <p>Contact him in:
+				    	<b><%= relation.item.founders.first.user.email %></b>
+				    </p>
+				  	<% end %>
+
+				  	<% if relation.item.is_found? %>
+						<p>Relation ID: <b><%= relation.id %></b></p>
+				    <p>Item reported: <b><%= relation.item.state %></b></p>
+				    <p>By: <b><%= relation.item.founders.first.user.name %></b></p>
+						<hr>
+							<!-- if the founder of the item is me I have to authenticate -->
+					    <% if relation.item.founders.first.user.id == current_user.id  %>
+						    <% relation.item.owners.each do |owner| %>
+							    <p>Appears to have been lost by:</p>
+							    <p><b><%= owner.user.name %></b></p>
+							    <p>Contact him in:
+							    	<b><%= owner.user.email %></b>
+							    </p>
+							    <p><%= owner.user.id %></p>
+							    <p>Item name: <%= relation.item.id %></p>
+							    <p>Validate this relationship:</p>
+							    <p>
+								    <%=
+								    	Relation.get_by_user_and_item(owner.user.id, relation.item.id)[0].id
+								    %>
+							    </p>
+									<%= link_to "Validate Ownership", item_relation_path(relation.item.id,
+										Relation.get_by_user_and_item(owner.user.id, relation.item.id)[0])
+									%>
+							  <% end %>
+							<% else %>
+								<p>You can't validate a item that is not found by you</p>
+						  <% end %>
+						<% end %>
+				  </a>
+				  <% end %>
+			  <% end %>
+		  <% end %>
+		  </div>
+		</div>
+		<!--
+		<div>
+		  <h2>Choose report</h2>
+		  <p>Lost / Found / I no longer need this... / I am in the need of...</p>
+		  <%# = render :partial => '/items/report_lost' %>
+		  <%# = render :partial => '/items/report_found' %>
+		</div>
+		-->
+		<hr>
+		<div>
+		  <h2>List of lost reported objects</h2>
+		  <p>All items reported lost / later the nearby should be placed here</p>
+		</div>
+		<div class="list-group">
+			<% @lost_items.each do |item| %>
+			  <a href=<%= item_path(item) %> class="list-group-item">
+			    <h4 class="list-group-item-heading">Item:
+			    	<b><span class="item-name"><%= item.name %></span></b>
+			    </h4>
+			    <p class="list-group-item">Contact Email: <b><%= item.contact_email %></b></p>
+
+			    <p class="list-group-item">State: <b><%= item.state %></b></p>
+			    <p class="list-group-item">Reward: <b><%= item.reward %></b></p>
+			    <p class="list-group-item">Coordinates - Lat:
+			    	<b><span class="item-latitude"><%= item.latitude %></span></b> /
+			    	Lon: <b><span class="item-longitude"><%= item.longitude %></span></b>
+			    </p>
+			  </a>
+			<% end %>
+		</div>
+		<div>
+
+		<!--
+			<div id="map-container"></div>
+		-->
+
+		</div>
+		<hr>
+	</div>
+</div>
+

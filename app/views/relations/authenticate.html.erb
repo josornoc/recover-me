@@ -1,0 +1,41 @@
+<div class="col-md-12">
+	<div class="col-md-8 col-md-offset-2">
+		<div>
+			<h1>Owner authentication...</h1>
+			<p><%= @relation.id %></p>
+			<p><%= @relation.user.name %></p>
+			<p><%= @relation.item.name %></p>
+
+      <% if @relation.item.questions.any? %>
+        <hr>
+        <% @relation.item.questions.each do |question| %>
+        <div>
+        <p><%= question.name %></p>
+        <p><%= question.answer %></p>
+        </div>
+        <hr>
+        <% end %>
+      <% else %>
+        <p>Make question here (should be a partial)...</p>
+      <% end %>
+
+
+      <%= form_tag item_questions_path do %>
+      <div class="form-group">
+        <%= label :name, "Question?" %>
+        <%= text_field_tag :name, nil, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= label :answer, "Answer..." %>
+        <%= text_area_tag :answer, nil, class: "form-control" %>
+      </div>
+      <%= submit_tag "Create question", class: "btn btn-default" %>
+      <% if flash[:error_creating_questions] %>
+      <p><%= flash[:error_creating_questions] %></p>
+      <% else %>
+      <% end %>
+      <% end %>
+
+		</div>
+	</div>
+</div>

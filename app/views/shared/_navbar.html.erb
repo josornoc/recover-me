@@ -8,8 +8,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="container col-md-offset-1">
-        <a class="navbar-brand" href=<%= root_path.to_s %>>Recover Me</a>
+      <div class="container">
+        <form class="form-inline">
+          <a class="navbar-brand" href=<%= root_path.to_s %>>Recover Me</a>
+          <%=
+            link_to "Report Lost Object", new_item_path+"?reporting=lost", id: "report-lost-object", class: "btn btn-default navbar-btn"
+          %>
+          <%=
+            link_to "Report Found Object", new_item_path+"?reporting=found", id: "report-found-object", class: "btn btn-default navbar-btn"
+          %>
+          <%= link_to "Register User", register_path, class: "btn btn-default navbar-btn" %>
+          <div class="form-group">
+            <label for="exampleInputName2">Name</label>
+            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail2">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+          </div>
+          <button type="submit" class="btn btn-default">Send invitation</button>
+        </form>
       </div>
     </div>
     <!-- -->

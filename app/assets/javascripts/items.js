@@ -110,9 +110,3 @@ $( document ).ready(function() {
 
 
 
-requestLocation(getCoordinates);  
-
-
-
-
-

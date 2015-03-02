@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227103656) do
-
+ActiveRecord::Schema.define(version: 20150301165027) do
+	
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.integer  "relation_id"
     t.text     "answer"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.boolean  "is_validated"
   end
 
   create_table "items", force: :cascade do |t|
@@ -33,9 +36,32 @@ ActiveRecord::Schema.define(version: 20150227103656) do
     t.string   "contact_email"
     t.string   "reward"
     t.string   "category"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "user_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "question_type"
+    t.text     "name"
+    t.boolean  "is_validated",  default: false
+    t.string   "answer"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "item_id"
+  end
+
+  create_table "relations", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.string   "type"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.boolean  "has_validated_questions"
   end
 
   create_table "questions", force: :cascade do |t|

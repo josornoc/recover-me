@@ -1,46 +1,92 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
-		<div>
-		  <h2>Choose report</h2>
-		  <p>Lost / Found</p>
-		</div>
+
+		<h4>Search for a lost item in our database...</h4>
 		<hr>
-		<div>
-		  <h2>List of my reports</h2>
-		  <p>All my items reported here lost & found</p>
-		  <p>Normally this should be a short list</p>
-		  <div class="list-group">
-		  <% @my_items.each do |my_item| %>
-				<a href="#" class="list-group-item">
-			    <h4 class="list-group-item-heading">Item: <b><%= my_item.name %></b></h4>
-			    <p class="list-group-item">State: <b><%= my_item.state %></b></p>
-			    <p class="list-group-item">Reward: <b><%= my_item.reward %></b></p>
-			  </a>
-		  <% end %>
+		<h4>List of lost objects</h4>
+		<hr>
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          Report Lost Item
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="panel-body">
+						<%= render :partial => '/items/report_lost' %>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingTwo">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		          Report Found Item
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+		      <div class="panel-body">
+		        <%= render :partial => '/items/report_found' %>
+		      </div>
+		    </div>
+		  </div>
+
+
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingThree">
+		      <h4 class="panel-title">
+		        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							List of Requests
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+		      <div class="panel-body">
+		        <%= render :partial => '/items/requests' %>
+		      </div>
+		    </div>
 		  </div>
 		</div>
-		<hr>
-		<div>
-		  <h2>List of lost reported objects</h2>
-		  <p>All items reported lost / later the nearby should be placed here</p>
-		</div>
-		<div class="list-group">
-			<% @other_items.each do |item| %>
-			  <a href=<% item_path(item.id) %>"item" class="list-group-item">
-			    <h4 class="list-group-item-heading">Item: <b><span class="item-name"><%= item.name %></span></b></h4>
-			    <p class="list-group-item">Contact Email: <b><%= item.contact_email %></b></p>
-			    <p class="list-group-item">State: <b><%= item.state %></b></p>
-			    <p class="list-group-item">Reward: <b><%= item.reward %></b></p>
-			    <p class="list-group-item">Coordinates - Lat: 
-			    	<b><span class="item-latitude"><%=item.latitude%></span></b> / 
-			    	Lon: <b><span class="item-longitude"><%=item.longitude%></span></b>
-			    </p>
-			  </a>
-			<% end %>
-		</div>
-		<div>
-			<div id="map-container"></div>
-		</div>
-		<hr>
+
+
+		<div class="panel panel-default">
+	    <div class="panel-heading" role="tab" id="headingFour">
+	      <h4 class="panel-title">
+	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+						All Lost Items
+	        </a>
+	      </h4>
+	    </div>
+	    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+	      <div class="panel-body">
+					<%= render :partial => '/items/all_items' %>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="panel panel-default">
+	    <div class="panel-heading" role="tab" id="headingFifth">
+	      <h4 class="panel-title">
+	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFifth" aria-expanded="false" aria-controls="collapseFifth">
+						Search Lost Item
+	        </a>
+	      </h4>
+	    </div>
+	    <div id="collapseFifth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFifth">
+	      <div class="panel-body">
+					<%= render :partial => '/items/search_form' %>
+	      </div>
+	    </div>
+	  </div>
+
 	</div>
 </div>
+

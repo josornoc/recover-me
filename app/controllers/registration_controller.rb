@@ -11,14 +11,14 @@ class RegistrationController < ApplicationController
       # redirection to index.html
       # logged when registered, only to try...
       session[:logged_in_user] = @user.id
-      redirect_to root_path
+      redirect_to items_path
     else
       render :new
       # raise "Ocurrió un problema creando un gato nuevo..."
     end
   rescue ActiveRecord::RecordNotUnique
     @user.errors.add(:email, "This email is already in the database")
-    render :new     
+    render :new
   end
 
   private
