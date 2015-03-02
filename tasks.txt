@@ -1,3 +1,4 @@
+
   // Hacer seeds simples - 2 usuarios 1 item para empezar - ok!
   // Modificar Relation model para buscar por user_id e item_id no desechar user_id -ok!
   // Realizar validacion de un usuario a otro ok!
@@ -14,6 +15,8 @@
   // When item is saved an ok warning should appear and inform the user! ---- ok!
   // MENSAJES!!! Item guardado con {exito}  --- ok!
   // Log y registro (flash messages o session) - ok!
+  // Show in items/index: List of MY items LOST -- ok!
+  // Show in items/index: Lost of MY items FOUND                           - FALTAAAA
 
 
 
@@ -23,8 +26,7 @@
   // Item SCRUD by reporter (show, create, update, delete)                  - FALTAAAA
   // User SCRUD (show, create, update, delete)                             - FALTAAAA
   // Maps ?                                                                 - FALTAAAA
-  // Show in items/index: List of MY items LOST                           - FALTAAAA
-  // Show in items/index: Lost of MY items FOUND                           - FALTAAAA
 
+  // I should be able to erase my reports quickly (lost or found)(confirm)  - FALTAAAA
 
 

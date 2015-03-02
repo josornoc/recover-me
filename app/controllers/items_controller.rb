@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
 		@lost_items = Item.all
 		@item = Item.new
 		@relation = @item.relations.build
+		@user_lost_items = Item.get_lost_items_by_user_id(current_user.id)
+		@user_found_items = Item.get_found_items_by_user_id(current_user.id)
 	end
 
 	def get_item_requests( items_ids )
@@ -39,7 +41,6 @@ class ItemsController < ApplicationController
 		else
 			flash["warning_message"] = "The item couldn't be save correctly in the database."
 			@item.errors.add(:item, "The item couldn't be save correctly in the database.")
-			#redirect_to items_path
 		end
 	end
 

@@ -41,4 +41,27 @@ class Item < ActiveRecord::Base
       Item.where("name like ?", "%#{search}%")
     end
   end
+
+  def self.get_lost_items_by_user_id(user_id)
+    items_by_user_id = []
+    Owner.where("user_id = ?", user_id).all.each do |owner|
+      items_by_user_id << owner.item
+    end  
+    items_by_user_id
+  end
+
+  def self.get_found_items_by_user_id(user_id)
+    items_by_user_id = []
+    Founder.where("user_id = ?", user_id).all.each do |founder|
+      items_by_user_id << founder.item
+    end  
+    items_by_user_id
+  end
+  
 end
+
+
+
+
+
+
