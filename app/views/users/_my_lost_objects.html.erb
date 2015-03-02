@@ -1,23 +1,30 @@
 <div class="list-group">
-  <% @user_lost_items.each do |item| %>
-    <a href=<%= item_path(item) %> class="list-group-item">
-    <h4 class="list-group-item-heading">
-      <b><span class="item-name"><%= item.name %></span></b>
-    </h4>
-      <div class="media">
-        <div class="media-left">
-          <img class="media-object" src=<%=item.avatar.url(:thumb)%> alt="...">
+  <% if @user_lost_items.any? %>
+    <% @user_lost_items.each do |item| %>
+      <a href=<%= item_path(item) %> class="list-group-item">
+        <h4 class="list-group-item-heading">
+          <div class="row">
+            <b><span class="item-name"><%= item.name %></span></b>
+          </div>
+        </h4>
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object" src=<%=item.avatar.url(:thumb)%> alt="...">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            <%= item.name %>
+            <%= item.contact_email %>
+            <%= item.state %>
+            <%= item.reward %>
+            <%= item.latitude %>
+            <%= item.longitude %>
+          </div>
         </div>
-        <div class="media-body">
-          <h4 class="media-heading">Media heading</h4>
-          <%= item.name %>
-          <%= item.contact_email %>
-          <%= item.state %>
-          <%= item.reward %>
-          <%= item.latitude %>
-          <%= item.longitude %>
-        </div>
-      </div>
-    </a>
+        <%= link_to "Erase", items_path %>
+      </a>
+    <% end %>
+  <% else %>
+    <p>You haven't reported any lost items.</p>
   <% end %>
 </div>

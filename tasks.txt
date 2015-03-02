@@ -16,17 +16,23 @@
   // MENSAJES!!! Item guardado con {exito}  --- ok!
   // Log y registro (flash messages o session) - ok!
   // Show in items/index: List of MY items LOST -- ok!
-  // Show in items/index: Lost of MY items FOUND                           - FALTAAAA
+  // Show in items/index: Lost of MY items FOUND -- ok!
 
 
 
-  // Finalizar cadena cuando preguntas están validadas (contactar usuario) - FALTAAAA
-  // Informar usuario de mensajes nuevos                                    - FALTAAAA
-  // preguntas a validar / preguntas validadas / relaciones validadas      - FALTAAAA
-  // Item SCRUD by reporter (show, create, update, delete)                  - FALTAAAA
-  // User SCRUD (show, create, update, delete)                             - FALTAAAA
-  // Maps ?                                                                 - FALTAAAA
 
   // I should be able to erase my reports quickly (lost or found)(confirm)  - FALTAAAA
+  // Finalizar cadena cuando preguntas están validadas (contactar usuario)  - FALTAAAA
+  // Informar usuario de mensajes nuevos                                    - FALTAAAA
+  // preguntas a validar / preguntas validadas / relaciones validadas       - FALTAAAA
+  // Item SCRUD by reporter (show, create, update, delete)                  - FALTAAAA
+  // User SCRUD (show, create, update, delete)                              - FALTAAAA
+  // Maps ?                                                                 - FALTAAAA  
+  // separate all reports into found or lost                                - FALTAAAA
+
+
+
+
+
 
 
