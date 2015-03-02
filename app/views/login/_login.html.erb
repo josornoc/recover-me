@@ -9,8 +9,12 @@
     <%= password_field_tag "password", nil, class: "form-control" %>
   </div>
   <%= submit_tag "Log In", class: "btn btn-default" %>
-  <% if flash[:error_logging_in] %>
-	<p><%= flash[:error_logging_in] %></p>
-  <% else %>
+  <% unless flash["warning_message"].nil? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong><%= flash["warning_message"] %></strong>
+  </div>
   <% end %>
 <% end %>

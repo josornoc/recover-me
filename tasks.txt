@@ -1,3 +1,5 @@
+
+
   // Hacer seeds simples - 2 usuarios 1 item para empezar - ok!
   // Modificar Relation model para buscar por user_id e item_id no desechar user_id -ok!
   // Realizar validacion de un usuario a otro ok!
@@ -10,17 +12,18 @@
   // lista de productos perdidos de todo el mundo - ok!
   // buscador --- ok!
   // BUSCADOR DE OBJETOS --- ok!
+  // Fill lost form with default user information... (email) --- ok!
+  // When item is saved an ok warning should appear and inform the user! ---- ok!
+  // MENSAJES!!! Item guardado con {exito}  --- ok!
+  // Log y registro (flash messages o session) - ok!
 
 
 
-  // Fill lost form with default user information... (email)
-  // When item is saved an ok warning should appear and inform the user!
 
-  // MENSAJES!!! Item guardado con {exito} log y registro (flash messages o session)
-
-  // Finalizar cadena cuando preguntas están validadas (contactar usuario)
-  // Maps ?
-
+  // Finalizar cadena cuando preguntas están validadas (contactar usuario) - falta
+  // Item SCRUD by reporter (show, create, update, delete) - falta
+  // User SCRUD (show, create, update, delete) - falta
+  // Maps ? - falta
 
 
 
