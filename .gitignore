@@ -18,6 +18,5 @@
 /config/
 /config/*
 /config/database.yml
-/config/secrets.yml
 /public/system/
 /public/system/*
