@@ -1,6 +1,5 @@
-<h2>List of requests</h2>
 <p>All my items that I have reported and have been requested</p>
-<p>Only requests from other users</p>
+<p>Put as a badge the quantity of requests....</p>
 <div class="list-group">
 <% @item_requests.each do |ar_relation| %>
   <% if ar_relation.any? %>
@@ -85,15 +84,15 @@
       <% end %>
       <% end %>
 
-
-
-
-
       <% if relation.item.is_found? %>
-      <p>Relation ID: <b><%= relation.id %></b></p>
-      <p>Item reported: <b><%= relation.item.state %></b></p>
-      <p>By: <b><%= relation.item.founders.first.user.name %></b></p>
+      <p>
+        <b><%= relation.item.name %></b> you reported 
+        <b><%= relation.item.state %></b> on
+        <b><%= relation.item.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
+        </b>
+      </p>
       <hr>
+
         <!-- if the founder of the item is me I have to authenticate -->
         <% if relation.item.founders.first.user.id == current_user.id  %>
           <% relation.item.owners.each do |owner| %>
@@ -102,21 +101,17 @@
             <p>Contact him in:
               <b><%= owner.user.email %></b>
             </p>
-            <p><%= owner.user.id %></p>
-            <p>Item name: <%= relation.item.id %></p>
-            <p>Validate this relationship:</p>
-            <p>
-              <%=
-                Relation.get_by_user_and_item(owner.user.id, relation.item.id)[0].id
-              %>
-            </p>
-            <%= link_to "Validate Ownership", item_relation_path(relation.item.id,
-              Relation.get_by_user_and_item(owner.user.id, relation.item.id)[0])
+            <%= 
+              link_to "Validate its ownership", 
+              item_relation_path(relation.item.id,
+              Relation.get_by_userid_and_itemid(owner.user.id, relation.item.id)[0])
             %>
           <% end %>
         <% else %>
           <p>You can't validate a item that is not found by you</p>
         <% end %>
+
+
       <% end %>
     </div>
     <% end %>

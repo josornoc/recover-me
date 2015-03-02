@@ -1,11 +1,14 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
 		<div>
-			<h1>Owner authentication...</h1>
-			<p><%= @relation.id %></p>
-			<p><%= @relation.user.name %></p>
-			<p><%= @relation.item.name %></p>
-
+      <h1><%= @relation.item.name %></h1>
+			<h3>Ownership Authentication</h3>
+			<p>
+        <strong>
+          Possible owner: 
+          <%= @relation.user.name %> (<%= @relation.user.email %>)
+        </strong>
+      </p>
       <% if @relation.item.questions.any? %>
         <hr>
         <% @relation.item.questions.each do |question| %>
@@ -18,8 +21,6 @@
       <% else %>
         <p>Make question here (should be a partial)...</p>
       <% end %>
-
-
       <%= form_tag item_questions_path do %>
       <div class="form-group">
         <%= label :name, "Question?" %>
@@ -35,7 +36,6 @@
       <% else %>
       <% end %>
       <% end %>
-
 		</div>
 	</div>
 </div>
