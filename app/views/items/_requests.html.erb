@@ -85,31 +85,34 @@
       <% end %>
 
       <% if relation.item.is_found? %>
-      <p>
-        <b><%= relation.item.name %></b> you reported 
-        <b><%= relation.item.state %></b> on
-        <b><%= relation.item.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
-        </b>
-      </p>
+      
+        <p>
+          <b><%= relation.item.name %></b> you reported 
+          <b><%= relation.item.state %></b> on
+          <b><%= relation.item.created_at.strftime("%m/%d/%Y at %I:%M%p") %></b>
+        </p>
+        <% if relation.item.owners.first.user.id == current_user.id %>
+        
+        <% end %>
       <hr>
 
-        <!-- if the founder of the item is me I have to authenticate -->
-        <% if relation.item.founders.first.user.id == current_user.id  %>
-          <% relation.item.owners.each do |owner| %>
-            <p>Appears to have been lost by:</p>
-            <p><b><%= owner.user.name %></b></p>
-            <p>Contact him in:
-              <b><%= owner.user.email %></b>
-            </p>
-            <%= 
-              link_to "Validate its ownership", 
-              item_relation_path(relation.item.id,
-              Relation.get_by_userid_and_itemid(owner.user.id, relation.item.id)[0])
-            %>
-          <% end %>
-        <% else %>
-          <p>You can't validate a item that is not found by you</p>
+      <!-- if the founder of the item is me I have to authenticate -->
+      <% if relation.item.founders.first.user.id == current_user.id  %>
+        <% relation.item.owners.each do |owner| %>
+          <p>Appears to have been lost by:</p>
+          <p><b><%= owner.user.name %></b></p>
+          <p>Contact him in:
+            <b><%= owner.user.email %></b>
+          </p>
+          <%= 
+            link_to "Validate its ownership", 
+            item_relation_path(relation.item.id,
+            Relation.get_by_userid_and_itemid(owner.user.id, relation.item.id)[0])
+          %>
         <% end %>
+      <% else %>
+        <p>You can't validate a item that is not found by you</p>
+      <% end %>
 
 
       <% end %>
