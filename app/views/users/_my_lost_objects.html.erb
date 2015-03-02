@@ -1,7 +1,7 @@
 <div class="list-group">
   <% if @user_lost_items.any? %>
     <% @user_lost_items.each do |item| %>
-      <a href=<%= item_path(item) %> class="list-group-item">
+      <a href=<%= item_path(item.id) %> class="list-group-item">
         <h4 class="list-group-item-heading">
           <div class="row">
             <b><span class="item-name"><%= item.name %></span></b>
@@ -21,7 +21,9 @@
             <%= item.longitude %>
           </div>
         </div>
-        <%= link_to "Erase", items_path %>
+        <%= 
+        link_to 'Erase',  item_path(item),  method: :delete, data: { confirm: 'Are you sure?' } 
+        %>
       </a>
     <% end %>
   <% else %>

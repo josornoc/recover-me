@@ -17,11 +17,11 @@
   // Log y registro (flash messages o session) - ok!
   // Show in items/index: List of MY items LOST -- ok!
   // Show in items/index: Lost of MY items FOUND -- ok!
+  // I should be able to erase my reports quickly (lost or found)(confirm)  - ok!
+  // kill relations for erased item - ok! 
 
 
 
-
-  // I should be able to erase my reports quickly (lost or found)(confirm)  - FALTAAAA
   // Finalizar cadena cuando preguntas están validadas (contactar usuario)  - FALTAAAA
   // Informar usuario de mensajes nuevos                                    - FALTAAAA
   // preguntas a validar / preguntas validadas / relaciones validadas       - FALTAAAA

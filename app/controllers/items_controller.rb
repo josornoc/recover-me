@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
 		@other_relations = Relation.where("user_id != ? ", current_user.id)
 		@lost_items = Item.all
 		@item = Item.new
-		@relation = @item.relations.build
 		@user_lost_items = Item.get_lost_items_by_user_id(current_user.id)
 		@user_found_items = Item.get_found_items_by_user_id(current_user.id)
 	end
@@ -56,7 +55,17 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def destroy	
+		item = Item.find(params[:id])
+		Relation.where(item_id: item.id).destroy_all
+		item.destroy
+		flash.now["info_message"] = "Report deleted succesfully."
+		redirect_to items_path
+	end
+
+
 	private
+
 	def get_reporting_status
 		params["reporting"]
 	end
@@ -64,6 +73,7 @@ class ItemsController < ApplicationController
 	def item_params
 		params.require(:item).permit(:name, :avatar, :datetime, :contact_email, :state, :description, :reward, :category)
   end
+
 end
 
 
