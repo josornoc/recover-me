@@ -2,40 +2,38 @@
 	<div class="col-md-8 col-md-offset-2">
 		<div>
       <h1><%= @relation.item.name %></h1>
-			<h3>Ownership Authentication</h3>
+      <%= image_tag( @relation.item.avatar.url(:medium) ) %>
+			<h2>Ownership Authentication</h2>
 			<p>
-        <strong>
-          Possible owner: 
-          <%= @relation.user.name %> (<%= @relation.user.email %>)
-        </strong>
-      </p>
+      <strong>
+        Possible owner: 
+        <%= @relation.user.name %> (<%= @relation.user.email %>)
+      </strong>
+      </p>  
+      <strong>
+        <p>
+          Questions created 
+          (<%= @current_questions_length.to_s + "/" + @max_questions_limit.to_s %>)
+        </p>
+      </strong>
+      <hr>
       <% if @relation.item.questions.any? %>
-        <hr>
         <% @relation.item.questions.each do |question| %>
         <div>
-        <p><%= question.name %></p>
-        <p><%= question.answer %></p>
+          <h3>Q: <%= question.name %></h3>
+          <p>Answer: <%= question.answer %></p>
         </div>
         <hr>
         <% end %>
       <% else %>
-        <p>Make question here (should be a partial)...</p>
+        <p>There are no questions created to validate the ownership of this item.</p>
       <% end %>
-      <%= form_tag item_questions_path do %>
-      <div class="form-group">
-        <%= label :name, "Question?" %>
-        <%= text_field_tag :name, nil, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= label :answer, "Answer..." %>
-        <%= text_area_tag :answer, nil, class: "form-control" %>
-      </div>
-      <%= submit_tag "Create question", class: "btn btn-default" %>
-      <% if flash[:error_creating_questions] %>
-      <p><%= flash[:error_creating_questions] %></p>
+      <% if @current_questions_length < @max_questions_limit %>
+        <%= render :partial => '/relations/add_question_form' %>
       <% else %>
+        <p>Maximum limit of questions already reached.</p>
       <% end %>
-      <% end %>
+      <%= link_to "Back to items", items_path %>
 		</div>
 	</div>
 </div>

@@ -1,6 +1,9 @@
 class RelationsController < ApplicationController
 
 	def authenticate
+		@item = Item.find(params[:item_id])
+		@max_questions_limit = 3
+		@current_questions_length = @item.questions.length
 		get_current_relation
 	end
 

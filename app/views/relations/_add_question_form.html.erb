@@ -1,0 +1,15 @@
+<%= form_for [@item, Question.new] do |f| %>
+  <div class="form-group">
+    <%= label :name, "Question?" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label :answer, "Answer..." %>
+    <%= f.text_area :answer, class: "form-control" %>
+  </div>
+  <%= f.submit "Create question", class: "btn btn-default" %>
+  <% if flash[:error_creating_questions] %>
+    <p><%= flash[:error_creating_questions] %></p>
+  <% else %>
+  <% end %>
+<% end %>

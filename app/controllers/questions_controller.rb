@@ -1,12 +1,21 @@
 class QuestionsController < ApplicationController
 
 	def create
-		@question = Question.new(name: params[:name], answer: params[:answer], item_id: params[:item_id])
+
+		# @question = Question.new (name: params[:name], 
+		# 												 answer: params[:answer], 
+		# 												 item_id: params[:item_id])
+	
+		@item = Item.find(params[:item_id])
+		@question = @item.questions.new question_params
+		@question.item_id = params[:item_id]
 		if @question.save
 			redirect_to item_relation_path(params[:item_id], current_relation)
 		else
 			@question.errors.add(:question, "The item couldn't be save correctly in the database...")
+			redirect_to :back
 		end
+
 	end
 
 	def validate_answer
@@ -16,8 +25,9 @@ class QuestionsController < ApplicationController
 	end
 
 	private
+
 	def question_params
-    params.require.permit(:name, :answer)
+    params.require(:question).permit(:name, :answer)
   end
 end
 
