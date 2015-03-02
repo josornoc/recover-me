@@ -13,6 +13,8 @@
   // lista de mis reportes - perdidos o encontrados - ok!
   // lista de productos perdidos de todo el mundo - ok!
 
-  // buscador
-  // BUSCADOR DE OBJETOS
+  // buscador --- ok!
+  // BUSCADOR DE OBJETOS --- ok!
+
+
   // MENSAJES!!! Item guardado con {exito}
