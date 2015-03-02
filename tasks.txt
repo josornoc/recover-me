@@ -3,18 +3,26 @@
   // Realizar validacion de un usuario a otro ok!
   // Caso 1: Encontre un objeto que ya estaba en la lista - validar ownership - ok!
   // Caso 2: Reporte un objecto que no estaba en la lista - esperar por requests - ok!
-
-
   // remember, mvp by tonight
   // dont leave features for next week
-
-
   // agregar imagen a reporte de objeto perdido / encontrado   - ok!
   // lista de mis reportes - perdidos o encontrados - ok!
   // lista de productos perdidos de todo el mundo - ok!
-
   // buscador --- ok!
   // BUSCADOR DE OBJETOS --- ok!
 
 
-  // MENSAJES!!! Item guardado con {exito}
+
+  // Fill lost form with default user information... (email)
+  // When item is saved an ok warning should appear and inform the user!
+
+  // MENSAJES!!! Item guardado con {exito} log y registro (flash messages o session)
+
+  // Finalizar cadena cuando preguntas están validadas (contactar usuario)
+  // Maps ?
+
+
+
+
+
+

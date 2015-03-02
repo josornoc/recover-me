@@ -30,16 +30,16 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-
 		@item = Item.new item_params
 		type_param_relation = params["item"]["relations_attributes"]["0"]["type"]
 
 		if @item.save
 			@item.relations.create(item_id:@item.id,user_id:current_user.id,type:type_param_relation,has_validated_questions:false)
+			flash["success_message"] = "Report created succesfully."
 			redirect_to items_path
 		else
-			@item.errors.add(:item, "The item couldn't be save correctly in the database...")
-			#flash["error_message"] = "The item couldn't be save correctly in the database..."
+			flash["warning_message"] = "The item couldn't be save correctly in the database."
+			@item.errors.add(:item, "The item couldn't be save correctly in the database.")
 			#redirect_to items_path
 		end
 	end
@@ -65,14 +65,5 @@ class ItemsController < ApplicationController
 		params.require(:item).permit(:name, :avatar, :datetime, :contact_email, :state, :description, :reward, :category)
   end
 end
-
-
-
-
-
-
-
-
-
 
 

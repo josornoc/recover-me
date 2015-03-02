@@ -1,8 +1,12 @@
-<%= form_for(@item, url: items_path) do |f| %>
+<%= form_for @item, url: items_path, :html => { :multipart => true } do |f| %>
 <%= f.hidden_field(:state, value: "Found") %>
 <div class="form-group">
   <%= f.label :name, "Product Name" %>
   <%= f.text_field :name, placeholder: "Ej. Passport", class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :avatar, "Image (if any)" %>
+  <%= f.file_field :avatar %>
 </div>
 
 <div class="form-group">
@@ -12,7 +16,7 @@
 
 <div class="form-group">
   <%= f.label :contact_email, "Contact Email" %>
-  <%= f.text_field :contact_email, class: "form-control" %>
+  <%= f.text_field :contact_email, value:current_user.email, class: "form-control" %>
 </div>
 
 <div class="form-group">

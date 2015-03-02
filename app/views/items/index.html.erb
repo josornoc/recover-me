@@ -1,14 +1,45 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
 
-		<h4>Search for a lost item in our database...</h4>
-		<hr>
-		<h4>List of lost objects</h4>
-		<hr>
+		<% if flash["success_message"] %>
+		<div class="alert alert-success alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  	<span aria-hidden="true">&times;</span>
+		  </button>
+		  <strong><%= flash["success_message"] %></strong>
+		</div>
+		<% end %>
+
+		<% if flash["info_message"] %>
+		<div class="alert alert-info alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  	<span aria-hidden="true">&times;</span>
+		  </button>
+		  <strong><%= flash["info_message"] %></strong>
+		</div>
+		<% end %>
+
+		<% if flash["warning_message"] %>
+		<div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  	<span aria-hidden="true">&times;</span>
+		  </button>
+		  <strong><%= flash["warning_message"] %></strong>
+		</div>
+		<% end %>
+
+		<% if flash["danger_message"] %>
+		<div class="alert alert-danger alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  	<span aria-hidden="true">&times;</span>
+		  </button>
+		  <strong><%= flash["danger_message"] %></strong>
+		</div>
+		<% end %>
+
+
 
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-
 		  <div class="panel panel-default">
 		    <div class="panel-heading" role="tab" id="headingOne">
 		      <h4 class="panel-title">

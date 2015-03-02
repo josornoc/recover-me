@@ -1,5 +1,3 @@
-
-
 <%= form_for @item, url: items_path, :html => { :multipart => true } do |f| %>
 <%= f.hidden_field(:state, value: "Lost") %>
 <div class="form-group">
@@ -16,7 +14,7 @@
 </div>
 <div class="form-group">
   <%= f.label :contact_email, "Contact Email" %>
-  <%= f.text_field :contact_email, class: "form-control" %>
+  <%= f.text_field :contact_email, value:current_user.email, class: "form-control" %>
 </div>
 <div class="form-group">
   <%= f.label :category, "Category" %>
