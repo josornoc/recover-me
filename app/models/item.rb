@@ -38,7 +38,6 @@ class Item < ActiveRecord::Base
 
   def self.search(search)
     if search
-      binding.pry
       Item.where("name like ?", "%#{search}%")
     end
   end
