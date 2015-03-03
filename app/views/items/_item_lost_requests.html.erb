@@ -46,18 +46,76 @@
     You've found <b><%= relation.item.name %></b> on
     <%= relation.item.founders.first.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
   </p>
-  <p>
-  	Ask at the most three (3) precise things for <b><%= relation.item.owners.first.user.name %></b> to validate the ownership of the object.
-  </p>
+  <% if relation.item.questions.length < 3 %>
+		<p>
+	  	Ask at the most three (3) precise things for <b><%= relation.item.owners.first.user.name %></b> to validate the ownership of the object.
+	  </p>
   <%= link_to "Create questions", item_relation_path(relation.item.id,
 		Relation.get_by_userid_and_itemid(relation.item.owners.first.user.id, relation.item.id)[0])
   %>
+	<% else %>
+		<p><b>Questions already created for ownership validation.  Limit reached (3/3)</b></p>
+	<% end %>
+
+	<hr>	
+
+	<% relation.item.owners.first.user.answers.each do |answer| %>
+
+	  <p>Q: <b><%= answer.question.name %></b></p>
+	  <p><b><%= answer.user.name %></b> answered: <b><%= answer.answer %></b></p>
+
+	  <% if answer.is_validated.nil? %>
+		  <%= form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do %>
+		  <%= hidden_field_tag :answer_id, answer.id %>
+		  <%= hidden_field_tag :is_validated, true %>
+		  <%= submit_tag "Valid Answer", class: "btn btn-default" %>
+		  <% end %>
+
+		  <%= 
+		  	form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do 
+		  %>
+
+		  <%= hidden_field_tag :answer_id, answer.id %>
+		  <%= hidden_field_tag :is_validated, false %>
+		  <%= submit_tag "Invalid Answer", class: "btn btn-default" %>
+	  	<% end %>
+
+		<% else %>
+			<% if answer.is_validated %>
+				<p>You've already <b>APPROVED</b> this answer.</p>
+			<% else %>		
+				<p>You've already checked this answer as <b>WRONG</b>.</p>
+			<% end %>		
+		<% end %>
+		<hr>
+	<% end %>
+
+	<%
+	if Answer.validate_all_by_userid_and_relationid(
+		 relation.item.owners.first.user.id,
+		 relation.item.owners.first.user.answers.first.relation_id)
+	%>
+
+	<p>TRUE!!! VALID OWNER <%= relation.item.owners.first.user.name %></p>			
+
+	<% else %>
+
+	<p>FALSE!!! INVALID OWNER <%= relation.item.owners.first.user.name %></p>			
+
+	<% end %>
+
   
 	<!-- existe relaciones de otros usuarios con mis reportes -->
   <!-- evaluar si el item fue reportado perdido o encontrado por mi -->
   <!-- ESTO YA ESTA HECHO EN OTRA LISTA! -->
 
 <% end %>
+
+
+
+
+
+
 
 
 
