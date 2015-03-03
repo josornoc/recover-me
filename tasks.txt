@@ -28,15 +28,17 @@
 
 
 
-// Lost Item complete cicle should work ok 																- FALTA!	
+// Lost Item complete cicle should work ok 																- FALTAAAA!	
 // Informar usuario de mensajes nuevos                                    - FALTAAAA!
 // Cuando un item es encontrado y validado desaparece de items perdidos   - FALTAAAA!
+// poner fecha (hoy) por defecto en formularios found/lost                - FALTAAAA!
+// Check all dates - reporting date should be the one the USER enters     - FALTAAAA!
+// sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
 
 
 
 
-
-
+// Types of questions (single, multiple, open) 														- no llego...
 // User SCRUD (show, create, update, delete)                              - no llego...
 // User Avatar 																														- no llego...
 // Maps ?                                                                 - no llego...

@@ -1,1 +1,63 @@
-<h1>Item lost requests.... weeeee.</h1>
+<% if relation.item.owners.first.user.id == current_user.id %>
+
+	<p>
+    <b><%= relation.item.name %></b> you reported 
+    <b>lost </b> on
+    <b><%= relation.item.founders.first.created_at.strftime("%m/%d/%Y at %I:%M%p") %></b>
+  </p>
+  <hr>
+  <p>Apparently its been found by:</p>
+  <p><b><%= relation.item.founders.first.user.name %></b></p>
+  
+  <% if relation.item.questions.any? %>
+  <h3>There are questions for you to validate your ownership...</h3>
+    <% relation.item.questions.each_with_index do |question, i| %>
+      <div>
+        <p>Question ID <%= question.id %></p>
+        <p>Question number <%= i + 1 %>: <b><%= question.name %></b></p>
+        <% if question.already_answerd?(current_user.id) %>
+        <p>You already have answered that question</p>
+        <p><b>Your answer was:</b></p>
+        <p><%= question.get_answer_by_user_id(current_user.id) %></p>
+        <p><b>Answer validation by founder of item?</b></p>
+        <p><%= question.is_answer_validated?(current_user.id) %></p>
+        <% else %>
+        <%= form_tag item_answer_path(relation.item, relation) do %>
+        <div class="form-group">
+          <%= label :answer, "Answer..." %>
+          <%= text_area_tag :answer, nil, class: "form-control" %>
+        </div>
+        <%= hidden_field_tag :question_id, question.id %>
+        <%= submit_tag "Answer question", class: "btn btn-default" %>
+        <% end %>
+        <% end %>
+      </div>
+      <hr>
+    <% end %>
+  <% else %>
+  <hr>
+  <p><b>There are no questions yet</b> to validate this item ownership.</p>
+  <% end %>
+
+
+<% else %>
+
+	<p>
+    You've found <b><%= relation.item.name %></b> on
+    <%= relation.item.founders.first.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
+  </p>
+  <p>
+  	Ask at the most three (3) precise things for <b><%= relation.item.owners.first.user.name %></b> to validate the ownership of the object.
+  </p>
+  <%= link_to "Create questions", item_relation_path(relation.item.id,
+		Relation.get_by_userid_and_itemid(relation.item.owners.first.user.id, relation.item.id)[0])
+  %>
+  
+	<!-- existe relaciones de otros usuarios con mis reportes -->
+  <!-- evaluar si el item fue reportado perdido o encontrado por mi -->
+  <!-- ESTO YA ESTA HECHO EN OTRA LISTA! -->
+
+<% end %>
+
+
+
