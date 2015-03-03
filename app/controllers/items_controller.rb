@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 		my_item_ids = @my_relations.map(&:item_id)
 		@item_requests = get_item_requests(my_item_ids)
 
-		
+		#got to check new messages - pending validations - pending questions - etc!
 
 		@other_relations = Relation.where("user_id != ? ", current_user.id)
 		@lost_items = Item.all
