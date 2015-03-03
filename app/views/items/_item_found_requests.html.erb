@@ -1,10 +1,42 @@
 <% if relation.item.founders.first.user.id == current_user.id %>
-	<p>Item reportado encontrado por ti...</p>
+
+	<p>
+    <b><%= relation.item.name %></b> you reported 
+    <b>found </b> on
+    <b><%= relation.item.founders.first.created_at.strftime("%m/%d/%Y at %I:%M%p") %></b>
+  </p>
+  <hr>
+
+  <% relation.item.owners.first.user.answers.each do |answer| %>
+
+	  <p>Question: <b><%= answer.question.name %></b></p>
+	  <p>Correct Answer: <b><%= answer.question.answer %></b></p>
+	  <p>Respuesta de <b><%= answer.user.name %></b>: <b><%= answer.answer %></b></p>
+
+	  <% if answer.is_validated.nil? %>
+		  <%= form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do %>
+		  <%= hidden_field_tag :answer_id, answer.id %>
+		  <%= hidden_field_tag :is_validated, true %>
+		  <%= submit_tag "Valid Answer", class: "btn btn-default" %>
+		  <% end %>
+
+		  <%= form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do %>
+		  <%= hidden_field_tag :answer_id, answer.id %>
+		  <%= hidden_field_tag :is_validated, false %>
+		  <%= submit_tag "Invalid Answer", class: "btn btn-default" %>
+	  	<% end %>
+
+		<% else %>
+			<p>You've already marked this answer as: <%= answer.is_validated %></p>
+		<% end %>
+		<hr>
+	<% end %>
 <% else %>
 
 	<!-- existe relaciones de otros usuarios con mis reportes -->
   <!-- evaluar si el item fue reportado perdido o encontrado por mi -->
   <!-- ESTO YA ESTA HECHO EN OTRA LISTA! -->
+
 	<p>
     <b><%= relation.item.name %></b> you reported 
     <b>lost </b> on
@@ -24,12 +56,22 @@
           <div>
             <p>Question <%= i + 1 %>: <b><%= question.name %></b></p>
             <% if question.already_answerd?(current_user.id) %>
-            <p>You already have answered that question</p>
-            <p><b>Your answer was:</b></p>
-            <p><%= question.get_answer_by_user_id(current_user.id) %></p>
-            <p><b>Answer validation by founder of item?</b></p>
-            <p><%= question.is_answer_validated?(current_user.id) %></p>
+	            <p><b>Your answer was:</b></p>
+	            <p><%= question.get_answer_by_user_id(current_user.id) %></p>
+	           
+						<% if question.is_answer_validated?(current_user.id).nil? %>
+							<p><b><%= founder.user.name %> have not validated your answer yet.</b></p>	
+						<% else %>
+							<p>
+								<b>
+									<%= founder.user.name %> said your answer is: 
+									<%= question.is_answer_validated?(current_user.id) %>
+								</b>
+							</p>	
+            <% end %>
+
             <% else %>
+
             <%= form_tag item_answer_path(relation.item, relation) do %>
             <div class="form-group">
               <%= label :answer, "Answer:" %>
@@ -48,3 +90,6 @@
     <% end %>
   <% end %>
 <% end %>
+
+
+

@@ -1,43 +1,38 @@
+// Hacer seeds simples - 2 usuarios 1 item para empezar - ok!
+// Modificar Relation model para buscar por user_id e item_id no desechar user_id -ok!
+// Realizar validacion de un usuario a otro ok!
+// Caso 1: Encontre un objeto que ya estaba en la lista - validar ownership - ok!
+// Caso 2: Reporte un objecto que no estaba en la lista - esperar por requests - ok!
+// remember, mvp by tonight
+// dont leave features for next week
+// agregar imagen a reporte de objeto perdido / encontrado   - ok!
+// lista de mis reportes - perdidos o encontrados - ok!
+// lista de productos perdidos de todo el mundo - ok!
+// buscador --- ok!
+// BUSCADOR DE OBJETOS --- ok!
+// Fill lost form with default user information... (email) --- ok!
+// When item is saved an ok warning should appear and inform the user! ---- ok!
+// MENSAJES!!! Item guardado con {exito}  --- ok!
+// Log y registro (flash messages o session) - ok!
+// Show in items/index: List of MY items LOST -- ok!
+// Show in items/index: Lost of MY items FOUND -- ok!
+// I should be able to erase my reports quickly (lost or found)(confirm) --- ok!
+// kill relations for erased item --- ok! 
+// Cuando item es reportado encontrado y el usuario lo ve y aplica para reclamar el objecto-ok!
+// Item SCRUD by reporter (show, create, update, delete) --- ok!
 
-  // Hacer seeds simples - 2 usuarios 1 item para empezar - ok!
-  // Modificar Relation model para buscar por user_id e item_id no desechar user_id -ok!
-  // Realizar validacion de un usuario a otro ok!
-  // Caso 1: Encontre un objeto que ya estaba en la lista - validar ownership - ok!
-  // Caso 2: Reporte un objecto que no estaba en la lista - esperar por requests - ok!
-  // remember, mvp by tonight
-  // dont leave features for next week
-  // agregar imagen a reporte de objeto perdido / encontrado   - ok!
-  // lista de mis reportes - perdidos o encontrados - ok!
-  // lista de productos perdidos de todo el mundo - ok!
-  // buscador --- ok!
-  // BUSCADOR DE OBJETOS --- ok!
-  // Fill lost form with default user information... (email) --- ok!
-  // When item is saved an ok warning should appear and inform the user! ---- ok!
-  // MENSAJES!!! Item guardado con {exito}  --- ok!
-  // Log y registro (flash messages o session) - ok!
-  // Show in items/index: List of MY items LOST -- ok!
-  // Show in items/index: Lost of MY items FOUND -- ok!
-  // I should be able to erase my reports quickly (lost or found)(confirm)  - ok!
-  // kill relations for erased item - ok! 
 
 
-
-  // Finalizar cadena cuando preguntas están validadas (contactar usuario)  - FALTAAAA
-  // Cuando item es reportado encontrado y el usuario lo ve y aplica para reclamar el objecto
-
+// Finalizar cadena cuando preguntas están validadas (contactar usuario) -- MAZO
+// preguntas a validar / preguntas validadas / relaciones validadas       - faltaa
 
   
 
 
-  // separate all reports into found or lost                                - FALTAAAA
-  // Informar usuario de mensajes nuevos                                    - FALTAAAA
-  // preguntas a validar / preguntas validadas / relaciones validadas       - FALTAAAA
-  // Item SCRUD by reporter (show, create, update, delete)                  - FALTAAAA
-  // User SCRUD (show, create, update, delete)                              - FALTAAAA
-  // Maps ?                                                                 - FALTAAAA  
-
-
-
+// separate all reports into found or lost                                - FALTAAAA
+// Informar usuario de mensajes nuevos                                    - FALTAAAA
+// User SCRUD (show, create, update, delete)                              - FALTAAAA
+// Maps ?                                                                 - FALTAAAA  
 
 
 

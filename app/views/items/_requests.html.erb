@@ -2,13 +2,15 @@
 <% @item_requests.each do |ar_relation| %>
   <% if ar_relation.any? %>
     <% ar_relation.each do |relation| %>
-			<% if relation.item.is_found? %>
-				<%= render :partial => '/items/item_found_requests', locals: { :relation => relation } %>
-			<% end %>
-			<% if relation.item.is_lost? %>
-				<p>item is lost partial not implemented yet...</p>
-				<%#= render :partial => '/items/item_found_requests' %>
-			<% end %>
+			
+			<%= 
+				render partial: ( relation.item.is_found? ? 
+													'/items/item_found_requests' : 
+													'/items/item_lost_requests'), 
+													locals: { relation: relation } 
+			%>
+
     <% end %>
   <% end %>
 <% end %>
+</div>
