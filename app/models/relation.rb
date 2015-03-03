@@ -5,8 +5,9 @@ class Relation < ActiveRecord::Base
   # requests.where( "user_id != ?", current_user.id )
   # #Relation.where(item_id:my_items_ids[i])
 
-	validates :item_id, presence: true, numericality: true
-	validates :user_id, presence: true, numericality: true
+	# validates :item_id, presence: true, numericality: true
+	# validates :user_id, presence: true, numericality: true
+	
 	validates :type, presence: true
 
 	has_many   :answers

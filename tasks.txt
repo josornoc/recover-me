@@ -20,19 +20,27 @@
 // kill relations for erased item --- ok! 
 // Cuando item es reportado encontrado y el usuario lo ve y aplica para reclamar el objecto-ok!
 // Item SCRUD by reporter (show, create, update, delete) --- ok!
+// Finalizar cadena cuando preguntas están validadas (contactar usuario) -- ok!
+// separate all reports into found or lost                                - ok!
+// preguntas a validar / preguntas validadas / relaciones validadas       - ok!
 
 
 
-// Finalizar cadena cuando preguntas están validadas (contactar usuario) -- MAZO
-// preguntas a validar / preguntas validadas / relaciones validadas       - faltaa
-
-  
 
 
-// separate all reports into found or lost                                - FALTAAAA
-// Informar usuario de mensajes nuevos                                    - FALTAAAA
-// User SCRUD (show, create, update, delete)                              - FALTAAAA
-// Maps ?                                                                 - FALTAAAA  
+// Lost Item complete cicle should work ok 																- FALTA!	
+// Informar usuario de mensajes nuevos                                    - FALTAAAA!
+// Cuando un item es encontrado y validado desaparece de items perdidos   - FALTAAAA!
+
+
+
+
+
+
+// User SCRUD (show, create, update, delete)                              - no llego...
+// User Avatar 																														- no llego...
+// Maps ?                                                                 - no llego...
+// API for recording objects 							                                - no llego...
 
 
 

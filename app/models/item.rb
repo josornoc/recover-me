@@ -22,6 +22,7 @@ class Item < ActiveRecord::Base
   has_many :users, through: :relations
 
   accepts_nested_attributes_for :relations
+  accepts_nested_attributes_for :owners
   accepts_nested_attributes_for :questions
 
   def is_lost?

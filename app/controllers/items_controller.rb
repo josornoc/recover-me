@@ -4,12 +4,11 @@ class ItemsController < ApplicationController
 		@my_relations = Relation.get_by_user_id(current_user.id)
 		my_item_ids = @my_relations.map(&:item_id)
 		@item_requests = get_item_requests(my_item_ids)
-
 		#got to check new messages - pending validations - pending questions - etc!
-
 		@other_relations = Relation.where("user_id != ? ", current_user.id)
 		@lost_items = Item.all
 		@item = Item.new
+		@relation = @item.relations.new
 		@user_lost_items = Item.get_lost_items_by_user_id(current_user.id)
 		@user_found_items = Item.get_found_items_by_user_id(current_user.id)
 	end
@@ -33,17 +32,18 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		@item = Item.new item_params
-		type_param_relation = params["item"]["relations_attributes"]["0"]["type"]
 
+		@item = Item.new item_params
+		@item.relations.first.user_id = current_user.id
+		# type_param_relation = params["item"]["relations_attributes"]["0"]["type"]
+		# @item.relations.new(user_id:current_user.id, type:type_param_relation,has_validated_questions:false)
 		if @item.save
-			@item.relations.create(item_id:@item.id,user_id:current_user.id,type:type_param_relation,has_validated_questions:false)
 			flash["success_message"] = "Report created succesfully."
 			redirect_to items_path
 		else
-			flash["warning_message"] = "The item couldn't be save correctly in the database."
-			@item.errors.add(:item, "The item couldn't be save correctly in the database.")
+			flash[:danger_message] = @item.errors.full_messages
 		end
+
 	end
 
 	def show
@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
 	end
 
 	def item_params
-		params.require(:item).permit(:name, :avatar, :datetime, :contact_email, :state, :description, :reward, :category)
+		params.require(:item).permit(:name,:avatar,:datetime,:contact_email,:state,:description,:reward,:category,relations_attributes:[:id, :type])
   end
 
 end

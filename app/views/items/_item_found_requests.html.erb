@@ -95,7 +95,13 @@
 							 relation.item.owners.first.user.id,
 							 relation.item.owners.first.user.answers.first.relation_id)
 					%>
-					<%= submit_tag "Claim Item!", class: "btn btn-default" %>
+
+					<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
+
+					<p>
+						<b><%= founder.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
+						<b><%= founder.user.email %></b>
+					</p>
 					<% else %>
 					<p>
 						Unfortunately <b><%= founder.user.name %></b> (email: <b><%= founder.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   

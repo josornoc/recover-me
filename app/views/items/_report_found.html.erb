@@ -1,37 +1,37 @@
 <%= form_for @item, url: items_path, :html => { :multipart => true } do |f| %>
-<%= f.hidden_field(:state, value: "Found") %>
-<div class="form-group">
-  <%= f.label :name, "Product Name" %>
-  <%= f.text_field :name, placeholder: "Ej. Passport", class: "form-control" %>
-</div>
-<div class="form-group">
-  <%= f.label :avatar, "Image (if any)" %>
-  <%= f.file_field :avatar %>
-</div>
+  <%= f.hidden_field(:state, value: "Found") %>
+  <div class="form-group">
+    <%= f.label :name, "Product Name" %>
+    <%= f.text_field :name, placeholder: "Ej. Passport", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :avatar, "Image (if any)" %>
+    <%= f.file_field :avatar %>
+  </div>
 
-<div class="form-group">
-  <%= f.label :datetime, "Date when I found the object" %>
-  <%= f.date_field :datetime, class: "form-control" %>
-</div>
+  <div class="form-group">
+    <%= f.label :datetime, "Date when I found the object" %>
+    <%= f.date_field :datetime, class: "form-control" %>
+  </div>
 
-<div class="form-group">
-  <%= f.label :contact_email, "Contact Email" %>
-  <%= f.text_field :contact_email, value:current_user.email, class: "form-control" %>
-</div>
+  <div class="form-group">
+    <%= f.label :contact_email, "Contact Email" %>
+    <%= f.text_field :contact_email, value:current_user.email, class: "form-control" %>
+  </div>
 
-<div class="form-group">
-  <%= f.label :category, "Category" %>
-  <%= f.text_field :category, class: "form-control" %>
-</div>
+  <div class="form-group">
+    <%= f.label :category, "Category" %>
+    <%= f.text_field :category, class: "form-control" %>
+  </div>
 
-<div class="form-group">
-  <%= f.label :description, "Brief description of how you found the object (if any):" %>
-  <%= f.text_area :description, class: "form-control" %>
-</div>
+  <div class="form-group">
+    <%= f.label :description, "Brief description of how you found the object (if any):" %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
 
-<%= f.fields_for :relations do |relation_fields| %>
-  <%= relation_fields.hidden_field(:type,{value:"Founder"}) %>
-<% end %>
+  <%= f.fields_for :relations do |relation_fields| %>
+    <%= relation_fields.hidden_field(:type,value:"Founder") %>
+  <% end %>
 
-<%= f.submit "Report!", class: "btn btn-default" %>
+  <%= f.submit "Report!", class: "btn btn-default" %>
 <% end %>
