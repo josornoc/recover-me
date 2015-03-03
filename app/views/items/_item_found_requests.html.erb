@@ -20,7 +20,10 @@
 		  <%= submit_tag "Valid Answer", class: "btn btn-default" %>
 		  <% end %>
 
-		  <%= form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do %>
+		  <%= 
+		  	form_tag( item_question_path(relation.item.id, answer.question.id), method: :patch) do 
+		  %>
+
 		  <%= hidden_field_tag :answer_id, answer.id %>
 		  <%= hidden_field_tag :is_validated, false %>
 		  <%= submit_tag "Invalid Answer", class: "btn btn-default" %>
@@ -31,6 +34,8 @@
 		<% end %>
 		<hr>
 	<% end %>
+
+
 <% else %>
 
 	<!-- existe relaciones de otros usuarios con mis reportes -->
@@ -84,6 +89,19 @@
           </div>
           <hr>
         <% end %>
+
+        	<%
+						if Answer.validate_all_by_userid_and_relationid(
+							 relation.item.owners.first.user.id,
+							 relation.item.owners.first.user.answers.first.relation_id)
+					%>
+					<%= submit_tag "Claim Item!", class: "btn btn-default" %>
+					<% else %>
+					<p>
+						Unfortunately <b><%= founder.user.name %></b> (email: <b><%= founder.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
+					</p>
+					<% end %>
+
       <% else %>
       <p>There are NO questions for you</p>
       <p>Request them to the founder of your object...</p>
