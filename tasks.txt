@@ -23,6 +23,12 @@
 
 
   // Finalizar cadena cuando preguntas están validadas (contactar usuario)  - FALTAAAA
+  // Cuando item es reportado encontrado y el usuario lo ve y aplica para reclamar el objecto
+
+
+  
+
+
   // separate all reports into found or lost                                - FALTAAAA
   // Informar usuario de mensajes nuevos                                    - FALTAAAA
   // preguntas a validar / preguntas validadas / relaciones validadas       - FALTAAAA

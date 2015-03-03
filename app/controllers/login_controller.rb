@@ -3,9 +3,10 @@ class LoginController < ApplicationController
 		user = User.where(email:params[:email]).first		
 		if user && user.authenticate(params[:password])
 			session[:logged_in_user] = user.id
-			flash["success_message"] = "Welcome " + user.name.to_s + "!" +
-																 "\n" + "Second line in success message."
+			flash["success_message"] = "Welcome " + user.name.to_s + "!"
 			redirect_to items_path
+			# flash["success_message"] = "Welcome " + user.name.to_s + "!" +
+			# 													 "\n" + "Second line in success message."
 		else
 			flash.now["warning_message"] = "The User couldn't be logged in"
 			@user = User.new

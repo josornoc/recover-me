@@ -1,0 +1,50 @@
+<% if relation.item.founders.first.user.id == current_user.id %>
+	<p>Item reportado encontrado por ti...</p>
+<% else %>
+
+	<!-- existe relaciones de otros usuarios con mis reportes -->
+  <!-- evaluar si el item fue reportado perdido o encontrado por mi -->
+  <!-- ESTO YA ESTA HECHO EN OTRA LISTA! -->
+	<p>
+    <b><%= relation.item.name %></b> you reported 
+    <b>lost </b> on
+    <b><%= relation.item.created_at.strftime("%m/%d/%Y at %I:%M%p") %></b>
+  </p>
+
+  <% relation.item.founders.each do |founder| %>
+    <p>Appears to have been found by:</p>
+    <p><b><%= founder.user.name %></b></p>
+    <p>Contact him in:
+      <b><%= founder.user.email %></b>
+    </p>
+		<% if relation.item.questions.any? %>
+			<hr>
+      <h4>There are questions for you to validate your ownership...</h4>
+        <% relation.item.questions.each_with_index do |question, i| %>
+          <div>
+            <p>Question <%= i + 1 %>: <b><%= question.name %></b></p>
+            <% if question.already_answerd?(current_user.id) %>
+            <p>You already have answered that question</p>
+            <p><b>Your answer was:</b></p>
+            <p><%= question.get_answer_by_user_id(current_user.id) %></p>
+            <p><b>Answer validation by founder of item?</b></p>
+            <p><%= question.is_answer_validated?(current_user.id) %></p>
+            <% else %>
+            <%= form_tag item_answer_path(relation.item, relation) do %>
+            <div class="form-group">
+              <%= label :answer, "Answer:" %>
+              <%= text_area_tag :answer, nil, class: "form-control" %>
+            </div>
+            <%= hidden_field_tag :question_id, question.id %>
+            <%= submit_tag "Answer question", class: "btn btn-default" %>
+            <% end %>
+            <% end %>
+          </div>
+          <hr>
+        <% end %>
+      <% else %>
+      <p>There are NO questions for you</p>
+      <p>Request them to the founder of your object...</p>
+    <% end %>
+  <% end %>
+<% end %>
