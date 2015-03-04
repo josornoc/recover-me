@@ -13,27 +13,54 @@
   <h3>There are questions for you to validate your ownership...</h3>
     <% relation.item.questions.each_with_index do |question, i| %>
       <div>
-        <p>Question ID <%= question.id %></p>
-        <p>Question number <%= i + 1 %>: <b><%= question.name %></b></p>
+        <p>Q<%= i + 1 %>: <b><%= question.name %></b></p>
         <% if question.already_answerd?(current_user.id) %>
-        <p>You already have answered that question</p>
-        <p><b>Your answer was:</b></p>
-        <p><%= question.get_answer_by_user_id(current_user.id) %></p>
-        <p><b>Answer validation by founder of item?</b></p>
-        <p><%= question.is_answer_validated?(current_user.id) %></p>
+        <p>You already have answered "<b><%= question.get_answer_by_user_id(current_user.id) %>"</b> for that question.</p>
+
+	        <% if question.is_answer_validated?(current_user.id) %>
+	        <p><b><%= relation.item.founders.first.user.name %> already APPROVED your answer.</b></p> 
+	        <% else %>
+	        <p><b><%= relation.item.founders.first.user.name %> already DISAPPROVED your answer.</b></p> 
+	        <% end %>
+
         <% else %>
-        <%= form_tag item_answer_path(relation.item, relation) do %>
-        <div class="form-group">
-          <%= label :answer, "Answer..." %>
-          <%= text_area_tag :answer, nil, class: "form-control" %>
-        </div>
-        <%= hidden_field_tag :question_id, question.id %>
-        <%= submit_tag "Answer question", class: "btn btn-default" %>
-        <% end %>
+	        <%= form_tag item_answer_path(relation.item, relation) do %>
+	        <div class="form-group">
+	          <%= label :answer, "Answer..." %>
+	          <%= text_area_tag :answer, nil, class: "form-control" %>
+	        </div>
+	        <%= hidden_field_tag :question_id, question.id %>
+	        <%= submit_tag "Answer question", class: "btn btn-default" %>
+        	<% end %>
         <% end %>
       </div>
       <hr>
     <% end %>
+		
+		<%
+			if Answer.validate_all_by_userid_and_relationid(
+				 relation.item.owners.first.user.id,
+				 relation.item.owners.first.user.answers.first.relation_id)
+		%>
+
+		<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
+
+		<p>
+			<b><%= relation.item.founders.first.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
+			<b><%= relation.item.founders.first.user.email %></b>
+		</p>
+		<% else %>
+		<p>
+			Unfortunately <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
+		</p>
+		<% end %>
+
+		<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
+
+		
+
+    
+
   <% else %>
   <hr>
   <p><b>There are no questions yet</b> to validate this item ownership.</p>
@@ -96,11 +123,15 @@
 		 relation.item.owners.first.user.answers.first.relation_id)
 	%>
 
-	<p>TRUE!!! VALID OWNER <%= relation.item.owners.first.user.name %></p>			
+	<p>
+		You already have validated <b><%= relation.item.owners.first.user.name %></b> (email: <b><%= relation.item.owners.first.user.email %></b>) as the <b>true owner</b> of <b><%= relation.item.name %></b>.
+	</p>
 
 	<% else %>
 
-	<p>FALSE!!! INVALID OWNER <%= relation.item.owners.first.user.name %></p>			
+	<p>
+		Regarding your answers validation <b><%= relation.item.owners.first.user.name %></b> (email: <b><%= relation.item.owners.first.user.email %></b>) is not the actual owner of <b><%= relation.item.name %></b>.
+	</p>			
 
 	<% end %>
 

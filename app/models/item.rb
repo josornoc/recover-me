@@ -27,14 +27,17 @@ class Item < ActiveRecord::Base
 
   def is_lost?
     return true if (state == "Lost")
+    false
   end
 
   def is_found?
     return true if (state == "Found")
+    false
   end
 
   def is_resolved?
     return true if (state == "Resolved")
+    false
   end
 
   def self.search(search)

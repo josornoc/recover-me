@@ -6,7 +6,8 @@ class ItemsController < ApplicationController
 		@item_requests = get_item_requests(my_item_ids)
 		#got to check new messages - pending validations - pending questions - etc!
 		@other_relations = Relation.where("user_id != ? ", current_user.id)
-		@lost_items = Item.all
+		#@lost_items = Item.all
+		@lost_items = get_current_lost_items
 		@item = Item.new
 		@relation = @item.relations.new
 		@user_lost_items = Item.get_lost_items_by_user_id(current_user.id)
@@ -77,6 +78,22 @@ class ItemsController < ApplicationController
 		params.require(:item).permit(:name,:avatar,:datetime,:contact_email,:state,:description,:reward,:category,relations_attributes:[:id, :type])
   end
 
+  def get_current_lost_items
+		all_items = Item.all
+		relations = []
+		item_results = []
+		all_items.each do |item|
+			item.relations.each do |relation|
+				relations << relation.ownership_validated?
+			end
+			if relations.include? false
+				item_results << item
+			else
+				p 'already validated relation....'
+			end
+		end
+		item_results
+	end
 end
 
 

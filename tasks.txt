@@ -23,18 +23,17 @@
 // Finalizar cadena cuando preguntas están validadas (contactar usuario) -- ok!
 // separate all reports into found or lost                                - ok!
 // preguntas a validar / preguntas validadas / relaciones validadas       - ok!
+// Lost Item complete cicle should work ok 																- ok!
+// poner fecha (hoy) por defecto en formularios found/lost                - Ok!
 
 
 
-
-
-// Lost Item complete cicle should work ok 																- FALTAAAA!	
-// Informar usuario de mensajes nuevos                                    - FALTAAAA!
-// Cuando un item es encontrado y validado desaparece de items perdidos   - FALTAAAA!
-// poner fecha (hoy) por defecto en formularios found/lost                - FALTAAAA!
-// Check all dates - reporting date should be the one the USER enters     - FALTAAAA!
+// Cuando un item es encontrado y validado desaparece de items perdidos    - FALTAAAA!
+// Informar usuario de mensajes nuevos                                     - FALTAAAA!
+// Check all dates - reporting date should be the one the USER enters      - FALTAAAA!
 // sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
-
+// Improve SHOW item page a lot!!!! A lot of unused info                   - FALTAAAA!
+// Puedo encontrar un item MIO perdido? Puedo perder un item encontrado?   - FALTAAAA!
 
 
 

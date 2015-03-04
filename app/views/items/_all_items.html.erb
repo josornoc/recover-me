@@ -1,23 +1,27 @@
 <div class="list-group">
-  <% @lost_items.each do |item| %>
-    <a href=<%= item_path(item) %> class="list-group-item">
-    <h4 class="list-group-item-heading">
-      <b><span class="item-name"><%= item.name %></span></b>
-    </h4>
-      <div class="media">
-        <div class="media-left">
-          <img class="media-object" src=<%=item.avatar.url(:thumb)%> alt="...">
+  <% if @lost_items.any? %>
+    <% @lost_items.each do |item| %>
+      <a href=<%= item_path(item) %> class="list-group-item">
+      <h4 class="list-group-item-heading">
+        <b><span class="item-name"><%= item.name %></span></b>
+      </h4>
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object" src=<%=item.avatar.url(:thumb)%> alt="...">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            <%= item.name %>
+            <%= item.contact_email %>
+            <%= item.state %>
+            <%= item.reward %>
+            <%= item.latitude %>
+            <%= item.longitude %>
+          </div>
         </div>
-        <div class="media-body">
-          <h4 class="media-heading">Media heading</h4>
-          <%= item.name %>
-          <%= item.contact_email %>
-          <%= item.state %>
-          <%= item.reward %>
-          <%= item.latitude %>
-          <%= item.longitude %>
-        </div>
-      </div>
-    </a>
+      </a>
+    <% end %>
+  <% else %>
+    <p>There are currently no items reported.</p>
   <% end %>
 </div>

@@ -14,6 +14,13 @@ class Relation < ActiveRecord::Base
 	belongs_to :item
 	belongs_to :user
 
+	def ownership_validated?
+		answers.each do |answer|
+			return false if answer.is_validated == false
+		end
+		true
+	end
+
 	def self.get_by_user_id(user_id)
 		where( user_id:user_id )
 	end
