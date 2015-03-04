@@ -1,32 +1,11 @@
 FRONT END
 
 
-landing - OWMI logo and basic info ---- FALTA!
-landing - Button Fixed    				 ---- FALTA!
-landing - Item lists							 ---- FALTA!
-
-
-
-Font Types - ok!
-
-Pagina de inicio - Inline form for login ---- ok!
-								 - Background Image ---- ok!
-								 
-
-Login logo - When logged in ---- ok!
-					 - Moved when resized big -- missing!
-
-Body items/index - Fixed image background ---- ok!
-								 - Accordion White background with opacity ---- ok!
-								 - Search position ---- ok!
 
 
 
 
-
-
-
-
+// footer is over the page	
 // paginas de error
 // sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
 // Improve SHOW item page a lot!!!! A lot of unused info                   - FALTAAAA!
@@ -45,6 +24,27 @@ Body items/index - Fixed image background ---- ok!
 // API for recording objects 							                                - no llego...
 
 
+
+
+
+
+
+landing - OWMI logo and basic info ---- ok!
+landing - Button Fixed    				 ---- ok!
+landing - Item lists							 ---- ok!
+
+Font Types - ok!
+
+Pagina de inicio - Inline form for login ---- ok!
+								 - Background Image ---- ok!
+								 
+
+Login logo - When logged in ---- ok!
+					 - Moved when resized big -- ok!
+
+Body items/index - Fixed image background ---- ok!
+								 - Accordion White background with opacity ---- ok!
+								 - Search position ---- ok!
 
 
 

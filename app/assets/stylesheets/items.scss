@@ -144,6 +144,14 @@ body {
   color: rgba(52, 123, 132, 1);
 }
 
+.object-image{
+	border-radius: 4px;
+}
+
+#accordion{
+	z-index: 10;
+}
+
 @media (max-width: 600px) {
 
   .landing-logo{

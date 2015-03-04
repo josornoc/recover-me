@@ -7,16 +7,13 @@
       </h4>
         <div class="media">
           <div class="media-left">
-            <img class="media-object" src=<%=item.avatar.url(:thumb)%> alt="...">
+            <img class="media-object object-image" src=<%=item.avatar.url(:thumb)%> alt="...">
           </div>
           <div class="media-body">
-            <h4 class="media-heading">Media heading</h4>
-            <%= item.name %>
-            <%= item.contact_email %>
-            <%= item.state %>
-            <%= item.reward %>
-            <%= item.latitude %>
-            <%= item.longitude %>
+            <p>
+              Reported 
+              <b><%= item.state %></b> in: <b><%= item.created_at.strftime("%m/%d/%Y at %I:%M%p") %></b>
+            </p>
           </div>
         </div>
       </a>
