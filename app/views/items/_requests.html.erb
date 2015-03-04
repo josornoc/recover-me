@@ -9,10 +9,15 @@
 													'/items/item_lost_requests'), 
 													locals: { relation: relation } 
 			%>
-			
+
     <% end %>
   <% else %>
   	<p>There are no requests by other users for your lost/found items.</p>
   <% end %>
 <% end %>
+
+<% if @item_requests.any? == false %>
+	<p>There are no matches for your reports yet.  Let's be optimistic.</p>
+<% end %>
+
 </div>
