@@ -1,3 +1,45 @@
+FRONT END
+
+Pagina de inicio - Inline form for login ---- ok!
+								 - Background Image ---- ok!
+								 - OWMI logo and basic info ---- falta!
+
+Login Ingo - When logged in ---- ok!
+
+Body items/index - Fixed image background ---- ok!
+								 - Accordion White background with opacity ---- ok!
+								 - Search position ---- falta!
+
+
+
+
+
+
+
+
+
+// sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
+// Improve SHOW item page a lot!!!! A lot of unused info                   - FALTAAAA!
+// No puedo reportar ser el OWNER de un item que me encontre yo..          - FALTAAAA!
+// revisar textos de la lista de objetos (imagen por defecto)              - FALTAAAA!
+// Informar usuario de mensajes nuevos                                     - FALTAAAA!
+// revisar el metodo para devolver items perdidos TOTAL                    - FALTAAAA!
+// Puedo encontrar un item MIO perdido? Puedo perder un item encontrado?   - FALTAAAA!
+
+
+
+// Types of questions (single, multiple, open) 														- no llego...
+// User SCRUD (show, create, update, delete)                              - no llego...
+// User Avatar 																														- no llego...
+// Maps ?                                                                 - no llego...
+// API for recording objects 							                                - no llego...
+
+
+
+
+
+
+
 // Hacer seeds simples - 2 usuarios 1 item para empezar - ok!
 // Modificar Relation model para buscar por user_id e item_id no desechar user_id -ok!
 // Realizar validacion de un usuario a otro ok!
@@ -27,25 +69,4 @@
 // poner fecha (hoy) por defecto en formularios found/lost                - Ok!
 // Cuando un item es encontrado y validado desaparece de items perdidos    - ok!
 // Check all dates - reporting date should be the one the USER enters      - ok!
-
-
-// sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
-// Improve SHOW item page a lot!!!! A lot of unused info                   - FALTAAAA!
-// No puedo reportar ser el OWNER de un item que me encontre yo..          - FALTAAAA!
-// revisar textos de la lista de objetos (imagen por defecto)              - FALTAAAA!
-// Informar usuario de mensajes nuevos                                     - FALTAAAA!
-// revisar el metodo para devolver items perdidos TOTAL                    - FALTAAAA!
-// Puedo encontrar un item MIO perdido? Puedo perder un item encontrado?   - FALTAAAA!
-
-
-
-// Types of questions (single, multiple, open) 														- no llego...
-// User SCRUD (show, create, update, delete)                              - no llego...
-// User Avatar 																														- no llego...
-// Maps ?                                                                 - no llego...
-// API for recording objects 							                                - no llego...
-
-
-
-
 

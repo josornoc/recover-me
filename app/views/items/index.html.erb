@@ -1,51 +1,20 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
 
-		<% if flash["success_message"] %>
-		<div class="alert alert-success alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		  	<span aria-hidden="true">&times;</span>
-		  </button>
-		  <strong><%= flash["success_message"] %></strong>
+		<div class="">
+			<%= render :partial => '/items/search_form' %>
 		</div>
-		<% end %>
 
-		<% if flash["info_message"] %>
-		<div class="alert alert-info alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		  	<span aria-hidden="true">&times;</span>
-		  </button>
-		  <strong><%= flash["info_message"] %></strong>
+		<div>
+			<%= render :partial => '/site/flash_messages' %>
 		</div>
-		<% end %>
 
-		<% if flash["warning_message"] %>
-		<div class="alert alert-warning alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		  	<span aria-hidden="true">&times;</span>
-		  </button>
-		  <strong><%= flash["warning_message"] %></strong>
-		</div>
-		<% end %>
-
-		<% if flash["danger_message"] %>
-		<div class="alert alert-danger alert-dismissible" role="alert">
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		  	<span aria-hidden="true">&times;</span>
-		  </button>
-		  <strong><%= flash["danger_message"] %></strong>
-		</div>
-		<% end %>
-
-
-		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-
+		<div class="panel-group main-panel" id="accordion" role="tablist" aria-multiselectable="true">
 	  <div class="panel panel-default">
 	    <div class="panel-heading" role="tab" id="headingOne">
 	      <h4 class="panel-title">
 	        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-	          <div>Report Lost Item</div>	
+	          Report Lost Item
 	        </a>
 	      </h4>
 	    </div>
@@ -108,13 +77,13 @@
 	    <div class="panel-heading" role="tab" id="headingFifth">
 	      <h4 class="panel-title">
 	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFifth" aria-expanded="false" aria-controls="collapseFifth">
-						Search Lost Item
+						My Lost Objects Reported
 	        </a>
 	      </h4>
 	    </div>
 	    <div id="collapseFifth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFifth">
 	      <div class="panel-body">
-					<%= render :partial => '/items/search_form' %>
+					<%= render :partial => '/users/my_lost_objects' %>
 	      </div>
 	    </div>
 	  </div>
@@ -123,33 +92,17 @@
 	    <div class="panel-heading" role="tab" id="headingSixth">
 	      <h4 class="panel-title">
 	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSixth" aria-expanded="false" aria-controls="collapseSixth">
-						My Lost Objects Reported
+						My Found Objects Reported
 	        </a>
 	      </h4>
 	    </div>
 	    <div id="collapseSixth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSixth">
 	      <div class="panel-body">
-					<%= render :partial => '/users/my_lost_objects' %>
-	      </div>
-	    </div>
-	  </div>
-
-	  <div class="panel panel-default">
-	    <div class="panel-heading" role="tab" id="headingSeventh">
-	      <h4 class="panel-title">
-	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeventh" aria-expanded="false" aria-controls="collapseSeventh">
-						My Found Objects Reported
-	        </a>
-	      </h4>
-	    </div>
-	    <div id="collapseSeventh" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeventh">
-	      <div class="panel-body">
 					<%= render :partial => '/users/my_found_objects' %>
 	      </div>
 	    </div>
 	  </div>
-</div>
-
+	</div>
 	</div>
 </div>
 

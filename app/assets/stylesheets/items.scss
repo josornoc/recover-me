@@ -5,3 +5,56 @@
 #map-container{
 	height: 600px;
 }
+
+body {
+	background: url('/system/images/owmi_bg.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 150%;
+}
+
+.panel-title{
+	text-align: center;
+	text-decoration: none;
+	color: #599482;
+	font-size: 160%;
+}
+
+.panel-title a:hover{
+	text-decoration: none;
+}
+
+.panel-title a:visited{
+	text-decoration: none;
+}
+
+.panel-title a:active{
+	text-decoration: none;
+}
+
+.panel-title a:link{
+	text-decoration: none;
+}
+
+.panel{
+	background-color: rgba(255,255,255,0.5);
+	border: none;
+}
+
+.list-group-item{
+	border: none;	
+}
+
+.search-btn{
+	margin: 5px 0 30px 0;
+}
+
+.main-panel{
+	margin: 100px 0 0 0;
+}
+
+
+
