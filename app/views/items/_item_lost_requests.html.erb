@@ -117,23 +117,35 @@
 		<hr>
 	<% end %>
 
-	<%
-	if Answer.validate_all_by_userid_and_relationid(
-		 relation.item.owners.first.user.id,
-		 relation.item.owners.first.user.answers.first.relation_id)
-	%>
+	<% if relation.item.owners.first.user.answers.first.nil? == false	 %>
 
-	<p>
-		You already have validated <b><%= relation.item.owners.first.user.name %></b> (email: <b><%= relation.item.owners.first.user.email %></b>) as the <b>true owner</b> of <b><%= relation.item.name %></b>.
-	</p>
+		<%
+		if Answer.validate_all_by_userid_and_relationid(
+			 relation.item.owners.first.user.id,
+			 relation.item.owners.first.user.answers.first.relation_id)
+		%>
+
+		<p>
+			You already have validated <b><%= relation.item.owners.first.user.name %></b> (email: <b><%= relation.item.owners.first.user.email %></b>) as the <b>true owner</b> of <b><%= relation.item.name %></b>.
+		</p>
+
+		<% else %>
+
+		<p>
+			Regarding your answers validation <b><%= relation.item.owners.first.user.name %></b> (email: <b><%= relation.item.owners.first.user.email %></b>) is not the actual owner of <b><%= relation.item.name %></b>.
+		</p>			
+
+		<% end %>
 
 	<% else %>
-
-	<p>
-		Regarding your answers validation <b><%= relation.item.owners.first.user.name %></b> (email: <b><%= relation.item.owners.first.user.email %></b>) is not the actual owner of <b><%= relation.item.name %></b>.
-	</p>			
+	
+		<!-- solve when there are only 1 or less answers
+		<p>Solve it...</p>
+		-->
 
 	<% end %>
+
+
 <% end %>
 
 
