@@ -36,23 +36,28 @@
       </div>
       <hr>
     <% end %>
+
+
+    <% if relation.item.owners.first.user.answers.first.nil? == false	 %>
 		
-		<%
-			if Answer.validate_all_by_userid_and_relationid(
-				 relation.item.owners.first.user.id,
-				 relation.item.owners.first.user.answers.first.relation_id)
-		%>
+			<%
+				if Answer.validate_all_by_userid_and_relationid(
+					 relation.item.owners.first.user.id,
+					 relation.item.owners.first.user.answers.first.relation_id)
+			%>
 
-		<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
+			<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
 
-		<p>
-			<b><%= relation.item.founders.first.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
-			<b><%= relation.item.founders.first.user.email %></b>
-		</p>
-		<% else %>
-		<p>
-			Unfortunately <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
-		</p>
+			<p>
+				<b><%= relation.item.founders.first.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
+				<b><%= relation.item.founders.first.user.email %></b>
+			</p>
+			<% else %>
+			<p>
+				Unfortunately <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
+			</p>
+			<% end %>
+
 		<% end %>
 
 		<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
