@@ -1,5 +1,7 @@
 FRONT END
 
+Font Types -
+
 Pagina de inicio - Inline form for login ---- ok!
 								 - Background Image ---- ok!
 								 - OWMI logo and basic info ---- falta!
@@ -17,7 +19,7 @@ Body items/index - Fixed image background ---- ok!
 
 
 
-
+// pagias de error
 // sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
 // Improve SHOW item page a lot!!!! A lot of unused info                   - FALTAAAA!
 // No puedo reportar ser el OWNER de un item que me encontre yo..          - FALTAAAA!

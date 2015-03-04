@@ -12,15 +12,14 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-family: 'Muli', sans-serif;
 	font-size: 150%;
 }
 
 .panel-title{
-	text-align: center;
 	text-decoration: none;
-	color: #599482;
-	font-size: 160%;
+	font-size: 110%;
+	color: white;
 }
 
 .panel-title a:hover{
@@ -49,12 +48,23 @@ body {
 }
 
 .search-btn{
-	margin: 5px 0 30px 0;
+	margin: 5px 0 0 0;
 }
 
 .main-panel{
-	margin: 100px 0 0 0;
+	margin: 40px 0 0 0;
 }
 
+.search-form{
+	margin: 30px 0 0 0;
+}
 
+.panel-default > .panel-heading{
+	border-top-right-radius: 25px;
+	background: url('/system/images/ac_heading_bg.gif') repeat;
+}
+
+.bold-font{
+	font-weight:400;
+}
 

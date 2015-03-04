@@ -1,11 +1,19 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
 
-		<div class="">
-			<%= render :partial => '/items/search_form' %>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<img src="/system/images/logo.png" alt="Owmi Logo" class="img-responsive">	
+			</div>	
 		</div>
 
-		<div>
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+				<%= render :partial => '/items/search_form' %>
+			</div>	
+		</div>
+
+		<div class="row">
 			<%= render :partial => '/site/flash_messages' %>
 		</div>
 
@@ -14,7 +22,8 @@
 	    <div class="panel-heading" role="tab" id="headingOne">
 	      <h4 class="panel-title">
 	        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-	          Report Lost Item
+	          <span class="glyphicon glyphicon-search pull-right" aria-hidden="true"></span>
+	          REPORT <span class="bold-font">LOST OBJECT</span> 
 	        </a>
 	      </h4>
 	    </div>
