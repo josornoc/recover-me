@@ -1,23 +1,47 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-  	<!-- Brand and toggle get grouped for better mobile display -->
+
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      
-      <% if session[:logged_in_user] %>
-
-      <div class="logged-in-container pull-right">
-        <%= current_user.name %> - 
-        <%= link_to "Log out", logout_path, method: :delete %>
-        <%= image_tag("/system/images/login.png", size: "60x40", alt: "Edit Entry") %>
-      </div>
-
-      <% else %>
-      <%= render :partial => '/login/login' %>
-      <% end %>
-
-      <!-- -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-user"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <%= image_tag("/system/images/logo_sm.png", class: "top-left-brand", alt: "Owmi Logo") %>
+      </a>
     </div>
-    <!-- -->
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <% if session[:logged_in_user] %>
+        <div class="logged-in-container">
+          <%= current_user.name %> - 
+          <%= link_to "Log out", logout_path, method: :delete %>
+          <%= image_tag("/system/images/login.png", class: "image-login", alt: "Edit Entry") %>
+        </div>
+      <% else %>        
+        <%= form_tag login_path, class: "navbar-form navbar-right" do %>
+          <div class="form-group">
+            <%= label :email, "Email" %>
+            <%= text_field_tag "email", nil, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= label :password, "Password" %>
+            <%= password_field_tag "password", nil, class: "form-control" %>
+          </div>
+          <%= submit_tag "Log In", class: "btn btn-default" %>
+          <% unless flash["warning_message"].nil? %>
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong><%= flash["warning_message"] %></strong>
+          </div>
+          <% end %>
+        <% end %>
+      <% end %> 
+    </div>
   </div>
 </nav>
-

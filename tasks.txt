@@ -1,16 +1,22 @@
 FRONT END
 
-Font Types -
+
+landing - OWMI logo and basic info ---- falta!
+
+
+
+Font Types - ok!
 
 Pagina de inicio - Inline form for login ---- ok!
 								 - Background Image ---- ok!
-								 - OWMI logo and basic info ---- falta!
+								 
 
-Login Ingo - When logged in ---- ok!
+Login logo - When logged in ---- ok!
+					 - Moved when resized big -- missing!
 
 Body items/index - Fixed image background ---- ok!
 								 - Accordion White background with opacity ---- ok!
-								 - Search position ---- falta!
+								 - Search position ---- ok!
 
 
 
