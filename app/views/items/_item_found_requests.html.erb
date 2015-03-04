@@ -30,7 +30,11 @@
 	  	<% end %>
 
 		<% else %>
-			<p>You've already marked this answer as: <%= answer.is_validated %></p>
+			<% if answer.is_validated == true %>
+				<p>You've already APPROVED this answer.</p>
+			<% else %>
+				<p>You've already DISAPPROVED this answer.</p>
+			<% end %>
 		<% end %>
 		<hr>
 	<% end %>
@@ -104,25 +108,8 @@
           <hr>
         <% end %>
 
-					<% if relation.item.owners.first.user.answers.any? %>
-	        	<%
-							if Answer.validate_all_by_userid_and_relationid(
-								 relation.item.owners.first.user.id,
-								 relation.item.owners.first.user.answers.first.relation_id)
-						%>
+	        	
 
-						<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
-
-						<p>
-							<b><%= founder.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
-							<b><%= founder.user.email %></b>
-						</p>
-						<% else %>
-						<p>
-							Unfortunately <b><%= founder.user.name %></b> (email: <b><%= founder.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
-						</p>
-						<% end %>
-					<% end %>
 
       <% else %>
       <p>There are NO questions for you</p>
