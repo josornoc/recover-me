@@ -36,15 +36,14 @@ class ItemsController < ApplicationController
 
 		@item = Item.new item_params
 		@item.relations.first.user_id = current_user.id
-		# type_param_relation = params["item"]["relations_attributes"]["0"]["type"]
-		# @item.relations.new(user_id:current_user.id, type:type_param_relation,has_validated_questions:false)
+
 		if @item.save
 			flash["success_message"] = "Report created succesfully."
 			redirect_to items_path
 		else
 			flash[:danger_message] = @item.errors.full_messages
+			redirect_to items_path
 		end
-
 	end
 
 	def show

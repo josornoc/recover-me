@@ -106,8 +106,42 @@ body {
 }
 
 .quote-product-desc{
-	margin: 40px 0 0 0;		
-	font-size: 250%;
+	margin: 40px 20px 0 20px;		
+	font-size: 200%;
+}
+
+.footer-page-fixed{
+	height: 40px;
+	width: 100%;
+	bottom: 0px;
+	position: fixed;
+	margin: 30px 0 0 0;
+	background: url('/system/images/ac_heading_bg.gif') repeat;
+	color: white;
+	text-align: center;
+}
+
+.footer-page-fixed p{
+	margin: 10px 0 0 0;
+}
+
+.big-image-logo{
+	text-align: center;
+}
+
+.eg-search-box{
+	color: #CCCCCC;
+}
+
+.btn-success{
+  background-color: rgb(92, 212, 228);
+  border-color: rgba(92, 212, 228, 0.5);
+}
+
+.btn-success:hover{
+	background-color: rgb(92, 212, 228);
+  border-color: rgba(52, 123, 132, 1);
+  color: rgba(52, 123, 132, 1);
 }
 
 @media (max-width: 600px) {

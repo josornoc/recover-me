@@ -2,8 +2,10 @@
 	<div class="col-md-8 col-md-offset-2">
 
 		<div class="row">
-			<div class="col-xs-8 col-xs-offset-2">
-				<img src="/system/images/logo.png" alt="Owmi Logo" class="img-responsive">	
+			<div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+				<div class="big-image-logo">
+					<img src="/system/images/logo.png" alt="Owmi Logo" class="img-responsive">	
+				</div>
 			</div>	
 		</div>
 
@@ -12,20 +14,14 @@
 				<%= render :partial => '/items/search_form' %>
 			</div>	
 		</div>
-
-		<div class="row">
-			<div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-				<%= render :partial => '/site/flash_messages' %>
-			</div>
-		</div>
-
+		
 		<div class="panel-group main-panel" id="accordion" role="tablist" aria-multiselectable="true">
 	  <div class="panel panel-default">
 	    <div class="panel-heading" role="tab" id="headingOne">
 	      <h4 class="panel-title">
 	        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 	          <span class="glyphicon glyphicon-list-alt pull-right" aria-hidden="true"></span>
-	          REPORT LOST OBJECT
+	          Report <b>Lost Object</b>
 	        </a>
 	      </h4>
 	    </div>
@@ -42,7 +38,7 @@
 	      <h4 class="panel-title">
 	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 	        	<span class="glyphicon glyphicon-lock pull-right" aria-hidden="true"></span>
-	          Report Found Item
+	          Report <b>Found Item</b>
 	        </a>
 	      </h4>
 	    </div>
@@ -59,7 +55,7 @@
 	      <h4 class="panel-title">
 	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 	        	<span class="glyphicon glyphicon-comment pull-right" aria-hidden="true"></span>
-						Ownership Validations
+						<b>Ownership</b> Validations
 	        </a>
 	      </h4>
 	    </div>
@@ -75,7 +71,7 @@
 	      <h4 class="panel-title">
 	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 	        	<span class="glyphicon glyphicon-globe pull-right" aria-hidden="true"></span>
-						All Lost Items
+						All <b>Lost Items</b>
 	        </a>
 	      </h4>
 	    </div>
@@ -92,7 +88,7 @@
 	      <h4 class="panel-title">
 	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFifth" aria-expanded="false" aria-controls="collapseFifth">
 	        	<span class="glyphicon glyphicon-question-sign pull-right" aria-hidden="true"></span>
-						My Lost Objects Reported
+						My Lost <b>Objects Reported</b>
 	        </a>
 	      </h4>
 	    </div>
@@ -108,7 +104,7 @@
 	      <h4 class="panel-title">
 	        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSixth" aria-expanded="false" aria-controls="collapseSixth">
 	        	<span class="glyphicon glyphicon-info-sign pull-right" aria-hidden="true"></span>
-						My Found Objects Reported
+						My Found <b>Objects Reported</b>
 	        </a>
 	      </h4>
 	    </div>
