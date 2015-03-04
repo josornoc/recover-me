@@ -1,7 +1,9 @@
 FRONT END
 
 
-landing - OWMI logo and basic info ---- falta!
+landing - OWMI logo and basic info ---- FALTA!
+landing - Button Fixed    				 ---- FALTA!
+landing - Item lists							 ---- FALTA!
 
 
 
@@ -25,7 +27,7 @@ Body items/index - Fixed image background ---- ok!
 
 
 
-// pagias de error
+// paginas de error
 // sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
 // Improve SHOW item page a lot!!!! A lot of unused info                   - FALTAAAA!
 // No puedo reportar ser el OWNER de un item que me encontre yo..          - FALTAAAA!
