@@ -26,15 +26,16 @@
 // Lost Item complete cicle should work ok 																- ok!
 // poner fecha (hoy) por defecto en formularios found/lost                - Ok!
 // Cuando un item es encontrado y validado desaparece de items perdidos    - ok!
+// Check all dates - reporting date should be the one the USER enters      - ok!
 
 
-
-// Check all dates - reporting date should be the one the USER enters      - FALTAAAA!
 // sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
 // Improve SHOW item page a lot!!!! A lot of unused info                   - FALTAAAA!
-// Puedo encontrar un item MIO perdido? Puedo perder un item encontrado?   - FALTAAAA!
+// No puedo reportar ser el OWNER de un item que me encontre yo..          - FALTAAAA!
+// revisar textos de la lista de objetos (imagen por defecto)              - FALTAAAA!
 // Informar usuario de mensajes nuevos                                     - FALTAAAA!
-
+// revisar el metodo para devolver items perdidos TOTAL                    - FALTAAAA!
+// Puedo encontrar un item MIO perdido? Puedo perder un item encontrado?   - FALTAAAA!
 
 
 

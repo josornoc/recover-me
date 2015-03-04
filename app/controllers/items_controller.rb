@@ -83,13 +83,17 @@ class ItemsController < ApplicationController
 		relations = []
 		item_results = []
 		all_items.each do |item|
-			item.relations.each do |relation|
-				relations << relation.ownership_validated?
-			end
-			if relations.include? false
-				item_results << item
+			if item.relations.length > 1
+				item.relations.each do |relation|
+					relations << relation.ownership_validated?
+				end
+				if relations.include? false
+					item_results << item
+				else
+					p 'already validated relation....'
+				end
 			else
-				p 'already validated relation....'
+				item_results << item
 			end
 		end
 		item_results

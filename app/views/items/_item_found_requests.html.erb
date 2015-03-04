@@ -35,6 +35,20 @@
 		<hr>
 	<% end %>
 
+	<% if relation.item.questions.length < 3 %>
+
+		<p>
+	  	Ask at the most three (3) precise things for <b><%= relation.item.owners.first.user.name %></b> to validate the ownership of the object.
+	  </p>
+
+	  <%= link_to "Create questions", item_relation_path(relation.item.id, Relation.get_by_userid_and_itemid(relation.item.owners.first.user.id, relation.item.id)[0])
+	  %>
+
+	<% else %>
+		<p><b>Questions already created for ownership validation.  Limit reached (3/3)</b></p>
+		
+
+	<% end %>
 
 <% else %>
 
@@ -90,22 +104,24 @@
           <hr>
         <% end %>
 
-        	<%
-						if Answer.validate_all_by_userid_and_relationid(
-							 relation.item.owners.first.user.id,
-							 relation.item.owners.first.user.answers.first.relation_id)
-					%>
+					<% if relation.item.owners.first.user.answers.any? %>
+	        	<%
+							if Answer.validate_all_by_userid_and_relationid(
+								 relation.item.owners.first.user.id,
+								 relation.item.owners.first.user.answers.first.relation_id)
+						%>
 
-					<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
+						<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
 
-					<p>
-						<b><%= founder.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
-						<b><%= founder.user.email %></b>
-					</p>
-					<% else %>
-					<p>
-						Unfortunately <b><%= founder.user.name %></b> (email: <b><%= founder.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
-					</p>
+						<p>
+							<b><%= founder.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
+							<b><%= founder.user.email %></b>
+						</p>
+						<% else %>
+						<p>
+							Unfortunately <b><%= founder.user.name %></b> (email: <b><%= founder.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
+						</p>
+						<% end %>
 					<% end %>
 
       <% else %>
