@@ -130,3 +130,62 @@
     <% end %>
   <% end %>
 <% end %>
+
+
+shit!!!
+
+  <% if relation.item.questions.length == 3 %>  
+    
+    <%
+    if Answer.validate_all_by_userid_and_relationid(
+       relation.item.owners.first.user.id,
+       relation.item.owners.first.user.answers.first.relation_id)
+      %>
+
+    <%#= submit_tag "Claim Item!", class: "btn btn-default" %>
+
+    <p>
+      <b> You have validated all <%= relation.item.owners.first.user.name %> answers. It appears that you encountered <%= relation.item.name %>!</b> owner.<br><br><b>Contact:</b><%= relation.item.owners.first.user.email %>
+    </p>
+    <% else %>
+    <p>
+      You have invalidated answers by <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>) It appears that <b><%= relation.item.name %></b> does not yet have a correct owner.
+    </p>
+    <% end %> 
+
+  <% else %>
+    <p>
+      There are still pending questions for <%= relation.item.founders.first.user.name %> to formulate.
+    </p>
+  <% end %>
+
+
+
+
+  more shit
+
+  <% if relation.item.questions.length == 3 %>
+      
+      <%
+      if Answer.validate_all_by_userid_and_relationid(
+         relation.item.owners.first.user.id,
+         relation.item.owners.first.user.answers.first.relation_id)
+        %>
+
+      <%#= submit_tag "Claim Item!", class: "btn btn-default" %>
+
+      <p>
+        <b><%= relation.item.founders.first.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
+        <b><%= relation.item.founders.first.user.email %></b>
+      </p>
+      <% else %>
+      <p>
+        Unfortunately <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
+      </p>
+      <% end %> 
+
+    <% else %>
+      <p>
+        There are still pending questions for <%= relation.item.founders.first.user.name %> to formulate.
+      </p>
+    <% end %>

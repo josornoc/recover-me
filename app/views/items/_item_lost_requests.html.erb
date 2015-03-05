@@ -8,9 +8,49 @@
   <hr>
   <p>Apparently its been found by:</p>
   <p><b><%= relation.item.founders.first.user.name %></b></p>
-  
+  <hr>
   <% if relation.item.questions.any? %>
-  <h3>There are questions for you to validate your ownership...</h3>
+
+		<% if relation.item.questions.length < 3 %>
+
+				<p>
+			  	You must answer three (3) precise and wait until they've been validated to claim your object.
+			  </p>
+
+			<% else %>
+
+				<% if relation.item.owners.first.user.answers.length == 3 %>
+
+				<% if Answer.validate_all_by_userid_and_relationid(
+					 relation.item.owners.first.user.id,
+					 relation.item.owners.first.user.answers.first.relation_id) == true
+					%>
+
+				<div class="alert alert-success" role="alert">
+			    <p>
+		        <b><%= relation.item.founders.first.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
+		        <b><%= relation.item.founders.first.user.email %></b>
+		      </p>
+			  </div>
+
+		    <% elsif Answer.validate_all_by_userid_and_relationid(
+					 relation.item.owners.first.user.id,
+					 relation.item.owners.first.user.answers.first.relation_id) == false
+					%>
+
+				<div class="alert alert-warning" role="alert">
+					<p>
+		        Unfortunately <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
+		      </p>
+			  </div>
+	   
+	    	<% end %> 	
+	    <% end %> 
+		<% end %>
+
+
+
+	<hr>
     <% relation.item.questions.each_with_index do |question, i| %>
       <div>
 
@@ -19,15 +59,15 @@
 
         <% if question.already_answerd?(current_user.id) %>
 
-        <p>You already have answered "
+        <p>You have answered "
         <b><%= question.get_answer_by_user_id(current_user.id) %>"</b> 
         for that question.</p>
 
 
 	        <% if question.is_answer_validated?(current_user.id) == true %>
-	        <p><b><%= relation.item.founders.first.user.name %> already APPROVED your answer.</b></p> 
+	        <p><b><%= relation.item.founders.first.user.name %> APPROVED your answer.</b></p> 
 	        <% elsif question.is_answer_validated?(current_user.id) == false %>
-	        <p><b><%= relation.item.founders.first.user.name %> already DISAPPROVED your answer.</b></p> 
+	        <p><b><%= relation.item.founders.first.user.name %> DISAPPROVED your answer.</b></p> 
 	        <% elsif question.is_answer_validated?(current_user.id) == nil %>
 					<p><b><%= relation.item.founders.first.user.name %></b> has not yet validated your answer.</p> 
 	        <% end %>
@@ -45,31 +85,7 @@
       <hr>
     <% end %>
 
-    <% if relation.item.questions.length == 3 %>
-			
-			<%
-			if Answer.validate_all_by_userid_and_relationid(
-				 relation.item.owners.first.user.id,
-				 relation.item.owners.first.user.answers.first.relation_id)
-				%>
-
-			<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
-
-			<p>
-				<b><%= relation.item.founders.first.user.name %></b> validated all your answers. It appears that you recovered <b><%= relation.item.name %>!</b><br><br>To colect your belongings contact: 
-				<b><%= relation.item.founders.first.user.email %></b>
-			</p>
-			<% else %>
-			<p>
-				Unfortunately <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>) has not validated all your answers. It appears that <b><%= relation.item.name %></b> does not belong to you.   
-			</p>
-			<% end %>	
-
-    <% else %>
-    	<p>
-    		There are still pending questions for <%= relation.item.founders.first.user.name %> to formulate.
-			</p>
-    <% end %>
+    
     
 
   <% else %>
@@ -84,15 +100,43 @@
     You've found <b><%= relation.item.name %></b> on
     <%= relation.item.founders.first.created_at.strftime("%m/%d/%Y at %I:%M%p") %>
   </p>
+
   <% if relation.item.questions.length < 3 %>
 		<p>
-	  	Ask at the most three (3) precise things for <b><%= relation.item.owners.first.user.name %></b> to validate the ownership of the object.
+	  	Ask three (3) precise things for <b><%= relation.item.owners.first.user.name %></b> to validate the ownership of the object.
 	  </p>
   <%= link_to "Create questions", item_relation_path(relation.item.id,
 		Relation.get_by_userid_and_itemid(relation.item.owners.first.user.id, relation.item.id)[0])
   %>
 	<% else %>
-		<p><b>Questions already created for ownership validation.  Limit reached (3/3)</b></p>
+
+		<p><b>Questions created for ownership validation.  Limit reached (3/3)</b></p>
+
+		<% if relation.item.owners.first.user.answers.length == 3 %>
+
+			<% if Answer.validate_all_by_userid_and_relationid(
+					 relation.item.owners.first.user.id,
+					 relation.item.owners.first.user.answers.first.relation_id) == true
+					%>
+
+			<div class="alert alert-success" role="alert">
+		    <p>
+		      <b> You have validated all <%= relation.item.owners.first.user.name %> answers. It appears that you encountered <%= relation.item.name %>!</b> owner.<br><br><b>Contact:<br><%= relation.item.owners.first.user.email %></b>
+		    </p>
+		  </div>
+
+			<% elsif Answer.validate_all_by_userid_and_relationid(
+					 relation.item.owners.first.user.id,
+					 relation.item.owners.first.user.answers.first.relation_id) == false
+					%>
+
+			<div class="alert alert-warning" role="alert">
+		     <p>You have invalidated answers by <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>)<br><br>It appears that <b><%= relation.item.name %></b> does not yet have a correct owner.
+	    </p>
+		  </div>
+   
+    	<% end %> 
+		<% end %>
 	<% end %>
 
 	<hr>	
@@ -119,47 +163,18 @@
 	  	<% end %>
 
 		<% else %>
+
 			<% if answer.is_validated %>
-				<p>You've already <b>APPROVED</b> this answer.</p>
+				<p>You've <b>APPROVED</b> this answer.</p>
 			<% else %>		
-				<p>You've already checked this answer as <b>WRONG</b>.</p>
+				<p>You've checked this answer as <b>WRONG</b>.</p>
 			<% end %>		
+
 		<% end %>
 		<hr>
-
-
-
-
-		<% if relation.item.questions.length == 3 %>
-			
-			<%
-			if Answer.validate_all_by_userid_and_relationid(
-				 relation.item.owners.first.user.id,
-				 relation.item.owners.first.user.answers.first.relation_id)
-				%>
-
-			<%#= submit_tag "Claim Item!", class: "btn btn-default" %>
-
-			<p>
-				<b> You have validated all <%= relation.item.owners.first.user.name %> answers. It appears that you encountered <%= relation.item.name %>!</b> owner.<br><br><b>Contact:</b><%= relation.item.owners.first.user.email %>
-			</p>
-			<% else %>
-			<p>
-				You have invalidated answers by <b><%= relation.item.founders.first.user.name %></b> (email: <b><%= relation.item.founders.first.user.email %></b>) It appears that <b><%= relation.item.name %></b> does not yet have a correct owner.
-			</p>
-			<% end %>	
-
-    <% else %>
-    	<p>
-    		There are still pending questions for <%= relation.item.founders.first.user.name %> to formulate.
-			</p>
-    <% end %>
-
-
-
-
-
 	<% end %>
+
+
 <% end %>
 
 
