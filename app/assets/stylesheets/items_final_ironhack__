@@ -7,16 +7,15 @@
 }
 
 body {
+	background: url('https://dl.dropboxusercontent.com/u/10924302/recover-me/owmi_bg.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 	font-family: 'Muli', sans-serif;
 	font-size: 150%;
 	font-weight:300;
 	padding-bottom:100px;
-}
-
-.search-index-container{
-	height: 387px;
-	width: 100%;
-	background: url('http://www.owmi.co/images/logo.png') no-repeat 50% 0px;;
 }
 
 .panel-title{
@@ -91,6 +90,10 @@ body {
 	width: 64px;
 }
 
+.navbar-form{
+	border: none;
+}
+
 .flash-msgs-container{
 	margin: 10px 0 0 0;
 }
@@ -108,57 +111,15 @@ body {
 	font-size: 200%;
 }
 
-.navbar-form{
-	border: none;
-}
-
-.navbar-default{
-	background-color: #676767;
-	border-top: 1px solid #67cbdf;
-	height: 60px;
-}
-
-.navbar-brand{
-	padding: 7px 7px 7px 10px;
-}
-
-.navbar-social img{
-	margin:0px 0px 0px 0px;
-}
-
-.navbar{
-	margin: 0 0 0 0;
-	border-radius: 0px;
-}
-
-.navbar-login-container{
-	display:inline-block;
-}
-
-.navbar-login-container img{
-	margin: 0 0 0 0;
-	display:inline-block;
-}
-
-.navbar-login-container p{
-	margin: 17px 5px 0 0;
-	color: white;
-	display:inline-block;
-}
-
 .footer-page-fixed{
-	height: 80px;
+	height: 40px;
 	width: 100%;
 	bottom: 0px;
 	position: fixed;
 	margin: 30px 0 0 0;
+	background: url('https://dl.dropboxusercontent.com/u/10924302/recover-me/ac_heading_bg.gif') repeat;
 	color: white;
 	text-align: center;
-	background-color:#67cbdf;
-}
-
-.footer-page-fixed a{
-	color: white;
 }
 
 .footer-page-fixed p{
