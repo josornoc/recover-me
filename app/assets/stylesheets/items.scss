@@ -157,11 +157,15 @@ body {
 	margin: 150px 0 0 0;
 }
 
-#accordion{
-	z-index: 10;
+.search-main-title{
+	margin: 100px 0 0 0;
 }
 
 @media (max-width: 600px) {
+
+	.search-main-title{
+		margin: 10px 0 0 0;
+	}
 
   .landing-logo{
 		margin: 10px 0 0 0;
