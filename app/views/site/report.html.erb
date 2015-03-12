@@ -1,0 +1,60 @@
+  <div class="col-xs-10 col-xs-offset-1 ">
+  <h2>Report Lost Object</h2>
+  <%= render :partial => '/items/report_lost' %>
+
+
+
+  <div class="panel-group main-panel" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <span class="glyphicon glyphicon-list-alt pull-right" aria-hidden="true"></span>
+            1) BASIC INFORMATION *
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <p>--- BASIC INFO (MANDATORY) ---</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <span class="glyphicon glyphicon-lock pull-right" aria-hidden="true"></span>
+            2) ADDITIONAL INFORMATION
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          <p>--- ADDITIONAL INFO ---</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <span class="glyphicon glyphicon-comment pull-right" aria-hidden="true"></span>
+            3) QUESTION FOR OWNERS OF THE OBJECT
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
+          <p>--- OPTIONAL - YOU CAN ADD THEM LATER) ---</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
