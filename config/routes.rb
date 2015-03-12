@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   get '/register' => 'registration#new'
   post '/register' => 'registration#create'
   get '/search' => 'site#search'
+  get '/report' => 'site#report'
 
   resources :items do
-    get '/report' => 'items#report'
   	post '/relations' => 'relations#create'
     post '/questions' => 'questions#create'
   	get '/relations/:id' => 'relations#authenticate', as: "relation"
