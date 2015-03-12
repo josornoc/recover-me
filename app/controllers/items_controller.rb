@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-	skip_before_action :require_login, except: [:index]
+	before_action :require_login
 
 	def index
 		# all relations for current user
