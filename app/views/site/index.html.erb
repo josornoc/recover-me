@@ -22,7 +22,16 @@
 	</div>
 	<div class="col-md-6">
 		<div class="landing-resgistration-container">
-			<%= render :partial => '/registration/registration' %>
+
+			<%=
+				render partial: ( logged_in? ?
+													'/site/logged_index' :
+													'/registration/registration' ) #, for sending local vars
+													#locals: { relation: relation }
+			%>
+
+			<%# = render :partial => '/registration/registration' %>
+
 		</div>
 	</div>
 </div>

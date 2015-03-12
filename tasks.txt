@@ -1,3 +1,16 @@
+//HOME PAGE
+
+- If user is logged in show buttons to things to report and that...
+- If user is not logged in show registration form...
+
+- Check stupid things as I cannot find my own reportes lost items.
+- check item CRUD by user (Create, read, update, delete).
+
+
+
+
+
+
 FRONT END
 
 
@@ -5,7 +18,7 @@ FRONT END
 
 
 
-// footer is over the page	
+// footer is over the page
 // paginas de error
 // sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!
 // Improve SHOW item page a lot!!!! A lot of unused info                   - FALTAAAA!
@@ -37,7 +50,7 @@ Font Types - ok!
 
 Pagina de inicio - Inline form for login ---- ok!
 								 - Background Image ---- ok!
-								 
+
 
 Login logo - When logged in ---- ok!
 					 - Moved when resized big -- ok!
@@ -69,7 +82,7 @@ Body items/index - Fixed image background ---- ok!
 // Show in items/index: List of MY items LOST -- ok!
 // Show in items/index: Lost of MY items FOUND -- ok!
 // I should be able to erase my reports quickly (lost or found)(confirm) --- ok!
-// kill relations for erased item --- ok! 
+// kill relations for erased item --- ok!
 // Cuando item es reportado encontrado y el usuario lo ve y aplica para reclamar el objecto-ok!
 // Item SCRUD by reporter (show, create, update, delete) --- ok!
 // Finalizar cadena cuando preguntas están validadas (contactar usuario) -- ok!
