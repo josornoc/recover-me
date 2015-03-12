@@ -8,11 +8,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_relation
 
   def current_user
-		if(session[:logged_in_user])
-			@user = User.where(id: session[:logged_in_user])[0]
-		else
-      flash[:warning] = "You're not logged in yet."
+		if logged_in?
+			return User.find(session[:logged_in_user])
 		end
+    flash[:warning] = "You're not logged in yet."
   end
 
   def current_relation
@@ -23,17 +22,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
-
-  def logged_in?
-    return false if session[:logged_in_user].nil?
-    true
-  end
-
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to access this section"
       redirect_to root_path # halts request cycle
     end
+  end
+
+  private
+  def logged_in?
+    return false if session[:logged_in_user].nil?
+    true
   end
 end

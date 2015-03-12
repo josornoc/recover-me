@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+	skip_before_action :require_login, except: [:index]
+
 	def index
 		# all relations for current user
 		@my_relations = Relation.get_by_user_id(session[:logged_in_user])
