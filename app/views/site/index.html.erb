@@ -1,23 +1,27 @@
-<div class="search-index-container">
-  <div class="logo"></div>
-  <div class="search"></div>
-  <div class="search-btn"></div>
-  <div class="search-tip"></div>
-  <div class="menu-search"></div>
-</div>
+<div class="col-md-12">
+	<div class="col-md-6">
+		<div class="">
+			<%=
+				render partial: ( logged_in? ?
+													'/items/search_form' :
+													'/site/owmi_welcome' ) #, for sending local vars
+													#locals: { relation: relation }
+			%>
+		</div>
 
-<div class="testimonios-container">
-  <div class="testimonio-header">TESTIMONIOS</div>
-  <div class="testimonio-header-bar">
-    <span class="color"></span>
-  </div>
-  <div class="testimonio-body">
-    <div class="testimonio-img">
-      <img src="http://www.owmi.co/images/testimonial-img.jpg" alt="Testimonial profile img">
-    </div>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
-    <div class="testimonio-author">
-      <p>---- Pablo Guzmán</p>
-    </div>
-  </div>
+
+
+	</div>
+	<div class="col-md-6">
+		<div class="landing-resgistration-container">
+
+			<%=
+				render partial: ( logged_in? ?
+													'/site/logged_index' :
+													'/registration/registration' ) #, for sending local vars
+													#locals: { relation: relation }
+			%>
+
+		</div>
+	</div>
 </div>

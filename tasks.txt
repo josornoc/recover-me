@@ -1,31 +1,15 @@
-DISEÑO FRONT END FINAL OWMI
+//HOME PAGE
 
-> PAGINA DE INICIO
+- If user is logged in show buttons to things to report and that...
+- If user is not logged in show registration form...
+
+- Check stupid things as I cannot find my own reportes lost items.
+- check item CRUD by user (Create, read, update, delete).
+
+
 
 
 > FUENTE: font-family: 'NexaLight-Regular', Helvetica, sans-serif;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-FRONT END
-
-
-
-
-
-
 // footer is over the page
 // paginas de error
 // sacar respuesta de preguntas porque no llego a implementar chequeo auto - FALTAAAA!

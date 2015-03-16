@@ -7,7 +7,8 @@ class SiteController < ApplicationController
 	def search
 		@items = Item.search(params[:search])
 	end
-end
 
-#<%= link_to "Log out", logout_path, method: :delete, class: "navbar-text" %>
-#<p class="navbar-text">Signed in as <%= @user.name %></p>
+  def report
+    @item = Item.new
+  end
+end

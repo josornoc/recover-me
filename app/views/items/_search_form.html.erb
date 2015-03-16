@@ -1,10 +1,23 @@
-<%= form_tag search_path, :method => 'get' do %>
-  <%= 
-  	text_field_tag :search, params[:search], 
-  	placeholder: "Lost something? Search it here...", class: "form-control search-form" 
-  %>
-  <%= submit_tag "Search", :name => nil, class: "btn btn-success btn-lg pull-right search-btn" %>
-  <div>
-  	<p class="eg-search-box">e.g. Passport John Doe</p>
+<div class="search-main-title">
+
+  <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+    <div class="big-image-logo">
+      <img src="https://dl.dropboxusercontent.com/u/10924302/recover-me/logo.png" alt="Owmi Logo" class="img-responsive">
+    </div>
   </div>
-<% end %>
+
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
+
+    <%= form_tag search_path, :method => 'get' do %>
+      <%=
+        text_field_tag :search, params[:search],
+        placeholder: "Lost something? Search it here...", class: "form-control search-form"
+      %>
+      <%= submit_tag "Search", :name => nil, class: "btn btn-success btn-lg pull-right search-btn" %>
+      <div>
+        <p class="eg-search-box">e.g. Passport John Doe</p>
+      </div>
+    <% end %>
+
+  </div>
+</div>
