@@ -8,8 +8,12 @@
 
 body {
 	font-family: 'Muli', sans-serif;
-	font-size: 150%;
-	font-weight:300;
+	background: url('https://dl.dropboxusercontent.com/u/10924302/recover-me/owmi_bg.png') no-repeat center center fixed;
+  webkit-background-size: cover;
+  moz-background-size: cover;
+  o-background-size: cover;
+	text-indent: -9999px;
+	background-size: cover;
 }
 
 .search-index-container{
