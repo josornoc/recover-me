@@ -1,5 +1,7 @@
 //HOME PAGE
 
+- Configure git for seeing story of updates
+
 - If user is logged in show buttons to things to report and that...
 - If user is not logged in show registration form...
 
