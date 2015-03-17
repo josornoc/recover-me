@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
 	before_action :require_login
 	helper_method :is_current_user_owner?
+	helper_method :is_current_user_founder?
 
 	def index
 		# all relations for current user
@@ -90,6 +91,13 @@ class ItemsController < ApplicationController
 
 	def is_current_user_owner?
 		return true if @item.owners.first.user.id == @user.id
+		false
+	end
+
+	def is_current_user_founder?
+		@item.founders.each do |founder|
+			return true if @user.id == founder.user.id
+		end
 		false
 	end
 

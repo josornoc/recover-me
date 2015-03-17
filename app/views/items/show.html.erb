@@ -11,14 +11,19 @@
 
 				<h3>Additional Information</h3>
 				<p>Enter any more information about the object you reported lost to help possible founders to validate your ownership, this information is optional for you to enter; anyhow while more information given more possibilities you have to recover your lost object.</p>
+
 				<%= render :partial => '/items/report_lost_additional' %>
 
 			<% else %>
 
-				<%= form_tag item_relations_path(@item, @relation) do %>
-				<%= hidden_field_tag :user_id, current_user.id %>
-				<%= submit_tag "I have found this item", class: "btn btn-default" %>
-				
+				<% if is_current_user_founder? %>
+					<p>You already have a report as founder of this item.</p>
+				<% else %>
+					<%= form_tag item_relations_path(@item, @relation) do %>
+					<%= hidden_field_tag :user_id, current_user.id %>
+					<%= submit_tag "I have found this item", class: "btn btn-default" %>
+					<% end %>
+				<% end %>				
 			<% end %>
 
 			<hr>
