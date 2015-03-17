@@ -1,32 +1,21 @@
-<%= form_for @item, url: items_path, :html => { :multipart => true } do |f| %>
-
-  <%= f.hidden_field(:state, value: "Lost") %>
+<%= form_for @item, url: edit_item_path do |f| %>
 
   <div class="form-group">
-    <%= f.label :name, "* Object Name" %>
-    <%= f.text_field :name, placeholder: "E.g. The One Ring", class: "form-control" %>
+    <%= f.label :reward, "Reward" %>
+    <%= f.text_field :reward, placeholder: "E.g. A really big hug", class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :contact_email, "* Contact Email" %>
-    <%= f.text_field :contact_email, value:current_user.email, class: "form-control" %>
+    <%= f.label :category, "Category" %>
+    <%= f.text_field :category, placeholder: "Please not jewelry...", class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :datetime, "* Date when I lost the object" %>
-    <%= f.date_field :datetime, value: Date.today, class: "form-control" %>
+    <%= f.label :description, "Brief description of how you found the object:" %>
+    <%= f.text_area :description, placeholder: "If any...", class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :avatar, "Image" %>
-    <%= f.file_field :avatar, class: "form-control" %>
-  </div>
-
-  <%= f.fields_for :relations do |relation_fields| %>
-    <%= relation_fields.hidden_field(:type, value:"Owner") %>
-  <% end %>
-
-  <%= f.submit "Create Report", class: "btn btn-success btn-lg pull-right" %>
+  <%= f.submit "Save", class: "btn btn-success btn-lg pull-right" %>
 
 <% end %>
 

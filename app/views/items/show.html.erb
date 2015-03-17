@@ -1,60 +1,32 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
 
-		<% if @item.is_lost? %>
-			<p>Item is reported as Lost...</p>
-		<% elsif @item.is_found? %>
-			<p>Item is reported as Found...</p>
-		<% end %>
+		<div class="item-show-container">
 
-		<h2><b><%= @item.name %></b></h2>
-		<%= image_tag @item.avatar.url(:medium), class: "img-responsive" %>
-		<p>Contact Email: <%= @item.contact_email %></p>
-		<hr>
+			<% if @item.is_lost? %>
+				<p>Item is reported as Lost...</p>
+			<% elsif @item.is_found? %>
+				<p>Item is reported as Found...</p>
+			<% end %>
 
-		<% if is_current_user_owner? %>
-			<p>current user is owner...</p>
-			<p>Show editting information...</p>
-			<p>questions --- additional</p>
-		<% else %>
-			<p>current user is NOT owner...</p>
-			<p>here is the button to declare that I possible found the item...</p>
-		<% end %>
+			<h2><b><%= @item.name %></b></h2>
+			<%= image_tag @item.avatar.url(:medium), class: "img-responsive" %>
+			<p>Contact Email: <%= @item.contact_email %></p>
+			<hr>
 
+			<% if is_current_user_owner? %>
+				<h3>Additional Information</h3>
+				<p>Enter any more information about the object you reported lost to help possible founders to validate your ownership, this information is optional for you to enter; anyhow while more information given more possibilities you have to recover your lost object.</p>
+				<%= render :partial => '/items/report_lost_additional' %>
+			<% else %>
+				<p>current user is NOT owner...</p>
+				<p>here is the button to declare that I possible found the item...</p>
+			<% end %>
 
+			<hr>
+			<%= link_to "Back to items...", items_path, class: "btn btn-default" %>
+			<hr>
 
-
-		<!-- -->
-		<% if @item.is_lost? %>
-		<% if @relation_ship_type != "founder" %>
-		<%= form_tag item_relations_path(@item, @relation) do %>
-		<%= hidden_field_tag :user_id, current_user.id %>
-	  <%= submit_tag "I have found this item", class: "btn btn-default" %>
-	  <% end %>
-		<% else %>
-		<p>I have already report as FOUNDER of this item...</p>
-		<% end %>
-	  <% end %>
-		<!-- -->
-	  <% if @item.is_found? %>
-		<% if @relation_ship_type != "owner" %>
-		<%= form_tag item_relations_path(@item, @relation) do %>
-		<%= hidden_field_tag :user_id, current_user.id %>
-	  <%= submit_tag "I am the owner of this item", class: "btn btn-default" %>
-	  <% end %>
-		<% else %>
-		<p>I have already report as OWNER of this item...</p>
-		<% end %>
-	  <% end %>
-	  <!-- -->
-	  
-
-
-		<hr>
-		<%= link_to "Back to items...", items_path %>
-		<hr>
-	
-
-
+		</div>
 	</div>
 </div>
