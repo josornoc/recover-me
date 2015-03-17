@@ -7,19 +7,15 @@
 }
 
 body {
-	font-family: 'Muli', sans-serif;
 	background: url('https://dl.dropboxusercontent.com/u/10924302/recover-me/owmi_bg.png') no-repeat center center fixed;
-  webkit-background-size: cover;
-  moz-background-size: cover;
-  o-background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
-}
-
-.search-index-container{
-	height: 387px;
-	width: 100%;
-	background: url('http://www.owmi.co/images/img-header.jpg') no-repeat 50% 0px;;
-	padding-bottom:200px;
+	font-family: 'Muli', sans-serif;
+	font-size: 150%;
+	font-weight:300;
+	padding-bottom:100px;
 }
 
 .panel-title{
@@ -59,7 +55,7 @@ body {
 }
 
 .main-panel{
-	margin: 40px 0 100px 0;
+	margin: 40px 0 0 0;
 }
 
 .search-form{
@@ -94,6 +90,10 @@ body {
 	width: 64px;
 }
 
+.navbar-form{
+	border: none;
+}
+
 .flash-msgs-container{
 	margin: 10px 0 0 0;
 }
@@ -103,7 +103,7 @@ body {
 }
 
 .landing-resgistration-container{
-	margin: 150px 0 0 0;
+	margin: 100px 0 0 0;
 }
 
 .quote-product-desc{
@@ -111,55 +111,15 @@ body {
 	font-size: 200%;
 }
 
-.navbar-form{
-	border: none;
-}
-
-.navbar-default{
-	border-top: 1px solid #67cbdf;
-}
-
-.navbar-brand{
-	padding: 7px 7px 7px 10px;
-}
-
-.navbar-social img{
-	margin:0px 0px 0px 0px;
-}
-
-.navbar{
-	margin: 0 0 0 0;
-	border-radius: 0px;
-}
-
-.navbar-login-container{
-	display:inline-block;
-}
-
-.navbar-login-container img{
-	margin: 0 0 0 0;
-	display:inline-block;
-}
-
-.navbar-login-container p{
-	margin: 17px 5px 0 0;
-	color: white;
-	display:inline-block;
-}
-
 .footer-page-fixed{
-	height: 80px;
+	height: 40px;
 	width: 100%;
 	bottom: 0px;
 	position: fixed;
 	margin: 30px 0 0 0;
+	background: url('https://dl.dropboxusercontent.com/u/10924302/recover-me/ac_heading_bg.gif') repeat;
 	color: white;
 	text-align: center;
-	background-color:#67cbdf;
-}
-
-.footer-page-fixed a{
-	color: white;
 }
 
 .footer-page-fixed p{
@@ -189,89 +149,17 @@ body {
 	border-radius: 4px;
 }
 
-.testimonios-container{
-	padding:40px 0 0 25px;
-}
-
-.testimonio-header{
-	background-color: #67cbdf;
-	color: white;
-	text-align: right;
-	height: 40px;
-	width: 80%;
-	min-width: 200px;
-	border-top-right-radius: 50px;
-	border-bottom-right-radius: 50px;
-	padding: 10px 20px 0 0;
-	font-weight: 800;
-	margin: 0 0 25px 0;
-}
-
-.testimonio-header-bar{
-	float: left;
-	width: 80%;
-	height: 3px;
-	background-color: #f3f3f3;
-	margin: 0 0 30px 20px;
-}
-
-.testimonio-header-bar span.color{
-	float: left;
-	width: 60%;
-	height: 3px;
-	background-color: #67cbdf;
-}
-
-.testimonio-body{
-	float: left;
-	width: 80%;
-	margin: 0 0 30px 20px;
-	font-size: 20px;
-}
-
-.testimonio-img img{
-	display: inline-block;
-	float: right;
-	border: 2px solid #d3d4d3;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-webkit-border-radius: 50%;
-	-ms-webkit-border-radius: 50%;
-	border-radius: 50%;
-	-khtml-border-radius: 50%;
-}
-
-.testimonio-author{
-	color:#67cbdf;
-	font-weight: 800;
-	display: block;
-	float:left;
-}
-
-.index-btns{
-	margin: 20px 0 0 0;
-}
-
-.landing-resgistration-container{
-
-}
-
-.search-main-title{
-	margin: 200px 0 0 0;
+#accordion{
+	z-index: 10;
 }
 
 @media (max-width: 600px) {
-
-	.search-main-title{
-		margin: 10px 0 0 0;
-	}
 
   .landing-logo{
 		margin: 10px 0 0 0;
 	}
 
 	.landing-resgistration-container{
-		text-align: center;
 		margin: 30px 0 0 0;
 	}
 

@@ -1,14 +1,20 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      # type of the question (unique choice, multiple choice, open, ...)
-      t.string :type
-    	# name of the question
-    	t.string :name
-    	# lost, found, resolver, etc...
-    	t.boolean :is_validated, :default => false
-    	# brief description of the product... if any
-    	t.string :string
+      t.datetime :datetime
+      t.string   :name
+      t.string   :state
+      t.text     :description
+      t.float    :latitude
+      t.float    :longitude
+      t.string   :contact_email
+      t.string   :reward
+      t.string   :category
+      t.integer  :user_id
+      t.string   :avatar_file_name
+      t.string   :avatar_content_type
+      t.integer  :avatar_file_size
+      t.datetime :avatar_updated_at
       t.timestamps null: false
     end
   end
