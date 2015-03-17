@@ -1,4 +1,5 @@
 class SiteController < ApplicationController
+	
 	def index
 		@current_user = current_user
 		@user = User.new
@@ -9,6 +10,8 @@ class SiteController < ApplicationController
 	end
 
   def report
-    @item = Item.new
+		@item = Item.new
+		@relation = @item.relations.new
   end
+
 end

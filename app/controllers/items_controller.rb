@@ -10,12 +10,14 @@ class ItemsController < ApplicationController
 		# all item requests by other users over my items
 		@item_requests = get_item_requests(my_item_ids)
 		#got to check new messages - pending validations - pending questions - etc!
-		@other_relations = Relation.where("user_id != ? s", current_user.id)
+		@other_relations = Relation.where("user_id != ?", current_user.id)
 		#@lost_items = Item.all
 		@lost_items = get_current_lost_items
+
 		#for creating new reports
 		@item = Item.new
 		@relation = @item.relations.new
+
 		#user lost & found
 		@user_lost_items = Item.get_lost_items_by_user_id(current_user.id)
 		@user_found_items = Item.get_found_items_by_user_id(current_user.id)
@@ -43,15 +45,17 @@ class ItemsController < ApplicationController
 	def create
 
 		@item = Item.new item_params
-		@item.relations.first.user_id = current_user.id
+		@item.relations.first.user_id = session[:logged_in_user]
 
 		if @item.save
 			flash["success_message"] = "Report created succesfully."
-			redirect_to items_path
+			#redirect_to items_path
+			redirect_to item_path(@item)
 		else
 			flash[:danger_message] = @item.errors.full_messages
-			redirect_to items_path
+			#redirect_to items_path
 		end
+		
 	end
 
 	def show
