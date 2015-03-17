@@ -40,11 +40,6 @@ class Item < ActiveRecord::Base
     false
   end
 
-  def is_current_user_owner?
-    return true 
-    false
-  end
-
   def self.search(search)
     if search
       Item.where("name like ?", "%#{search}%")

@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
 	before_action :require_login
-
 	helper_method :is_current_user_owner?
 
 	def index
@@ -56,15 +55,12 @@ class ItemsController < ApplicationController
 		else
 			flash[:danger_message] = @item.errors.full_messages
 			#redirect_to items_path
-		end
-		
+		end		
 	end
 
 	def show
-
 		@user = current_user
 		@item = Item.where(id: params[:id])[0]
-
 		if @item.founders.where(user_id: @user.id).empty? == false
 			@relation_ship_type = "founder"
 		elsif @item.owners.where(user_id: @user.id).empty? == false
@@ -83,6 +79,11 @@ class ItemsController < ApplicationController
 	end
 
 	private
+
+	def is_current_user_owner?
+		return true if @item.owners.first.user.id == @user.id
+		false
+	end
 
 	def get_reporting_status
 		params["reporting"]

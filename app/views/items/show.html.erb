@@ -12,7 +12,7 @@
 		<p>Contact Email: <%= @item.contact_email %></p>
 		<hr>
 
-		<% if @item.is_current_user_owner? %>
+		<% if is_current_user_owner? %>
 			<p>current user is owner...</p>
 			<p>Show editting information...</p>
 			<p>questions --- additional</p>
@@ -55,6 +55,6 @@
 		<hr>
 	
 
-	
+
 	</div>
 </div>
