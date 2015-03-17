@@ -1,6 +1,36 @@
+
+
+
 FRONT END
 
+Presentation:
 
+1) Owmi - The Database for Lost Objects - What is it?
+2) The mission - Become a search engine for lost & found items.
+3) Why? - Help people found lost items and report found ones - obviously.
+4) The problem in central transport station call-centers (Colombia) (Relieve high density communication channels).
+5) This is not only about altruism.
+6) The tools used.
+7) What I've learned > The importance thing about planning.
+										 > Columns named "type" in tables.
+8) A story about lost items.
+9) Special Thanks
+10) Thank you & Goodbye.
+
+
+
+
+
+
+
+
+
+
+
+Presentation -> Fix Planeation - Planning.
+						 -> OWMI Explain the name.
+						 -> Put Future Features after the demo.
+						 -> Center well messages in presentation.
 
 
 
