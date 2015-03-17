@@ -1,14 +1,28 @@
 <div class="col-md-12">
 	<div class="col-md-8 col-md-offset-2">
 
-		<h2>Name: <%= @item.name %></h2>
+		<% if @item.is_lost? %>
+			<p>Item is reported as Lost...</p>
+		<% elsif @item.is_found? %>
+			<p>Item is reported as Found...</p>
+		<% end %>
+
+		<h2><b><%= @item.name %></b></h2>
+		<%= image_tag @item.avatar.url(:medium), class: "img-responsive" %>
 		<p>Contact Email: <%= @item.contact_email %></p>
-		<p>State: <%= @item.state %></p>
-		<p>Description: <%= @item.description %></p>
-		<p>Reward: <%= @item.reward %></p>
-		<p>Category: <%= @item.category %></p>
-		<p>Created At: <%= @item.created_at %></p>
 		<hr>
+
+		<% if @item.is_current_user_owner? %>
+			<p>current user is owner...</p>
+			<p>Show editting information...</p>
+			<p>questions --- additional</p>
+		<% else %>
+			<p>current user is NOT owner...</p>
+			<p>here is the button to declare that I possible found the item...</p>
+		<% end %>
+
+
+
 
 		<!-- -->
 		<% if @item.is_lost? %>
@@ -34,9 +48,13 @@
 	  <% end %>
 	  <!-- -->
 	  
+
+
 		<hr>
 		<%= link_to "Back to items...", items_path %>
 		<hr>
+	
+
 	
 	</div>
 </div>

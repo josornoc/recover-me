@@ -1,8 +1,16 @@
 17 Marzo
 
-- Reporte creado > redirecto to show item
-- Modificar página show - item
+- Reporte creado > redirecto to show item - ok!
+
+
+- Item > Show // Diferenciar pagina cuando el item fue reportado por el usuario o no.
+
+
 - Seguridad - Prohibir ingreso a personas que no crearon el item, la vista cambia para el usuario que lo creo, lo puede borrar o editar info.
+
+
+
+- Modificar página show - item
 - El resto de usuarios pueden reportar item como lost/found
 
 
