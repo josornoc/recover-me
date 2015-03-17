@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
 	before_action :require_login
-	
 	helper_method :is_current_user_owner?
 
 	def index
@@ -81,6 +80,12 @@ class ItemsController < ApplicationController
 		redirect_to items_path
 	end
 
+	def update
+		item = Item.find(params[:id])
+		item.update!(item_update_params)
+    redirect_to item		
+	end
+
 	private
 
 	def is_current_user_owner?
@@ -94,6 +99,10 @@ class ItemsController < ApplicationController
 
 	def item_params
 		params.require(:item).permit(:name,:avatar,:datetime,:contact_email,:state,:description,:reward,:category,relations_attributes:[:id, :type])
+  end
+
+  def item_update_params
+		params.require(:item).permit(:description,:reward,:category)
   end
 
   def get_current_lost_items
